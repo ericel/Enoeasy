@@ -1,0 +1,80 @@
+.getstarted {
+	text-align: center;
+    width: 600px;
+    margin: 10px auto;
+}
+.getstarted h1{
+   font-size: 1.8em;
+}
+.fa-long-arrow-down {
+	font-size: 9em;
+	color: rgba(72, 82, 116, 0.29);
+	margin: 5px 0;
+}
+.getstarted h2{
+	font-size: 1.5em;
+}
+@media screen and (max-width: 768px){
+	.getstarted {
+		text-align: center;
+	    width: 100%;
+   }
+}
+.showDailog {
+	position: absolute;
+	top: -10px;
+	left: 0px;
+	right: 0px;
+	background: #e7e9ec;
+	z-index: 9991;
+	width: 100%;
+	bottom: -150px;
+	overflow: auto;
+}
+.closebtn {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+}
+.showDailog h2, .showDailog h3 {
+	margin: 10px 0;
+	color: #485274;
+	font: normal 36px 'Cookie', cursive;
+}
+.showDailog h2 {
+ font-size: 1.6em;
+ text-align: center;
+}
+.showDailog h3 {
+ font-size: 1.4em;
+ text-decoration: underline;
+}
+.showDailog p {
+ text-indent: 10px;
+ font-size: 1.2em;
+ margin: 10px 0;
+}
+@media screen and (min-width: 768px){
+	.showDailog{
+		/*width: 600px;*/
+		padding:0 25% ;
+		-webkit-box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.75);
+		box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.75);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+.af-can span{
+    background: rgba(153, 153, 153, 0.4);
+    color: #485274;
+    padding: 3px;
+    border-radius: 40%;
+    margin: 3px;
+    line-height: 2;
+    font-size: 0.8em;
+}
+em {
+	font-style: italic;
+	font-weight: bold;
+}

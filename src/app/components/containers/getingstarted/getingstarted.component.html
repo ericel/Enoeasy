@@ -1,0 +1,141 @@
+<div class="getstarted animated flipInX">
+  <h1>Get started with AfQuota</h1>
+  <i class="fa fa-long-arrow-down fa-5x" aria-hidden="true"></i>
+  <div class="af-card">
+    <h2><a routerLink="/signup"> Sign up for a free AfQuota Account</a></h2>
+    <p>Starter accounts are free to everyone. With a number of clicks your account will be ready</p>
+    <p> We accept facebook and google account logins</p>
+    <p>You need not to fill any forms</p>
+  </div>
+
+  <i class="fa fa-long-arrow-down fa-5x" aria-hidden="true"></i>
+  
+  <div class="af-card">
+    <h2> Claim your free <span>10 AfQuota points</span> and start sharing your craft.</h2>
+     <p class="af-can">What  you can share: <span>music audio</span><span>Ebooks</span><span>Lesson Plans</span><span>Resumes</span><span>Videos</span><span>Blogs</span><span>Photos</span><span>more..</span></p>
+    <p> Click below for more guides on using AfQuota</p>
+  </div>
+  <div class="row">
+  	<div class="col-md-4">
+  	  <div class="af-card">
+         <button md-raised-button class="getbtn" color="primary" (click)="openThis()">Share a File</button>
+      </div>
+  	</div>
+  	<div class="col-md-4">
+  	  <div class="af-card">
+         <button md-raised-button class="getbtn" color="accent" (click)="openThiss()">Sell your Files</button>
+      </div>
+  	</div>
+  	<div class="col-md-4">
+  	  <div class="af-card">
+         <button md-raised-button class="getbtn" color="warn" (click)="openThisb()">Buy Shared Files</button>
+      </div>
+  	</div>
+  </div>
+
+</div>
+<div *ngIf="showDailog" class="showDailog animated zoomIn">
+   <div class="container">
+	<button md-mini-fab color="accent" class="closebtn" (click)="closeDailog()">X</button>
+	   <h2>Sharing a File</h2>
+	   <p>
+	    Our service provides you with the opportunity to share in most file formats, word documents, pdf, audio , videos and more. 
+	    </p>
+	    <p>
+	    As an authenticated member , you can share at the cost of 5 Credit points per file.
+	    At this point we have two sharing options (free file and premium file).
+	    </p>
+	    <h3> Free File:</h3>
+	    <p>
+	    If you share a file as free, it will be available to service users for free. Users will be able to download such a file with by no cost. This will be an ideal option if you are one of those who just wants his art available to everyone else for free.
+	    </p>
+	    <h3> Premium File: </h3>
+	    <p>
+	    Premium files go with a price tag. You are allowed to set the price for your file. Let say a $2 (5 credit points) for a music audio file).
+	    </p>
+	    <p>
+	    With this option, service users are expected to pay a token to be able to either read, listen or download such a file.
+	    </p>
+	    <p> When a file is listed as premium, we will seek to create a preview of the file which will be available to service users.</p>
+	    <p>For every file sold, we take a compensation for service. You have nothing to loose</p>
+	    <p> You can always contact the <a routerLink="/contact">help desk</a> for more support or look through the forums for help.</p>
+       <h3>Note*: Copyright:</h3>
+       <p>
+         Before sharing, make sure you have read and understood our <a routerLink="/copyright">copyright laws</a>. If you are in violation of this  laws, your account will be permenently deleted!
+       </p>
+       <p class="af-can">What  you can share: <span>music audio</span><span>Ebooks</span><span>Lesson Plans</span><span>Resumes</span><span>Videos</span><span>Blogs</span><span>Photos</span><span>more..</span></p>
+	</div>
+</div>
+
+<div *ngIf="showDailogs" class="showDailog animated zoomIn showSell">
+   <div class="container">
+	<button md-mini-fab color="accent" class="closebtn" (click)="closeDailogs()">X</button>
+	   <h2>Sell a File</h2>
+	   <p>
+	   To sell a file with us, simple share the file as <em>premium file</em>. You will be given the opportunity to set a price for your file. For each sale, we take a compensation for service. We reserve the right to change the compensation percentage. 
+	   </p>
+       <h3>Note*: Copyright:</h3>
+       <p>
+         Before sharing, make sure you have read and understood our <a routerLink="/copyright">copyright laws</a>. If you are in violation of this  laws, your account will be permenently deleted!
+       </p>
+       <p class="af-can">What  you can share: <span>music audio</span><span>Ebooks</span><span>Lesson Plans</span><span>Resumes</span><span>Videos</span><span>Blogs</span><span>Photos</span><span>more..</span></p>
+
+       <table class="table table-sm">
+		  <thead>
+		    <tr>
+		      <th>Selling Price</th>
+		      <th>Percentage comensation</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">$2 - $15</th>
+		      <td>15%</td>
+		    </tr>
+		     <tr>
+		      <th scope="row">$16 - $30</th>
+		      <td>18%</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">$31 - $50</th>
+		      <td>20%</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">$51 - $150</th>
+		      <td>10%</td>
+		    </tr>
+		     <tr>
+		      <th scope="row">$151 - --</th>
+		      <td>10%</td>
+		    </tr>
+		   
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+<div *ngIf="showDailogb" class="showDailog animated zoomIn">
+   <div class="container">
+	<button md-mini-fab color="accent" class="closebtn" (click)="closeDailogb()">X</button>
+	   <h2>Buying a File</h2>
+	   <p>
+	    You buy in our service using AfQuota credits. 5 Credit points are equivalent to a $2.
+	    </p>
+	
+	    <h3>How to get more credits:</h3>
+	    <p>
+	    <em>Option 1:</em> You can earn more credits through service actions. For instance the more free files you share, the more credits you earn. 
+	    </p>
+	    <p>
+	    <em>Option 2:</em> You can buy credits through paypal quick checkout. 
+
+	    </p>
+	    <p><em> $2 = 5 credit points</em></p> 
+	   
+       <h3>Note*: Copyright:</h3>
+       <p>
+         Before sharing, make sure you have read and understood our <a routerLink="/copyright">copyright laws</a>. If you are in violation of this  laws, your account will be permenently deleted!
+       </p>
+       <p class="af-can">What  you can share: <span>music audio</span><span>Ebooks</span><span>Lesson Plans</span><span>Resumes</span><span>Videos</span><span>Blogs</span><span>Photos</span><span>more..</span></p>
+	</div>
+</div>

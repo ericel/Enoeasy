@@ -1,0 +1,16 @@
+ <div class="row center-xs notes">
+      <div class="col-xs-6 creator">
+        <app-listcreator (createNote)="onCreateNote($event)"></app-listcreator>
+      </div>
+      <div class="notes col-xs-8">
+        <div class="row between-xs">
+          <app-card
+            class="col-xs-4"
+            *ngFor="let note of notes"
+            [note]="note"
+            (checked)="onNoteChecked($event)"
+          >
+          </app-card>
+        </div>
+      </div>
+    </div>
