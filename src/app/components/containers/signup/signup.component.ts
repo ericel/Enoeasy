@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, AfterViewInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { AnimationService, AnimationBuilder } from 'css-animator';
-
+import { AuthService } from '../../../services/authentication/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,11 +10,17 @@ import { AnimationService, AnimationBuilder } from 'css-animator';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignupComponent implements OnInit, AfterViewInit {
-  
+  user = {
+    password: '',
+    email: ''
+  };
+  mode: string = 'signin';
   private _animator: AnimationBuilder;
   constructor(
   private _elementRef: ElementRef,
    animationService: AnimationService,
+   private auth: AuthService,
+   private router: Router
   ) {
     this._animator = animationService.builder();
    
@@ -31,5 +38,9 @@ export class SignupComponent implements OnInit, AfterViewInit {
       //.show(this._elementRef.nativeElement);
   }
 
+authenticate() {
+    this.auth.authenticate(this.mode, this.user)
+    .subscribe(() => this.router.navigate(['']))
+  }
  
 }

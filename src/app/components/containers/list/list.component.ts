@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListingService } from '../../../services';
+import { ListingService } from '../../../services/listing/listing.service';
 import { Store } from './../../../store';
 import 'rxjs/Rx';
 
@@ -14,14 +14,16 @@ export class ListComponent implements OnInit {
     private store: Store,
     private noteService: ListingService
   ) {
-    this.noteService.getNotes()
-    .subscribe();
-
-    this.store.changes.pluck('notes')
-    .subscribe((notes: any) =>  this.notes = notes);
+    
   }
  
  ngOnInit() {
+   this.noteService.getNotes()
+    .subscribe();
+
+    this.store.changes.pluck('notes')
+    .subscribe((notes: any) => { this.notes = notes;  console.log(this.notes)});
+  
   }
 
   onCreateNote(note) {

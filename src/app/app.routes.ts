@@ -8,6 +8,7 @@ import {
   NotfoundComponent,
   ListComponent
 } from './components/containers';
+import { AuthService } from './services/authentication/auth.service';
 export const routes: Routes = [
    {
     path: 'home',
@@ -45,6 +46,7 @@ export const routes: Routes = [
   {
    path: 'list',
    component: ListComponent,
+   canActivate: [AuthService],
     data: {
       title: 'List a a business'
     }

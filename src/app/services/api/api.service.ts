@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { AngularFire, AuthProviders, AuthMethods, FirebaseObjectObservable, AngularFireDatabase, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods,  FirebaseListObservable } from 'angularfire2';
 import 'rxjs/Rx';
 import 'rxjs/add/observable/throw';
 @Injectable()
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   get(path: string): Observable<any> {
-    return this.http.get(`${this.api_url}${path}`, { headers: this.headers })
+    return this.http.get(`${this.api_url}${path}.json`, { headers: this.headers })
     .map(this.checkForError)
     .catch(err => Observable.throw(err))
     .map(this.getJson)
@@ -42,7 +42,7 @@ export class ApiService {
   
   post(path: string, body): Observable<any> {
     return this.http.post(
-      `${this.api_url}${path}`,
+      `${this.api_url}${path}.json`,
       JSON.stringify(body),
       { headers: this.headers }
     )
@@ -53,11 +53,15 @@ export class ApiService {
 
   delete(path: string): Observable<any> {
     return this.http.delete(
-      `${this.api_url}${path}`,
+      `${this.api_url}${path}.json`,
       { headers: this.headers }
     )
     .map(this.checkForError)
     .catch(err => Observable.throw(err))
     .map(this.getJson)
+  }
+
+  setHeaders(headers) {
+    Object.keys(headers).forEach(header => this.headers.set(header, headers[header]));
   }
 }
