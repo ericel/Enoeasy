@@ -590,3 +590,19 @@ box-shadow: -5px 3px 55px -6px rgba(250,250,250,1);
     display: none;
   }
 }
+.link_1 {
+    width: 100%;
+    top: 30px;
+    right: 0px;
+    position: relative;
+}
+.link_1 a{
+  color: white;
+  margin-right: 10px;
+}
+@media screen and (min-width: 1024px){
+  .link_1 {
+    left: 20%;
+
+  }
+}

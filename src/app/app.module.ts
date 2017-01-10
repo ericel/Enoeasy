@@ -12,7 +12,8 @@ import { MaterialModule } from '@angular/material';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
 import { AppComponent } from './app.component';
-import { providers } from './index'
+import { Store } from './store';
+import { SERVICE_PROVIDER } from './services'
 import { 
   HeaderComponent, 
   FooterComponent, 
@@ -73,7 +74,11 @@ export const firebaseConfig = {
     RouterModule.forRoot(routes, {  }),
     NgUploaderModule
   ],
-  providers: [providers, AnimationService],
+  providers: [
+  ...SERVICE_PROVIDER,
+  Store,
+  AnimationService
+  ],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

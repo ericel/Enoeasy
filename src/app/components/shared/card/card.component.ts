@@ -12,7 +12,7 @@ import {
 })
 export class CardComponent  {
 @Input() note = {};
-  @Output() checked = new EventEmitter();
+@Output() checked = new EventEmitter();
 
   showCheck: boolean = false;
 
