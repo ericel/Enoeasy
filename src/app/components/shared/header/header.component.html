@@ -2,18 +2,38 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 col">
-		<a href="/home" class="cd-logo"><img src="assets/img/logo.png" alt="Logo"></a>
+		<a routerLink="/home" class="cd-logo"><img src="assets/img/logo.png" alt="Logo"></a>
 	  </div>
 	  <div class="col-md-6 col-sm-no">
-	    <form class="form-wrapper">
-		    <input type="text" id="search" placeholder="Search for..." required>
-		    <input type="submit" value="Search" id="submit">
-		</form>
+	    <div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<form class="flexsearch--form" action="#" method="post">
+				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+				<div class="flexsearch--input-wrapper">
+					<input [(ngModel)]="searchThis" name="searchThis" (click)="showStyle = !showStyle" class="flexsearch--input" type="search" placeholder="search">
+				</div>
+				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
+			</form>
+		</div>
+</div>
 	  </div>
 	  <div class="col-md-3 col">
 	  <span class="link_1">
-	   <a  routerLink="/list"> List</a>
+	   <span class="just-l"> <a   routerLink="/list" class="position-fix"> List</a></span>
+	   <span *ngIf="isAuthorized">
 	   <a  routerLink="/signup"> login</a>
+	   </span>
+	   <span *ngIf="!isAuthorized" class="dropdown">
+	     <a  routerLink="/profile" class="user-1"> <img src="./assets/img/user-avatar.png"></a>
+		 <a   class="position-fix dropdown-toggle" id="dropdownMenuButton" 
+		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
+		 aria-hidden="true"></i>--></a>
+		   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">Action</a>
+				<a class="dropdown-item" href="#">Another action</a>
+				<a class="dropdown-item" href="#">Something else here</a>
+			</div>
+	   </span>
 	   </span>
 	    <a id="sm-search" class="af-search-sm">
            <i class="fa fa-search" aria-hidden="true"></i>
@@ -28,10 +48,17 @@
 
 	</header> <!-- .cd-header -->
 	 <div class="animated fadeInDown search-sm search-sm-y">
-	    <form class="form-wrapper">
-		    <input type="text" id="search" placeholder="Search for..." required>
-		    <button type="submit" value="Search" id="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-		</form>
+	      <div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<form class="flexsearch--form" action="#" method="post">
+				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+				<div class="flexsearch--input-wrapper">
+					<input [(ngModel)]="searchThis" name="searchThis" (click)="showStyle = !showStyle" class="flexsearch--input" type="search" placeholder="search">
+				</div>
+				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
+			</form>
+		</div>
+</div>
 	    </div>
 <div id="top-shadow" class="animated fadeInDown">
 <div class="container-fluid">

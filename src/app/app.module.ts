@@ -11,6 +11,7 @@ import { AdsenseModule } from 'ng2-adsense';
 import { MaterialModule } from '@angular/material';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
+import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import { AppComponent } from './app.component';
 import { Store } from './store';
 import { SERVICE_PROVIDER } from './services'
@@ -72,7 +73,8 @@ export const firebaseConfig = {
     MasonryModule,
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
-    NgUploaderModule
+    NgUploaderModule,
+    Ng2DropdownModule
   ],
   providers: [
   ...SERVICE_PROVIDER,

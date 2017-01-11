@@ -133,9 +133,19 @@ em {
   text-align: center;
 }
 .grow {
-  content: url('./assets/img/grow.jpg');
+  background: url('./assets/img/grow.jpg');
+  background-size: cover;
+  /*content: url('./assets/img/grow.jpg');*/
+  min-height: 300px;
   width: 100%;
 }
+
+@media screen and (max-width: 500px) {
+ .grow {
+  min-height: 200px;
+ }
+}
+
 .side-1, .intro {
   background: #485274;
 }
