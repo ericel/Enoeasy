@@ -29,9 +29,13 @@
 		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
 		 aria-hidden="true"></i>--></a>
 		   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Action</a>
-				<a class="dropdown-item" href="#">Another action</a>
-				<a class="dropdown-item" href="#">Something else here</a>
+				<a class="dropdown-item" routerLink="/profile"><em> You are logged in as <span>Oj Obasi</span></em></a>
+				<a class="dropdown-item" routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+				<a class="dropdown-item" routerLink="/list"><i class="fa fa-plus-square" aria-hidden="true"></i> List Now</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" routerLink="/listing"><i class="fa fa-list" aria-hidden="true"></i> My Listing</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" (click)="logout()" routerLink=""><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
 			</div>
 	   </span>
 	   </span>
@@ -74,7 +78,7 @@
 	<nav class="cd-3d-nav-container">
 		<ul class="cd-3d-nav">
 			<li class="cd-selected">
-				<a href="#0"></a>
+				<a class="cd-selected" href="#0"></a>
 			</li>
 
 			<li>
