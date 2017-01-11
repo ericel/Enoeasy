@@ -27,9 +27,7 @@ a {
 Main Components 
 
 -------------------------------- */
-.cover {
-  background-color: #485274;
-}
+
 #top-shadow {
     position: fixed;
     top: 0;
@@ -193,7 +191,7 @@ z-index: 9991;
   -webkit-transition: -webkit-transform 0.5s 0s, visibility 0s 0.5s;
   -moz-transition: -moz-transform 0.5s 0s, visibility 0s 0.5s;
   transition: transform 0.5s 0s, visibility 0s 0.5s;
-  z-index: 999;
+  z-index: 9992;
 }
 .cd-3d-nav-container.nav-is-visible {
   visibility: visible;
@@ -260,8 +258,21 @@ z-index: 9991;
   width: 20%;
   float: left;
 }
-.cd-3d-nav li:first-of-type  {
-  content: url(../assets/img/icon-1.svg);
+.cd-3d-nav li  a{
+  font-size: 2em;
+  text-align: center;
+  position: relative;
+  padding-top: 20px;
+  color: rgb(93, 102, 134);
+}
+.cd-3d-nav li  a:hover{
+  color: #ccc;
+}
+.cd-3d-nav li  a:active{
+  color: #ccc;
+}
+/*.cd-3d-nav li:nth-of-type(1) a::before {
+  background-image: url(../assets/img/icon-2.svg);
 }
 .cd-3d-nav li:nth-of-type(2) a::before {
   background-image: url(../assets/img/icon-2.svg);
@@ -275,6 +286,7 @@ z-index: 9991;
 .cd-3d-nav li:nth-of-type(5) a::before {
   background-image: url(../assets/img/user.svg);
 }
+*/
 .cd-3d-nav a {
   position: relative;
   display: block;
@@ -308,6 +320,7 @@ z-index: 9991;
 }
 .cd-3d-nav .cd-selected a {
   background-color: #212635;
+  color: #ccc;
 }
 .no-touch .cd-3d-nav .cd-selected a:hover {
   background-color: #212635;
@@ -667,4 +680,12 @@ input:-moz-placeholder {
 .dropdown-item em span{
   font-weight: bold;
   color:#485274;
+}
+.cover {
+
+  background-color: #485274;
+  
+}
+.clearfix {
+  clear: both;
 }

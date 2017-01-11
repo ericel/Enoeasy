@@ -21,7 +21,7 @@ searchThis;
   if(this.showStyle) {
       return "#8ac53e";
     } else {
-      return "gray";
+      return "red";
     }
  }
 
