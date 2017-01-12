@@ -13,16 +13,21 @@ export interface Note {
 }
 
 export interface User {
+  name: string,
+  avatar: string,
+  email: string,
+  provider: string,
+  uid: string,
   id?: string
 }
 export interface State {
   notes: Array<Note>,
-  user: User
+  user: Array<User>,
 }
 
 const defaultState = {
   notes: [],
-  user: {}
+  user: []
 }
 
 const _store = new BehaviorSubject<State>(defaultState);

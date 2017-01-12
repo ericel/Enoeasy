@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-
+import { AuthService } from '../../../services/authentication/auth.service'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,13 +8,15 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 export class HeaderComponent implements OnInit {
 showStyle: false;
-isAuthorized: true;
+isAuthorized: boolean = false;
 searchThis;
   constructor(
     private _elementRef: ElementRef,
+    private _authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.isAuthorized = this._authService.isAuthorized();
   }
  
  focusChange(){
