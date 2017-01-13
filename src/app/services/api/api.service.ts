@@ -10,11 +10,11 @@ export class ApiService {
     'Content-Type': 'application/json',
     Accept: 'application/json'
   });
-
+  apiUrl;
   api_url: string = 'https://enoeasy-94b34.firebaseio.com/';
   //api_url: FirebaseListObservable<any>;
   constructor(private http: Http, private af: AngularFire) {
-    //this.api_url = af.database.list('/items');
+    this.apiUrl = af.database.list('/');
     //this.api_url.set({ name: 'new name!'});
   }
 
@@ -32,7 +32,12 @@ export class ApiService {
       throw error;
     }
   }
-
+  set(path: string, body){
+    let thisUrl = this.af.database.object(`${path}`);
+    return thisUrl.set({
+            body
+    });
+  }
   get(path: string): Observable<any> {
     return this.http.get(`${this.api_url}${path}.json`, { headers: this.headers })
     .map(this.checkForError)

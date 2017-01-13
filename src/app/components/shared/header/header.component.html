@@ -24,12 +24,12 @@
 	   <a  routerLink="/signup"> login</a>
 	   </span>
 	   <span *ngIf="isAuthorized" class="dropdown">
-	     <a  routerLink="/profile" class="user-1"> <img src="./assets/img/user-avatar.png"></a>
+	     <a  routerLink="/profile" class="user-1"> <img src="{{ user.auth.photoURL }}" alt="{{ user.auth.displayName }}"></a>
 		 <a   class="position-fix dropdown-toggle" id="dropdownMenuButton" 
 		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
 		 aria-hidden="true"></i>--></a>
 		   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" routerLink="/profile"><em> You are logged in as <span>Oj Obasi</span></em></a>
+				<a class="dropdown-item" routerLink="/profile"><em> You are logged in as <span>{{ user.auth.displayName }}</span></em></a>
 				<a class="dropdown-item" routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
 				<a class="dropdown-item" routerLink="/list"><i class="fa fa-plus-square" aria-hidden="true"></i> List Now</a>
 				<div class="dropdown-divider"></div>

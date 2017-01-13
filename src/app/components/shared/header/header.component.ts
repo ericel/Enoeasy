@@ -10,13 +10,17 @@ export class HeaderComponent implements OnInit {
 showStyle: false;
 isAuthorized: boolean = false;
 searchThis;
+user;
   constructor(
     private _elementRef: ElementRef,
     private _authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.isAuthorized = this._authService.isAuthorized();
+    this._authService.userAuth
+    .subscribe(value => { 
+    if(value){this.isAuthorized = true; this.user = value; console.log(this.user)} 
+     else {this.isAuthorized = false} });
   }
  
  focusChange(){
@@ -29,5 +33,9 @@ searchThis;
 
   reset() {
     this.searchThis = " ";
+  }
+
+  logout(){
+    this._authService.logout();
   }
 }

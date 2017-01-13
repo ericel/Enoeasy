@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
    private router: Router
   ) {
     this._animator = animationService.builder();
-    this.auth.signout();
+    //this.auth.signout();
    }
 
   ngOnInit() {
