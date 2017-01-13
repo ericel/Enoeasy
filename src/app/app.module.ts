@@ -12,6 +12,7 @@ import { MaterialModule } from '@angular/material';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
+import {NgPipesModule} from 'ngx-pipes';
 import { AppComponent } from './app.component';
 import { Store } from './store';
 import { SERVICE_PROVIDER } from './services'
@@ -29,8 +30,10 @@ import {
   AboutComponent,
   GetingstartedComponent,
   ListComponent,
-  NotfoundComponent
+  NotfoundComponent,
+  ProfileComponent
 } from './components/containers';
+
 
 
 
@@ -58,7 +61,8 @@ export const firebaseConfig = {
     CardComponent,
     ColorpickerComponent,
     ListcreatorComponent,
-    ListComponent
+    ListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,8 @@ export const firebaseConfig = {
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
     NgUploaderModule,
-    Ng2DropdownModule
+    Ng2DropdownModule,
+    NgPipesModule
   ],
   providers: [
   ...SERVICE_PROVIDER,

@@ -17,6 +17,7 @@ export class AuthService implements CanActivate {
   api_url: FirebaseObjectObservable<any>;
   path: string = 'users';
   user: {};
+  users: any;
   constructor(
     private router: Router,
     private store: Store,
@@ -33,6 +34,7 @@ export class AuthService implements CanActivate {
        } else {
            return false;
        }});
+    this.users = this.af.database.object(`/users`, { preserveSnapshot: true });
     }
   login(provider: string) {
     this.af.auth.login({
@@ -71,6 +73,13 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observab
       }); 
   }
  
+ userById(id: string){
+  return this.users.map(snapshot => {
+      return snapshot.val()[id];   
+    });
+ }
+
+
   logout() {
     this.af.auth.logout();
     this.store.purge();

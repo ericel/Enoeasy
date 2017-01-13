@@ -6,7 +6,8 @@ import {
   GetingstartedComponent,
   HomeComponent,
   NotfoundComponent,
-  ListComponent
+  ListComponent,
+  ProfileComponent
 } from './components/containers';
 import { AuthService } from './services/authentication/auth.service';
 export const routes: Routes = [
@@ -41,6 +42,13 @@ export const routes: Routes = [
    component: SignupComponent,
     data: {
       title: 'Sign in | Sign up to your free account'
+    }
+  },
+  {
+   path: 'user/:id/:string',
+   component: ProfileComponent,
+    data: {
+      title: 'This user'
     }
   },
   {

@@ -24,7 +24,7 @@
 	   <a  routerLink="/signup"> login</a>
 	   </span>
 	   <span *ngIf="isAuthorized" class="dropdown">
-	     <a  routerLink="/profile" class="user-1"> <img src="{{ user.auth.photoURL }}" alt="{{ user.auth.displayName }}"></a>
+	     <a  routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}" class="user-1"> <img src="{{ user.auth.photoURL }}" alt="{{ user.auth.displayName }}"></a>
 		 <a   class="position-fix dropdown-toggle" id="dropdownMenuButton" 
 		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
 		 aria-hidden="true"></i>--></a>
