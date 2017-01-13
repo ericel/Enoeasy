@@ -8,7 +8,7 @@ import { AuthService } from '../../../services/authentication/auth.service'
 })
 export class ProfileComponent implements OnInit {
 id: string;
-user: any;
+USER: any;
   constructor(
     private route: ActivatedRoute,
     private _authService: AuthService
@@ -19,7 +19,7 @@ user: any;
         this.id = params['id'];
         let str = params['string'];
         this._authService.userById(this.id)
-        .subscribe(user => {this.user = user; console.log(this.user)});
+        .subscribe(user => {this.USER = user;});
     });
   }
 
