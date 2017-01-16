@@ -19,7 +19,7 @@
 	  </div>
 	  <div class="col-md-3 col">
 	  <span class="link_1">
-	   <span class="just-l"> <a   routerLink="/list" class="position-fix"> List</a></span>
+	   <span class="just-l"> <a   routerLink="/list"  [class.position-fix]="isAuthorized"> List</a></span>
 	   <span *ngIf="!isAuthorized">
 	   <a  routerLink="/signup"> login</a>
 	   </span>
@@ -29,11 +29,15 @@
 		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
 		 aria-hidden="true"></i>--></a>
 		   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" routerLink="/profile"><em> You are logged in as <span>{{ user.auth.displayName }}</span></em></a>
-				<a class="dropdown-item" routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+				<a class="dropdown-item" routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}"><em> You are logged in as <span>{{ user.auth.displayName }}</span></em></a>
+				<a class="dropdown-item" routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
 				<a class="dropdown-item" routerLink="/list"><i class="fa fa-plus-square" aria-hidden="true"></i> List Now</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" routerLink="/listing"><i class="fa fa-list" aria-hidden="true"></i> My Listing</a>
+				<div class="dropdown-divider"></div>
+				 <a class="dropdown-item" routerLink="/edit/{{ user.uid }}/{{user.auth.displayName | slugify}}">
+					<i class="fa fa-pencil" aria-hidden="true"></i> Edit profile
+				</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" (click)="logout()" routerLink=""><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
 			</div>

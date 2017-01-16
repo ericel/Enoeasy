@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MasonryModule } from 'angular2-masonry';
 import { TagInputModule } from 'ng2-tag-input';
@@ -22,7 +22,10 @@ import {
   UploaderComponent,
   CardComponent,
   ColorpickerComponent,
-  ListcreatorComponent
+  ListcreatorComponent,
+  AdslistComponent,
+  EusersComponent,
+  AuthcardComponent
 } from './components/shared';
 import { 
   HomeComponent,
@@ -31,7 +34,9 @@ import {
   GetingstartedComponent,
   ListComponent,
   NotfoundComponent,
-  ProfileComponent
+  ProfileComponent,
+  EdituserComponent,
+  ActionpageComponent
 } from './components/containers';
 
 
@@ -62,11 +67,17 @@ export const firebaseConfig = {
     ColorpickerComponent,
     ListcreatorComponent,
     ListComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdslistComponent,
+    EdituserComponent,
+    EusersComponent,
+    AuthcardComponent,
+    ActionpageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, {
       provider: AuthProviders.Google,

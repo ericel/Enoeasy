@@ -7,9 +7,11 @@ import {
   HomeComponent,
   NotfoundComponent,
   ListComponent,
-  ProfileComponent
+  ProfileComponent,
+  EdituserComponent,
+  ActionpageComponent
 } from './components/containers';
-import { AuthService } from './services/authentication/auth.service';
+import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
    {
     path: 'home',
@@ -46,9 +48,14 @@ export const routes: Routes = [
   },
   {
    path: 'user/:id/:string',
-   component: ProfileComponent,
-    data: {
-      title: 'This user'
+   component: ProfileComponent
+  },
+  {
+   path: 'edit/:id/:string',
+   component: EdituserComponent,
+   canActivate: [AuthService],
+   data: {
+      title: 'Edit Profile'
     }
   },
   {
@@ -57,6 +64,14 @@ export const routes: Routes = [
    canActivate: [AuthService],
     data: {
       title: 'List a a business'
+    }
+  },
+   {
+   path: 'action/start',
+   component: ActionpageComponent,
+   canActivate: [AuthService],
+    data: {
+      title: 'Start An Action Page'
     }
   },
   {path: 'NotFound404', 

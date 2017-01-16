@@ -96,9 +96,7 @@ z-index: 9991;
   float: left;
   margin-top: 20px;
 }
-.cd-logo img{
-  
-}
+
 .cd-3d-nav-trigger {
   position: relative;
   float: right;
@@ -530,9 +528,9 @@ z-index: 9991;
   outline: none;
     background: url(search-dark.png) no-repeat 10px 6px #fcfcfc;
     color: #000000;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
+    box-shadow: 0 1px 0 rgba(228, 231, 241, 0.87), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -667,7 +665,7 @@ input:-moz-placeholder {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: rgba(64, 75, 109, 0.81) !important;
+    background-color: #fff !important;
 }
 @media screen and (max-width: 450px){
 .just-l {

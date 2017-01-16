@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { AuthService } from '../../../services/authentication/auth.service'
+import { AuthService } from '../../../services/auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -19,7 +19,7 @@ user;
   ngOnInit() {
     this._authService.userAuth
     .subscribe(value => { 
-    if(value){this.isAuthorized = true; this.user = value; console.log(this.user)} 
+    if(value){this.isAuthorized = true; this.user = value} 
      else {this.isAuthorized = false} });
   }
  

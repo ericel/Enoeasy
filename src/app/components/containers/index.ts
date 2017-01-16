@@ -5,3 +5,5 @@ export { SignupComponent } from './signup/signup.component';
 export { NotfoundComponent } from './notfound/notfound.component';
 export { ListComponent } from './list/list.component';
 export { ProfileComponent } from './profile/profile.component';
+export { EdituserComponent } from './profile/edituser/edituser.component';
+export { ActionpageComponent } from './content/actionpage/actionpage.component';

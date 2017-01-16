@@ -25,62 +25,44 @@
   </div>
 
 </div>
- <div class="af-docs row gutter-20">
-  <div class="col-md-6">
-  <ul class="list-group">
-
-  <li class="list-group-item list-group-item-action">
-    <span class="col-md-3">
-     <i class="fa fa-file-text fa-5x" aria-hidden="true"></i>
-     </span>
-     <span class="col-md-9">
-      <h5 class="list-group-item-heading">Document Files</h5>
-      <p class="list-group-item-text">Share a  document. It could be as simple as a sample CV, Lesson Plan.</p>
-     </span>
-     <div class="clearfix"></div>
-  </li>
-  <li class="list-group-item list-group-item-action">
-    <span class="col-md-3">
-     <i class="fa fa-file-audio-o fa-5x" aria-hidden="true"></i>
-     </span>
-     <span class="col-md-9">
-      <h5 class="list-group-item-heading">Audio Music</h5>
-      <p class="list-group-item-text">Expose your pro skills with our powerful music player. Best Of sounds!</p>
-     </span>
-     <div class="clearfix"></div>
-  </li>
-</ul>
-</div>
-<div class="col-md-6">
-  <div class="list-group">
-  <li class="list-group-item list-group-item-action">
-    <span class="col-md-3">
-     <i class="fa fa-video-camera fa-5x" aria-hidden="true"></i>
-     </span>
-     <span class="col-md-9">
-      <h5 class="list-group-item-heading">Videos</h5>
-      <p class="list-group-item-text">All videos accepted. We show your videos for free. Get a audience while ending money.</p>
-     </span>
-     <div class="clearfix"></div>
-  </li>
-  <li class="list-group-item list-group-item-action">
-    <span class="col-md-3">
-     <i class="fa fa-book fa-5x" aria-hidden="true"></i>
-     </span>
-     <span class="col-md-9">
-      <h5 class="list-group-item-heading">Ebooks</h5>
-      <p class="list-group-item-text">Have a wonderful book you want to share with other? We provide ereaders with a powerful pdf reader.                      </p>
-     </span>
-     <div class="clearfix"></div>
-  </li>
-</div>
-</div>
+ <div class="af-docs row gutter-10">
+   <div class="col-md-8">
+     <md-card>
+      <md-card-header>
+          <img md-card-avatar src="./assets/img/card.jpg">
+          <md-card-title>Header title</md-card-title>
+          <md-card-subtitle>Header subtitle</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image src="./assets/img/card.jpg">
+      <md-card-content>
+          <p>Here is some more content</p>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <md-card-subtitle>Subtitle first</md-card-subtitle>
+      <md-card-title>Card with title</md-card-title>   
+      <md-card-content>
+            <p>This is supporting text.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+      </md-card-content>
+      <md-card-actions>
+            <button md-button>LIKE</button>
+            <button md-button>SHARE</button>
+      </md-card-actions>
+    </md-card>
+   </div>
+   <div class="col-md-4">
+     <md-card>
+     Added pages
+     </md-card>
+   </div>
  </div>
-<div class="af-updates">
+<!--<div class="af-updates">
   <masonry [options]="{ transitionDuration: '0.8s', gutter: 10 }" [useImagesLoaded]="true">
     
       <!--<app-card [item]="item" *ngFor="let item of items"></app-card>-->
-      <masonry-brick class="brick" *ngFor="let item of items">
+     <!-- <masonry-brick class="brick" *ngFor="let item of items">
      <md-card (mouseleave)="toggleShow()"
    (mouseenter)="toggleShow()" [ngStyle]="{'background-color': item.color}">
          <md-card-header>
@@ -101,42 +83,12 @@
  </masonry-brick>
  
   </masonry>
-</div>
+</div>-->
 
 </div>
 <div class="col-md-3">
-<div class="mar-10"></div>
- <md-card class="animated shake">
-         <md-card-header>
-            <img md-card-avatar src="./assets/img/user-avatar.png">
-            <md-card-title><a routerLink="/signup">Sign Up Or Log in</a></md-card-title>
-            <md-card-subtitle><em>Claim your free AF10 credits</em></md-card-subtitle>
-         </md-card-header>
-   </md-card>
-<div class="mar-10"></div>
-	<ng2-adsense
-    [adClient]="'ca-pub-2243338195594977'"
-    [adSlot]="7979162777">
-  </ng2-adsense>
- 
-<md-card>
-   <md-card-subtitle>Share Your File And Earn Money!</md-card-subtitle>
-   <md-card-title>Start making easy money from your comfort zone</md-card-title>   
-   <md-card-content>
-        <i class="fa fa-cloud-upload fa-5x" aria-hidden="true"></i>
-       <h3><a routerLink="/gettingstarted">Get Started for free</a></h3>
-     <h4>AfQuota offers<span>10</span> points free starter credits</h4>
-   </md-card-content>
-   <md-card-actions>
-        <button md-button>Get Started</button>
-        <button md-button>SHARE</button>
-   </md-card-actions>
-</md-card>
-
-<ng2-adsense
-    [adClient]="'ca-pub-2243338195594977'"
-    [adSlot]="7581452770">
-  </ng2-adsense>
+   <app-authcard></app-authcard>
+   <app-adslist></app-adslist>
 </div>
 </div>
 
