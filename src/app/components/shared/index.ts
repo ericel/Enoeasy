@@ -6,4 +6,5 @@ export { ColorpickerComponent } from './colorpicker/colorpicker.component';
 export { ListcreatorComponent } from './listcreator/listcreator.component';
 export { AdslistComponent } from './adslist/adslist.component';
 export { EusersComponent } from './users/eusers.component';
-export { AuthcardComponent } from './adslist/authcard';
+export { AuthCard } from './adslist/authcard';
+export { PromoCard } from './adslist/promocard';

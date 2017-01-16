@@ -172,3 +172,14 @@ em {
       text-align: center;
   }
 }
+.auth-1 {
+  text-align: center;
+}
+.auth-1 img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

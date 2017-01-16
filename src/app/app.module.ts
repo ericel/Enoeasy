@@ -11,7 +11,6 @@ import { AdsenseModule } from 'ng2-adsense';
 import { MaterialModule } from '@angular/material';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
-import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import {NgPipesModule} from 'ngx-pipes';
 import { AppComponent } from './app.component';
 import { Store } from './store';
@@ -25,7 +24,8 @@ import {
   ListcreatorComponent,
   AdslistComponent,
   EusersComponent,
-  AuthcardComponent
+  AuthCard,
+  PromoCard
 } from './components/shared';
 import { 
   HomeComponent,
@@ -71,7 +71,8 @@ export const firebaseConfig = {
     AdslistComponent,
     EdituserComponent,
     EusersComponent,
-    AuthcardComponent,
+    AuthCard,
+    PromoCard,
     ActionpageComponent
   ],
   imports: [
@@ -89,7 +90,6 @@ export const firebaseConfig = {
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
     NgUploaderModule,
-    Ng2DropdownModule,
     NgPipesModule
   ],
   providers: [
