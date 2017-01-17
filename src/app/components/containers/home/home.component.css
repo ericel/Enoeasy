@@ -1,17 +1,16 @@
 .section-1 {
   padding: 0 5px;
   height: auto;
-  height: 2000px;
 }
 .section-1 .section-01 {
   float: left;
-  width:50%;
+  width:75%;
 }
 .section-02{
   position:fixed; 
   top:60px;
   right:5px;
-  width:51%;
+  width:26.5%;
 }
 @media screen and (max-width: 768px){
  .section-1 .section-01 {
@@ -20,13 +19,6 @@
 }
 
 
- .side-1{
-
-
-}
-.af-docs {
-	
-}
 .af-share h1 {
 	font-size: 2em;
 }

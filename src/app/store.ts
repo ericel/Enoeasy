@@ -2,11 +2,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx';
 
-export interface Note {
+export interface Status {
   color: string,
-  title: string,
-  value: string,
-  id?: string | number,
+  status: string,
+  sid?: string | number,
   createdAt?: string,
   updatedAt?: string,
   userId?: string
@@ -21,12 +20,12 @@ export interface User {
   id?: string
 }
 export interface State {
-  notes: Array<Note>,
+  statuses: Array<Status>,
   user: Array<User>,
 }
 
 const defaultState = {
-  notes: [],
+  statuses: [],
   user: []
 }
 

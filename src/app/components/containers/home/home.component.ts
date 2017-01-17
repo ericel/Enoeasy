@@ -1,5 +1,7 @@
 import { Component, OnInit,  ElementRef } from '@angular/core';
-
+import { StatusService } from '../../../services/status/status.service';
+import { Store } from './../../../store';
+import 'rxjs/add/operator/first';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +10,11 @@ import { Component, OnInit,  ElementRef } from '@angular/core';
 export class HomeComponent implements OnInit {
   items;
   showMore: boolean = false;
-  constructor() { }
+  statuses = []
+  constructor(
+    private store: Store,
+    private statusService: StatusService
+    ) { }
   
   ngOnInit() {
   	this.items = [
@@ -16,36 +22,22 @@ export class HomeComponent implements OnInit {
      title: 'Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
      desc: 'Angular2 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005',
      color: 'skyblue'
-    },
-     {
-     title: 'Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005',
-     color: 'green'
-    },
-     {
-     title: 'Angular2 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Pipes Cheat Sheet by Nathane2005',
-     color: 'yellow'
-    },
-     {
-     title: 'Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Angular2 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005',
-     color: 'black'
-    },
-     {
-     title: 'Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Pipes Cheat Sheet by Nathane2005',
-     color: 'white'
-    },
-     {
-     title: 'gular2 Pipes Cheat Sheet by Nathane20 Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Pipes Cheat Sheet by Nathane2005',
-     color: 'white'
     }
     ]
+   
+   this.statusService.getStatus()
+    .subscribe(statuses => this.statuses = statuses);
 
+    /*this.store.changes.pluck('notes')
+    .subscribe((statuses: any) =>  this.statuses = statuses);
+    */
   }
  toggleShow() {
     this.showMore = !this.showMore;
   }
+  onCreateStatus(status) {
+    this.statusService.createStatus(status)
+    //.subscribe();
+  }
+
 }

@@ -1,21 +1,24 @@
 <section class="section-1">
   <section class="section-01 container-fluid">
   <div class="row gutter-10">
-   <div class="col-md-12">
-     <app-statuscard></app-statuscard>
-     <app-homecard></app-homecard>
+   <div class="col-md-8">
+      <app-statuscard (createStatus)="onCreateStatus($event)"></app-statuscard>
+       <app-homecard 
+          *ngFor="let status of statuses"
+           [status]="status">
+       </app-homecard>
    </div>
+     <div class="col-md-4">
+          <app-authcard></app-authcard>
+          <app-adslist></app-adslist>
+    </div>   
  </div>
   </section>
   <section class="section-02 no-sm-no">
    <div class="side-1 container-fluid">
      <div class="row gutter-10">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <app-promocard></app-promocard>
-        </div>
-        <div class="col-md-6">
-            <app-authcard></app-authcard>
-            <app-adslist></app-adslist>
         </div>
     </div>
   </div>

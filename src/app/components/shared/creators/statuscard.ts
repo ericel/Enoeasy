@@ -33,7 +33,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   }
   textarea {
     border: none;
-    background-color: transparent;
+    background-color: #fff !important;
     outline: none;
     color: rgba(0,0,0,0.6);
     font-family: 'Helvetica', sans-serif;
@@ -55,9 +55,9 @@ import { AuthService } from '../../../services/auth/auth.service';
      <div class="clearfix"></div>
    </md-card>
    <md-card *ngIf="statusShow" class="update-status" [ngStyle]="{'background-color': newStatus.color}">
-   <form>
+   <form  (ngSubmit)="onCreateStatus()">
     <div class="form-group">
-      <textarea class="form-control" aria-label="Update Status"
+      <textarea class="form-control shadow-2" aria-label="Update Status"
       [(ngModel)]="newStatus.status"
       name="status"
       placeholder="E no easy ooh!"
@@ -95,10 +95,27 @@ export class StatusCard implements OnInit {
   
   toggleStatus() {
      this.statusShow = true;
-     console.log('starting status')
   }
   onColorSelect(color: string) {
     this.newStatus.color = color;
-    console.log(color);
   }
+
+  onCreateStatus() {
+    const { status, color } = this.newStatus;
+
+    if (status) {
+      this.createStatus.next({ status, color });
+    }
+
+    this.reset();
+    this.statusShow  = false;
+  }
+
+  reset() {
+    this.newStatus = {
+      status: '',
+      color: 'white'
+    };
+  }
+
 }

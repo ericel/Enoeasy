@@ -22,31 +22,17 @@ import 'rxjs/Rx';
     ])]
 })
 export class ListComponent implements OnInit {
-   notes = []
+  // notes = []
   constructor(
     private store: Store,
     private noteService: ListingService
   ){
-    this.noteService.getNotes()
-    .subscribe();
-
-    this.store.changes.pluck('notes')
-    .subscribe((notes: any) =>  this.notes = notes);
+   
   }
  
  ngOnInit() {
  
   
-  }
-
-  onCreateNote(note) {
-    this.noteService.createNote(note)
-    .subscribe();
-  }
-
-  onNoteChecked(note) {
-    this.noteService.completeNote(note)
-    .subscribe();
   }
 
   

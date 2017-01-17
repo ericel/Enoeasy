@@ -78,10 +78,10 @@ jQuery(document).ready(function($){
           $("#top-shadow").css({'display':'none', 'opacity':y/20});
 	  }
 
-	 var scrollValue = $(window).scrollTop();
+	/* var scrollValue = $(window).scrollTop();
 		if (scrollValue == settings.scrollTopPx || scrollValue > 70) {
 			$('.sidebar').addClass('fixed');
-		} 
+		} */
 	 });
 
 	 

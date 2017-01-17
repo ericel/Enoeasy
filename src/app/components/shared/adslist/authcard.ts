@@ -19,6 +19,7 @@ import { AuthService } from '../../../services/auth/auth.service';
                   <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-share-alt-square fa-2x color-primary" aria-hidden="true"></i> Share a File</a>
                   <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i> Write a Blog</a>
                   <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-list fa-2x color-skyblue" aria-hidden="true"></i> List Things</a>
+                  <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-briefcase fa-2x color-green" aria-hidden="true"></i> Post a Job</a>
                 </div>
             </md-card-content>
    </md-card>
