@@ -22,13 +22,16 @@ import { AuthService } from '../../../services/auth/auth.service';
       position: relative;
     }
     .selector {
-      min-width: 120px;
+      min-width: 150px;
       border: 1px solid lightgrey;
       padding: 10px;
       background-color: #efefef;
+      background-color: rgba(68, 82, 111, 0.61);
       position: absolute;
-      top: -50px;
+      top: -160px;
       left: 0;
+      border-radius: 4px;
+      transform: rotate(-20deg);
     }
     .color {
       height: 30px;

@@ -9,14 +9,14 @@ import { AuthService } from '../../../services/auth/auth.service';
       margin: 10px 0;
       width: 100%;
       clear:both;
-      background: #efefef !important;
+      background: #efefef ;
       border-radius: 0 !important;
   }
   md-card span {
-      width: 33%;
-      float: left;
-      text-align: center;
-      display: flex;
+    width: 33%;
+    float: left;
+    text-align: center;
+    display: flex;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     -webkit-box-align: center;
@@ -32,14 +32,17 @@ import { AuthService } from '../../../services/auth/auth.service';
       margin-top: -10px;
   }
   textarea {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  color: rgba(0,0,0,0.6);
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: rgba(0,0,0,0.6);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 20px;
+    margin-bottom: 5px;
   }
   `],
   template: `
-   <md-card class="no-sm shadow-1"  [attr.style]="'background-color': newStatus.color !important'">
+   <md-card class="no-sm shadow-1"  [ngStyle]="{'background-color': newStatus.color}">
      <span (click)="toggleStatus()">
          <i class="fa fa-commenting-o fa-1x color-green" aria-hidden="true"></i> <em>Update Status</em>
      </span>
@@ -51,7 +54,7 @@ import { AuthService } from '../../../services/auth/auth.service';
      </span>
      <div class="clearfix"></div>
    </md-card>
-   <md-card *ngIf="statusShow" class="update-status" >
+   <md-card *ngIf="statusShow" class="update-status" [ngStyle]="{'background-color': newStatus.color}">
    <form>
     <div class="form-group">
       <textarea class="form-control" aria-label="Update Status"
@@ -76,7 +79,7 @@ export class StatusCard implements OnInit {
  isAuthorized: boolean = false;
  user;
  statusShow: boolean = false;
- colors: Array<string> = ['#B19CD9', '#FF6961', '#77DD77', '#AEC6CF', '#F49AC2', 'white'];
+ colors: Array<string> = ['#737EA8','#B19CD9', '#FF6961', '#77DD77', '#AEC6CF', '#F49AC2', 'white'];
  newStatus = {
     status: '',
     color: 'white'
