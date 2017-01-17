@@ -1,4 +1,29 @@
+.section-1 {
+  padding: 0 5px;
+  height: auto;
+  height: 2000px;
+}
+.section-1 .section-01 {
+  float: left;
+  width:50%;
+}
+.section-02{
+  position:fixed; 
+  top:60px;
+  right:5px;
+  width:51%;
+}
+@media screen and (max-width: 768px){
+ .section-1 .section-01 {
+  width:100%;
+}
+}
 
+
+ .side-1{
+
+
+}
 .af-docs {
 	
 }
@@ -120,9 +145,7 @@ em {
  }
 }
 
-.side-1, .intro {
-  background: #485274;
-}
+
 .list-Btn {
   padding: 10px;
   border: 1px solid #fff;
