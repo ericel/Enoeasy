@@ -57,6 +57,7 @@ Main Components
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: #485274;
+  background: url('./assets/img/header_1.png');
   -webkit-box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
 -moz-box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
 box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
@@ -485,7 +486,7 @@ z-index: 9991;
 	font-size: 18px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-   background: rgba(64, 75, 109, 0.81);
+   background: #737EA8;
    font-family: Monospace, Helvetica, sans-serif !important;
 }
 	

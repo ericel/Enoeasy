@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-adslist',
   template:`
    <div class="mar-10"></div>
-	<md-card>
+	<md-card class="google">
   <ng2-adsense
     [adClient]="'ca-pub-2243338195594977'"
     [adSlot]="7979162777">
@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
    </md-card-actions>
 </md-card>
 <div class="mar-10"></div>
-<md-card>
+<md-card class="google">
 <ng2-adsense
     [adClient]="'ca-pub-2243338195594977'"
     [adSlot]="7581452770">
@@ -35,6 +35,9 @@ import { Component, OnInit } from '@angular/core';
   styles: [`
    md-card {
      background: #efefef !important;
+   }
+    md-card.google {
+     padding:2px !important;
    }
   `]
 })

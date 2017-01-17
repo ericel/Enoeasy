@@ -77,8 +77,13 @@ jQuery(document).ready(function($){
 	  if( y == 0 ){
           $("#top-shadow").css({'display':'none', 'opacity':y/20});
 	  }
+
+	 var scrollValue = $(window).scrollTop();
+		if (scrollValue == settings.scrollTopPx || scrollValue > 70) {
+			$('.sidebar').addClass('fixed');
+		} 
 	 });
 
-	
+	 
 
 });

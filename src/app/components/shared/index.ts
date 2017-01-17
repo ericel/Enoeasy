@@ -1,10 +1,12 @@
 export { HeaderComponent } from './header/header.component';
 export { FooterComponent } from './footer/footer.component';
 export { UploaderComponent } from './uploader/uploader.component';
-export { CardComponent } from './card/card.component';
 export { ColorpickerComponent } from './colorpicker/colorpicker.component';
 export { ListcreatorComponent } from './listcreator/listcreator.component';
 export { AdslistComponent } from './adslist/adslist.component';
 export { EusersComponent } from './users/eusers.component';
 export { AuthCard } from './adslist/authcard';
 export { PromoCard } from './adslist/promocard';
+export { HomeCard } from './card/homecard';
+export { StatusCard }  from './creators/statuscard';
+export { ColorCard } from './creators/colorcard';

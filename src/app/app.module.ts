@@ -19,13 +19,15 @@ import {
   HeaderComponent, 
   FooterComponent, 
   UploaderComponent,
-  CardComponent,
   ColorpickerComponent,
   ListcreatorComponent,
   AdslistComponent,
   EusersComponent,
   AuthCard,
-  PromoCard
+  PromoCard,
+  HomeCard,
+  StatusCard,
+  ColorCard
 } from './components/shared';
 import { 
   HomeComponent,
@@ -63,7 +65,6 @@ export const firebaseConfig = {
     HomeComponent,
     NotfoundComponent,
     UploaderComponent,
-    CardComponent,
     ColorpickerComponent,
     ListcreatorComponent,
     ListComponent,
@@ -73,7 +74,10 @@ export const firebaseConfig = {
     EusersComponent,
     AuthCard,
     PromoCard,
-    ActionpageComponent
+    ActionpageComponent,
+    HomeCard,
+    StatusCard,
+    ColorCard
   ],
   imports: [
     BrowserModule,

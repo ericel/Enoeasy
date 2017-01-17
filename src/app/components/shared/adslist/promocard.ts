@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 @Component({
   selector: 'app-promocard',
   template: `
+  <div class="mar-10"></div>
    <md-card class="animated shake">
    <img md-card-image src="/assets/img/card.jpg">
    <md-card-content>

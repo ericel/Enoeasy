@@ -1,8 +1,9 @@
+
 <div class="row gutter-10">
 <div class="col-md-9">
 
-    <app-uploader></app-uploader>
-<div class="intro row gutter-0 shadow-1">
+    
+<!--<div class="intro row gutter-0 shadow-1">
   <div class="col-md-6 side-1">
     <div class="getastart">
        <h1>Get Noticed More Online</h1>
@@ -24,30 +25,17 @@
     <div class="grow"></div> 
   </div>
 
-</div>
+</div>-->
  <div class="row gutter-10">
    <div class="col-md-8">
-   <div class="row gutter-10">
-   <div class="col-md-3 auth-1">
-     <img md-card-avatar src="./assets/img/card.jpg">
-   </div>
-    <div class="col-md-9">
-     <md-card>
-      <md-card-header>
-          <img md-card-avatar src="./assets/img/card.jpg">
-          <md-card-title>Header title</md-card-title>
-          <md-card-subtitle>Header subtitle</md-card-subtitle>
-      </md-card-header>
-      <img md-card-image src="./assets/img/card.jpg">
-      <md-card-content>
-          <p>Here is some more content</p>
-      </md-card-content>
-    </md-card>
-   </div>
-   </div>
+     <app-statuscard></app-statuscard>
+     <app-homecard></app-homecard>
    </div>
    <div class="col-md-4">
-     <app-promocard></app-promocard>
+     <div class="promo">
+       <!--TODO: make This fixed-->
+        <app-promocard></app-promocard>
+     </div>
    </div>
  </div>
 <!--<div class="af-updates">
@@ -78,9 +66,11 @@
 </div>-->
 
 </div>
-<div class="col-md-3">
+<div class="col-md-3" >
+  <div class="sidebar">
    <app-authcard></app-authcard>
    <app-adslist></app-adslist>
+  </div>
 </div>
 </div>
 

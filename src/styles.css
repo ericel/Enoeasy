@@ -134,3 +134,39 @@ input {
 .color-green {
   color: #77cd91;
 }
+.row.gutter-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+.row.gutter-0 [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+.row.gutter-10 {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.row.gutter-10 [class*="col-"] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.row.gutter-20 {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.row.gutter-20 [class*="col-"] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.clearfix {
+  clear: both;
+}
+
+@media screen and (max-width: 768px){
+  .no-sm em{
+    display: none !important;
+  }
+  .no-sm i{
+    font-size: 2em;
+  }
+}

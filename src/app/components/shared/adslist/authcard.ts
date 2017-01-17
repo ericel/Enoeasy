@@ -49,6 +49,7 @@ import { AuthService } from '../../../services/auth/auth.service';
    md-card, .list-group, .list-group-item {
      background: #efefef !important;
    }
+   
   `]
 })
 export class AuthCard implements OnInit {
