@@ -143,12 +143,12 @@ input {
   padding-right: 0;
 }
 .row.gutter-10 {
-  margin-left: -5px;
-  margin-right: -5px;
+  margin-left: -3px;
+  margin-right: -3px;
 }
 .row.gutter-10 [class*="col-"] {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .row.gutter-20 {
   margin-left: -10px;
@@ -174,4 +174,8 @@ input {
   .no-sm i{
     font-size: 2em;
   }
+  .row.gutter-10 [class*="col-"] {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 }

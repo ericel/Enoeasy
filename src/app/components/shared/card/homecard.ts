@@ -5,7 +5,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   selector: 'app-homecard',
   template: `
    <div class="row gutter-10">
-   <div class="col-md-2 auth-1">
+   <div class="col-md-2 auth-1 no-sm-no">
      <md-card class="shadow-1" [ngStyle]="{'background-color': status.color}">
      <img md-card-avatar src="./assets/img/card.jpg">
      </md-card>
@@ -19,7 +19,7 @@ import { AuthService } from '../../../services/auth/auth.service';
           <md-card-title>Oj Obasi Posted this 22mins ago!</md-card-title>
           <md-card-subtitle>status update</md-card-subtitle>
       </md-card-header>
-      <!--<img md-card-image src="./assets/img/card.jpg">-->
+      <!--<img  md-card-image class="status-img" src="./assets/img/card.jpg">-->
       <md-card-content >
           <p>{{status.status}}</p>
       </md-card-content>
@@ -34,6 +34,10 @@ import { AuthService } from '../../../services/auth/auth.service';
   styles: [`
   md-card.status {
     padding:10px 0 !important;
+  }
+  .status-img {
+    width:100% !important;
+    margin: 0!important;
   }
   md-card.status md-card-content {
     min-height: 50px !important;

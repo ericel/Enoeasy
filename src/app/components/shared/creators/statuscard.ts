@@ -7,13 +7,12 @@ import { AuthService } from '../../../services/auth/auth.service';
 
   md-card {
       margin: 10px 0;
-      width: 100%;
       clear:both;
       background: #efefef ;
       border-radius: 0 !important;
   }
   md-card span {
-    width: 33%;
+    width: 31%;
     float: left;
     text-align: center;
     display: flex;
@@ -40,9 +39,15 @@ import { AuthService } from '../../../services/auth/auth.service';
     font-size: 20px;
     margin-bottom: 5px;
   }
+  @media screen and (max-width: 768px){
+     md-card {
+      margin: 0px 0 10px 0;
+      }
+
+  }
   `],
   template: `
-   <md-card class="no-sm shadow-1"  [ngStyle]="{'background-color': newStatus.color}">
+   <md-card class="no-sm "  [ngStyle]="{'background-color': newStatus.color}">
      <span (click)="toggleStatus()">
          <i class="fa fa-commenting-o fa-1x color-green" aria-hidden="true"></i> <em>Update Status</em>
      </span>

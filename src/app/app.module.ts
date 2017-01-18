@@ -12,6 +12,7 @@ import { MaterialModule } from '@angular/material';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
 import {NgPipesModule} from 'ngx-pipes';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppComponent } from './app.component';
 import { Store } from './store';
 import { SERVICE_PROVIDER } from './services'
@@ -94,7 +95,8 @@ export const firebaseConfig = {
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
     NgUploaderModule,
-    NgPipesModule
+    NgPipesModule,
+    InfiniteScrollModule
   ],
   providers: [
   ...SERVICE_PROVIDER,

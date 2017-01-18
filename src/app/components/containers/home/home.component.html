@@ -1,9 +1,13 @@
 <section class="section-1">
-  <section class="section-01 container-fluid">
+  <section class="section-01">
   <div class="row gutter-10">
    <div class="col-md-8">
       <app-statuscard (createStatus)="onCreateStatus($event)"></app-statuscard>
-       <app-homecard 
+       <app-homecard
+         infinite-scroll
+         [infiniteScrollDistance]="scrollDistance"
+         [infiniteScrollThrottle]="throttle"
+         (scrolled)="onScrollDown()"
           *ngFor="let status of statuses"
            [status]="status">
        </app-homecard>
@@ -15,13 +19,14 @@
  </div>
   </section>
   <section class="section-02 no-sm-no">
-   <div class="side-1 container-fluid">
+   <div class="side-1">
      <div class="row gutter-10">
         <div class="col-md-12">
           <app-promocard></app-promocard>
         </div>
     </div>
   </div>
+
   </section>
   <div class="clearfix"></div>
 </section>

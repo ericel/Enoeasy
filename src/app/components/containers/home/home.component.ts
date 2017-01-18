@@ -10,7 +10,10 @@ import 'rxjs/add/operator/first';
 export class HomeComponent implements OnInit {
   items;
   showMore: boolean = false;
-  statuses = []
+  statuses = [];
+  sum = 2;
+  throttle = 2000;
+  scrollDistance = 2;
   constructor(
     private store: Store,
     private statusService: StatusService
@@ -25,9 +28,10 @@ export class HomeComponent implements OnInit {
     }
     ]
    
-   this.statusService.getStatus()
+   this.addItems(0, this.sum);
+   /*this.statusService.getStatus()
     .subscribe(statuses => this.statuses = statuses);
-
+   
     /*this.store.changes.pluck('notes')
     .subscribe((statuses: any) =>  this.statuses = statuses);
     */
@@ -40,4 +44,23 @@ export class HomeComponent implements OnInit {
     //.subscribe();
   }
 
+   addItems(startIndex, endIndex) {
+    for (let i = 0; i < this.sum; ++i) {
+      this.statuses.push([i, ' ', this.statusArray()].join(''));
+    }
+  }
+  onScrollDown () {
+    console.log('scrolled!!');
+
+    // add another 20 items
+    const start = this.sum;
+    this.sum += 1;
+    this.addItems(start, this.sum);
+  }
+ 
+
+  statusArray() {
+    return this.statusService.getStatus()
+    .subscribe(statuses => this.statuses = statuses);
+  }
 }
