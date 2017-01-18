@@ -652,9 +652,10 @@ input:-moz-placeholder {
 }
 
 .dropdown-menu {
-    left: inherit !important;
-    right: 10px !important;
+
+    left: 0px;
     top: 25px !important;
+
 }
 .dropdown-menu a {
   color: #333;
