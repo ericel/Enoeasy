@@ -8,7 +8,17 @@ export interface Status {
   sid?: string | number,
   createdAt?: string,
   updatedAt?: string,
-  userId?: string
+  uid?: string
+}
+
+export interface Action {
+  color: string,
+  status: string,
+  sid?: string | number,
+  createdAt?: string,
+  updatedAt?: string,
+  uid?: string,
+  username: string
 }
 
 export interface User {
@@ -21,11 +31,13 @@ export interface User {
 }
 export interface State {
   statuses: Array<Status>,
+  actions: Array<Status>,
   user: Array<User>,
 }
 
 const defaultState = {
   statuses: [],
+  actions: [],
   user: []
 }
 

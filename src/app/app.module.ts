@@ -9,6 +9,7 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AnimationService, AnimatesDirective } from 'css-animator';
 import { AdsenseModule } from 'ng2-adsense';
 import { MaterialModule } from '@angular/material';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { NgUploaderModule } from 'ngx-uploader';
 import {NgPipesModule} from 'ngx-pipes';
@@ -96,7 +97,11 @@ export const firebaseConfig = {
     RouterModule.forRoot(routes, {  }),
     NgUploaderModule,
     NgPipesModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBqIrNb1DLsN6oP97ua3YLMJx5-gUueWJU',
+      libraries: ['places']
+    })
   ],
   providers: [
   ...SERVICE_PROVIDER,

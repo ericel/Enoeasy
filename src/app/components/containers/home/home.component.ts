@@ -11,9 +11,10 @@ export class HomeComponent implements OnInit {
   items;
   showMore: boolean = false;
   statuses = [];
-  sum = 2;
-  throttle = 2000;
-  scrollDistance = 2;
+  sum = 1;
+  throttle = 500;
+  scrollDistance = 10;
+   
   constructor(
     private store: Store,
     private statusService: StatusService
@@ -54,13 +55,15 @@ export class HomeComponent implements OnInit {
 
     // add another 20 items
     const start = this.sum;
-    this.sum += 1;
-    this.addItems(start, this.sum);
+    this.sum += 20;
+    this.addItems(start, this.sum) ;
   }
  
 
   statusArray() {
     return this.statusService.getStatus()
     .subscribe(statuses => this.statuses = statuses);
+    
   }
+
 }

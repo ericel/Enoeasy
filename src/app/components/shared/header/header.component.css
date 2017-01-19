@@ -655,6 +655,13 @@ input:-moz-placeholder {
 
     left: 0px;
     top: 25px !important;
+    word-wrap: break-word;
+    white-space: wrap !important;
+
+}
+.dropdown-item {
+
+    white-space: wrap !important;
 
 }
 .dropdown-menu a {
