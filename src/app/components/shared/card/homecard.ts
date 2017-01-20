@@ -18,7 +18,15 @@ import { AuthService } from '../../../services/auth/auth.service';
       <md-card-header>
           <img md-card-avatar src="./assets/img/card.jpg">
           <md-card-title>{{status.username}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
-          <span class="pull-right-set"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
+        <i class="fa fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+         
+         </button></span>
+         <md-menu #menu="mdMenu">
+          <button md-menu-item>Hide</button>
+          <button md-menu-item>Save Post</button>
+          <button md-menu-item>Delete</button>
+        </md-menu>
           <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
       </md-card-header>
       <!--<img  md-card-image class="status-img" src="./assets/img/card.jpg">-->
@@ -95,11 +103,21 @@ import { AuthService } from '../../../services/auth/auth.service';
   position: absolute;
   top: 10px;
   right: 10px;
+  cursor:pointer;
+}
+.pull-right-set [md-button] {
+      min-width: 40px !important;
+      border-radius: 100% !important;
+      cursor:pointer;
 }
 @media screen and (max-width: 600px){
 md-card-header {
     margin: -8px 0 0;
     padding: 0 5px !important;
+}
+
+.row.gutter-10{
+    margin-top: 0px;
 }
 }
   `]

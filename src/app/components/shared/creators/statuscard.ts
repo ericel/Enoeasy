@@ -137,7 +137,7 @@ export class StatusCard implements OnInit {
     this.newStatus = {
       status: '',
       color: 'white',
-      tags: this.tags
+      tags: ''
     };
   }
 

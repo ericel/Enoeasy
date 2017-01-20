@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   statusArray() {
     return this.statusService.getStatus()
-    .subscribe(statuses => this.statuses = statuses);
+    .subscribe(statuses => { this.statuses = statuses; console.log(statuses)});
     
   }
 

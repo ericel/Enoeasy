@@ -70,7 +70,7 @@ import {Http} from '@angular/http';
   }
 
   getCurrentIpLocation(): Observable<any> {
-        return this._http.get('http://ipinfo.io')
+        return this._http.get('https://ipinfo.io')
         .map(response => response.json())
         .catch(error => {
             console.log(error);

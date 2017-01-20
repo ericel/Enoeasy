@@ -24,7 +24,7 @@ _username;
 isLoggedIn: any;
 user: {};
 _tags;
- private isloggedIn = new BehaviorSubject(false);
+private isloggedIn = new BehaviorSubject(false);
 statusList: FirebaseListObservable<any[]>;
   constructor(
     private storeHelper: StoreHelper,
@@ -39,7 +39,11 @@ statusList: FirebaseListObservable<any[]>;
            this._username = user.auth.displayName;
        }});
     
-    this.statusList = this.af.database.list('eStatus');
+    this.statusList = this.af.database.list('eStatus',  {
+      query: {
+        orderByChild: 'createdAt'
+      }
+    });
   
   
   }
@@ -65,8 +69,8 @@ statusList: FirebaseListObservable<any[]>;
   }
   
   getStatus() {
-     return this.statusList.map(snapshot => {
-         return snapshot.reverse();
+     return this.statusList.map(statuses => {
+         return statuses.reverse();
      });
     
   /*  return this.apiService.get(this.path)
