@@ -32,6 +32,7 @@ import { AuthService } from '../../../services/auth/auth.service';
       left: 0;
       border-radius: 4px;
       transform: rotate(-20deg);
+      z-index: 99;
     }
     .color {
       height: 30px;

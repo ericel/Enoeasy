@@ -5,21 +5,14 @@ import { AuthService } from '../../../services/auth/auth.service';
   selector: 'app-homecard',
   template: `
    <div class="row gutter-10">
-   <div class="col-md-2 auth-1 no-sm-no">
-     <md-card class="shadow-1" [ngStyle]="{'background-color': status.color}">
-     <img md-card-avatar src="./assets/img/card.jpg">
-     </md-card>
-    <div>
-      <h2>Oj Obasi</h2>
-    </div>
-   </div>
-    <div class="col-md-10">
-     <md-card class="status shadow-1">
+
+    <div class="col-md-12">
+     <md-card class="status">
       <md-card-header>
-          <img md-card-avatar src="./assets/img/card.jpg">
+          <img md-card-avatar src="{{status.avatar}}">
           <md-card-title>{{status.username}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
           <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
-        <i class="fa fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+        <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
          
          </button></span>
          <md-menu #menu="mdMenu">
@@ -49,11 +42,15 @@ import { AuthService } from '../../../services/auth/auth.service';
     width:100% !important;
     margin: 0!important;
   }
+  md-card-header {
+    margin: -8px 0 0;
+    padding: 2px 5px !important;
+  }
   md-card.status md-card-content {
     min-height: 50px !important;
     padding:10px;
     font-family: 'Helvetica', sans-serif;
-    font-size: 20px;
+    font-size: 14px;
      display: flex;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -109,6 +106,7 @@ import { AuthService } from '../../../services/auth/auth.service';
       min-width: 40px !important;
       border-radius: 100% !important;
       cursor:pointer;
+      color: rgba(0, 0, 0, 0.54) !important;
 }
 @media screen and (max-width: 600px){
 md-card-header {

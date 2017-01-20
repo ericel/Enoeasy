@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	//toggle 3d navigation
-	$('.cd-3d-nav-trigger').on('click', function(){
+	/*$('.cd-3d-nav-trigger').on('click', function(){
 		toggle3dBlock(!$('.cd-header').hasClass('nav-is-visible'));
 
 	});
@@ -82,7 +82,8 @@ jQuery(document).ready(function($){
 		if (scrollValue == settings.scrollTopPx || scrollValue > 70) {
 			$('.sidebar').addClass('fixed');
 		} */
-	 });
+		
+	// });
 
 	 
 

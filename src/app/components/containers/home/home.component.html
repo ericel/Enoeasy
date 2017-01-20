@@ -1,7 +1,11 @@
 <section class="section-1">
   <section class="section-01">
   <div class="row gutter-10">
-   <div class="col-md-8">
+   <div class="col-md-4">
+      <app-promocard></app-promocard>
+          <app-adslist></app-adslist>
+   </div>
+     <div class="col-md-8">
       <app-statuscard (createStatus)="onCreateStatus($event)"></app-statuscard>
        <app-homecard
          infinite-scroll
@@ -11,10 +15,6 @@
           *ngFor="let status of statuses"
            [status]="status">
        </app-homecard>
-   </div>
-     <div class="col-md-4">
-          <app-authcard></app-authcard>
-          <app-adslist></app-adslist>
     </div>   
  </div>
   </section>
@@ -22,7 +22,7 @@
    <div class="side-1">
      <div class="row gutter-10">
         <div class="col-md-12">
-          <app-promocard></app-promocard>
+          <app-authcard></app-authcard>
         </div>
     </div>
   </div>

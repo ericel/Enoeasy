@@ -48,7 +48,7 @@ import { AuthService } from '../../../services/auth/auth.service';
     margin: -8px 0 0px !important;
    }
    md-card, .list-group, .list-group-item {
-     background: #efefef !important;
+     
    }
    
   `]

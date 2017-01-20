@@ -44,6 +44,8 @@ Main Components
 .cd-header {
   height: 62px;
   width: 100%;
+  position: fixed;
+  top:0px;
   margin: 0 auto;
   -webkit-transition: -webkit-transform 0.5s;
   -moz-transition: -moz-transform 0.5s;
@@ -61,7 +63,6 @@ Main Components
   -webkit-box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
 -moz-box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
 box-shadow: 0px 1px 1px 0px rgba(6,22,36,0.52);
-position: relative;
 z-index: 9991;
 }
 .cd-header.affix{ /* position fixed navbar */
@@ -695,4 +696,9 @@ input:-moz-placeholder {
 }
 .clearfix {
   clear: both;
+}
+@media screen and (min-width: 1200px){
+.container-fluid{
+  padding:0 17% !important;
+}
 }

@@ -17,7 +17,7 @@ export class AuthService implements CanActivate {
   UID_KEY: string = '';
   userAuth: any;
   api_url: FirebaseObjectObservable<any>;
-  path: string = 'no-users-e';
+  path: string = 'eusers';
   user: {};
   users: any;
   usersList: any;
@@ -38,8 +38,8 @@ export class AuthService implements CanActivate {
        } else {
            return false;
        }});
-    this.users = this.af.database.object(`/no-users-e`, { preserveSnapshot: true });
-    this.usersList = this.af.database.list(`/no-users-e`);
+    this.users = this.af.database.object(`/eusers`, { preserveSnapshot: true });
+    this.usersList = this.af.database.list(`/eusers`);
     this._getusersHere = this.users.map(snapshot => {
         return snapshot.val();
       });

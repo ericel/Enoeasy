@@ -8,7 +8,11 @@ import { AngularFire, AuthProviders,
 import { MapsAPILoader } from 'angular2-google-maps/core';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/first';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import {Md5} from 'ts-md5/dist/md5';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -24,6 +28,7 @@ _username;
 isLoggedIn: any;
 user: {};
 _tags;
+projectWithUserList;
 private isloggedIn = new BehaviorSubject(false);
 statusList: FirebaseListObservable<any[]>;
   constructor(
@@ -44,8 +49,7 @@ statusList: FirebaseListObservable<any[]>;
         orderByChild: 'createdAt'
       }
     });
-  
-  
+
   }
    
 
@@ -57,7 +61,6 @@ statusList: FirebaseListObservable<any[]>;
          sid: sid,
          status: status.status,
          color: status.color,
-         username: this._username,
          uid: this._uid,
          type: 'Status update',
          createdAt: firebase.database.ServerValue.TIMESTAMP,
@@ -69,13 +72,39 @@ statusList: FirebaseListObservable<any[]>;
   }
   
   getStatus() {
-     return this.statusList.map(statuses => {
+     /*return this.statusList.map(statuses => {
          return statuses.reverse();
      });
+     */
     
-  /*  return this.apiService.get(this.path)
-    .do((res: any) => this.storeHelper.update('notes', res.data));
-    */
+   // Compose an observable based on the projectList:
+ return  this.statusList
+
+  // Each time the projectList emits, switch to unsubscribe/ignore
+  // any pending user queries:
+
+  .switchMap(statuses => {
+
+    // Map the projects to the array of observables that are to be
+    // combined.
+
+    let userObservables = statuses.map(status => this.af.database.object(`eusers/${status.uid}`)
+    );
+
+    // Combine the latest user objects, match them up with the
+    // projects, etc.
+
+    return Observable.combineLatest(...userObservables)
+      .map((...eusers) => {
+        statuses.forEach((status, index) => {
+          console.log(eusers);
+          status.username = eusers[0][index].username;
+          status.avatar = eusers[0][index].avatar;
+        });
+        return statuses.reverse();          
+      });
+  });
+
   }
 
 

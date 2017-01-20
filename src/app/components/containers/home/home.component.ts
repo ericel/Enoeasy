@@ -28,8 +28,10 @@ export class HomeComponent implements OnInit {
      color: 'skyblue'
     }
     ]
-   
-   this.addItems(0, this.sum);
+   this.statusService.getStatus()
+    .subscribe(statuses => { this.statuses = statuses;});
+
+   //this.addItems(0, this.sum);
    /*this.statusService.getStatus()
     .subscribe(statuses => this.statuses = statuses);
    
@@ -45,7 +47,7 @@ export class HomeComponent implements OnInit {
     //.subscribe();
   }
 
-   addItems(startIndex, endIndex) {
+  /* addItems(startIndex, endIndex) {
     for (let i = 0; i < this.sum; ++i) {
       this.statuses.push([i, ' ', this.statusArray()].join(''));
     }
@@ -65,5 +67,6 @@ export class HomeComponent implements OnInit {
     .subscribe(statuses => { this.statuses = statuses; console.log(statuses)});
     
   }
+  */
 
 }

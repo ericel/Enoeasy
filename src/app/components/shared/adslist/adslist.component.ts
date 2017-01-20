@@ -34,7 +34,7 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [`
    md-card {
-     background: #efefef !important;
+     
    }
     md-card.google {
      padding:2px !important;
