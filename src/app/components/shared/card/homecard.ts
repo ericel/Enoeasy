@@ -16,8 +16,10 @@ import { AuthService } from '../../../services/auth/auth.service';
     <div class="col-md-10">
      <md-card class="status shadow-1">
       <md-card-header>
-          <md-card-title>Oj Obasi Posted this 22mins ago!</md-card-title>
-          <md-card-subtitle>status update</md-card-subtitle>
+          <img md-card-avatar src="./assets/img/card.jpg">
+          <md-card-title>{{status.username}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
+          <span class="pull-right-set"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+          <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
       </md-card-header>
       <!--<img  md-card-image class="status-img" src="./assets/img/card.jpg">-->
       <md-card-content >
@@ -53,6 +55,7 @@ import { AuthService } from '../../../services/auth/auth.service';
     cursor: pointer;
     word-wrap: break-word;
     white-space: pre-line;
+    box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
   }
   .row {
     margin: 10px 0;
@@ -84,6 +87,20 @@ import { AuthService } from '../../../services/auth/auth.service';
 }
 .row.gutter-10:first-child{
   margin-top: 0;
+}
+.type-0 {
+  font-style: italic;
+}
+.pull-right-set {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+@media screen and (max-width: 600px){
+md-card-header {
+    margin: -8px 0 0;
+    padding: 0 5px !important;
+}
 }
   `]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
+import { GeolocationService } from '../../../services/geolocation/geolocation';
 
 @Component({
   selector: 'app-statuscard',
@@ -10,6 +11,7 @@ import { AuthService } from '../../../services/auth/auth.service';
       clear:both;
       background: #efefef ;
       border-radius: 0 !important;
+      box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
   }
   md-card span {
     width: 31%;
@@ -60,13 +62,14 @@ import { AuthService } from '../../../services/auth/auth.service';
      <div class="clearfix"></div>
    </md-card>
    <md-card *ngIf="statusShow" class="update-status" [ngStyle]="{'background-color': newStatus.color}">
-   <form  (ngSubmit)="onCreateStatus()">
+   <form  (ngSubmit)="onCreateStatus(tags.value)">
     <div class="form-group">
       <textarea class="form-control shadow-2" aria-label="Update Status"
       [(ngModel)]="newStatus.status"
       name="status"
       placeholder="E no easy ooh!"
       ></textarea>
+      <tag-input [(ngModel)]='newStatus.tags' name="tags" id="tags"></tag-input>
        <app-colorcard class="pull-left"
               (selected)="onColorSelect($event)"
               [colors]="colors"
@@ -83,19 +86,33 @@ export class StatusCard implements OnInit {
  @Output() createStatus = new EventEmitter();
  isAuthorized: boolean = false;
  user;
+ tags;
  statusShow: boolean = false;
  colors: Array<string> = ['#737EA8','#B19CD9', '#FF6961', '#77DD77', '#AEC6CF', '#F49AC2', 'white'];
  newStatus = {
     status: '',
-    color: 'white'
+    color: 'white',
+    tags: this.tags
   };
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private _authService: AuthService,
+    private _GeolocationService: GeolocationService
+    ) { }
 
   ngOnInit() {
      this._authService.userAuth
     .subscribe(value => { 
     if(value){this.isAuthorized = true; this.user = value} 
      else {this.isAuthorized = false} });
+
+       this._GeolocationService.getCurrentIpLocation().subscribe( value => {
+         this.tags = [value.city, value.country, 'status updates'];
+          this.newStatus = {
+            status: '',
+            color: 'white',
+            tags: this.tags
+          };
+       });
   }
   
   toggleStatus() {
@@ -106,10 +123,10 @@ export class StatusCard implements OnInit {
   }
 
   onCreateStatus() {
-    const { status, color } = this.newStatus;
+    const { status, color, tags} = this.newStatus;
 
     if (status) {
-      this.createStatus.next({ status, color });
+      this.createStatus.next({ status, color, tags  });
     }
 
     this.reset();
@@ -119,7 +136,8 @@ export class StatusCard implements OnInit {
   reset() {
     this.newStatus = {
       status: '',
-      color: 'white'
+      color: 'white',
+      tags: this.tags
     };
   }
 

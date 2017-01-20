@@ -8,7 +8,8 @@ export interface Status {
   sid?: string | number,
   createdAt?: string,
   updatedAt?: string,
-  uid?: string
+  uid?: string,
+  tags?: any
 }
 
 export interface Action {

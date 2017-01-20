@@ -9,7 +9,7 @@
 import { Injectable } from '@angular/core';
 import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
-
+import {Http} from '@angular/http';
 /**
  * GeolocationService class.
  * https://developers.google.com/maps/documentation/javascript/
@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
  */
 @Injectable() export class GeolocationService {
 
-    constructor() { }
+    constructor(private _http: Http) { }
 
     /**
      * Tries HTML5 geolocation.
@@ -46,9 +46,10 @@ import { Observable } from 'rxjs/Observable';
                 // Error callback.
                 (error: PositionError) => {
 
-                    console.log('Geolocation service: ' + error.message);
+                    //console.log('Geolocation service: ' + error.message);
 
                     observer.error(error);
+
 
                 }
 
@@ -56,6 +57,25 @@ import { Observable } from 'rxjs/Observable';
 
         });
 
+    }
+
+   getCurrentLocation(lat: any, long: any): Observable<any> {
+        return this._http.get(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=false`)
+        .map(response => response.json())
+        .catch(error => {
+            //console.log(error);
+            //return Observable.throw(error.json());
+            return "not_found";
+        });
+  }
+
+  getCurrentIpLocation(): Observable<any> {
+        return this._http.get('http://ipinfo.io')
+        .map(response => response.json())
+        .catch(error => {
+            console.log(error);
+            return Observable.throw(error.json());
+        });
     }
 
 }

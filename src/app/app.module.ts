@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MasonryModule } from 'angular2-masonry';
 import { TagInputModule } from 'ng2-tag-input';
+import {MomentModule} from 'angular2-moment';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AnimationService, AnimatesDirective } from 'css-animator';
@@ -98,6 +99,7 @@ export const firebaseConfig = {
     NgUploaderModule,
     NgPipesModule,
     InfiniteScrollModule,
+    MomentModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBqIrNb1DLsN6oP97ua3YLMJx5-gUueWJU',
       libraries: ['places']
