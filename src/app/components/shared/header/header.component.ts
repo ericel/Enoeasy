@@ -7,9 +7,10 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 
 export class HeaderComponent implements OnInit {
-showStyle: false;
+
 isAuthorized: boolean = false;
-searchThis;
+ showStyle: false;
+  searchThis;
 user;
   constructor(
     private _elementRef: ElementRef,
@@ -23,7 +24,7 @@ user;
      else {this.isAuthorized = false} });
   }
  
- focusChange(){
+focusChange(){
   if(this.showStyle) {
       return "#8ac53e";
     } else {

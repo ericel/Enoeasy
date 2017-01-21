@@ -1,11 +1,10 @@
-<div class="cover"><header class="cd-header" data-spy="affix">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 col">
-		<a routerLink="/home" class="cd-logo"><img src="assets/img/logo.png" alt="Logo"></a>
-	  </div>
-	  <div class="col-md-6 col-sm-no">
-	    <div class="flexsearch">
+<md-toolbar  color="primary" class="fixed" >
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+   <button md-button (click)="isDarkTheme = !isDarkTheme">Enoeasy</button>
+   <span class="app-toolbar-filler"></span>
+    <div class="flexsearch">
 		<div class="flexsearch--wrapper">
 			<form class="flexsearch--form" action="#" method="post">
 				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -15,10 +14,9 @@
 				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</form>
 		</div>
-</div>
-	  </div>
-	  <div class="col-md-3 col">
-	  <span class="link_1">
+    </div>
+    <span class="app-toolbar-filler"></span>
+      <span class="link_1">
 	   <span class="just-l"> <a   routerLink="/list"  [class.position-fix]="isAuthorized"> List</a></span>
 	   <span *ngIf="!isAuthorized">
 	   <a  routerLink="/signup"> login</a>
@@ -27,7 +25,8 @@
 	     <a  routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}" class="user-1"> <img src="{{ user.auth.photoURL }}" alt="{{ user.auth.displayName }}"></a>
 		 <a   class="position-fix dropdown-toggle" id="dropdownMenuButton" 
 		 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><!--<i class="fa fa-caret-down" 
-		 aria-hidden="true"></i>--></a>
+		 aria-hidden="true"></i>-->
+	</a>
 		   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<a class="dropdown-item" routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}"><em>Hi! <span>{{ user.auth.displayName }}</span></em></a>
 				<a class="dropdown-item" routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
@@ -42,68 +41,14 @@
 				<a class="dropdown-item" (click)="logout()" routerLink=""><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
 			</div>
 	   </span>
-	   </span>
-	    <a id="sm-search" class="af-search-sm">
-           <i class="fa fa-search" aria-hidden="true"></i>
-			</a>
-		<a  class="cd-3d-nav-trigger">
-			Menu
-			<span></span>
-		</a>
-	  </div>
-	</div>
-	</div>
+  </span>
+   <span class="app-toolbar-filler"></span>
+</md-toolbar>
 
-	</header> <!-- .cd-header -->
-	 <div class="animated fadeInDown search-sm search-sm-y">
-	      <div class="flexsearch">
-		<div class="flexsearch--wrapper">
-			<form class="flexsearch--form" action="#" method="post">
-				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
-				<div class="flexsearch--input-wrapper">
-					<input [(ngModel)]="searchThis" name="searchThis" (click)="showStyle = !showStyle" class="flexsearch--input" type="search" placeholder="search">
-				</div>
-				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
-			</form>
-		</div>
-</div>
-	    </div>
-<!--<div id="top-shadow" class="animated fadeInDown">
-<div class="container-fluid">
-<a href="/home" class="cd-logo"><img src="assets/img/logo.png" alt="Logo">
-    </a>
-		<a  class="cd-3d-nav-trigger">
-			Menu
-			<span></span>
-		</a> 
- </div>
-</div>
-	
-	<!--<nav class="cd-3d-nav-container">
-		<ul class="cd-3d-nav">
-			<li class="cd-selected">
-				<a  routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i></a>
-			</li>
+<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+	<app-promocard></app-promocard>
+  </md-sidenav>
 
-			<li>
-				<a routerLink="/listing"><i class="fa fa-list" aria-hidden="true"></i></a>
-			</li>
-
-			<li>
-				<a routerLink="/listing"><i class="fa fa-music" aria-hidden="true"></i></a>
-			</li>
-
-			<li>
-				<a routerLink="/places"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-			</li>
-
-			<li>
-				<a routerLink="/signup"><i class="fa fa-user-o" aria-hidden="true"></i></a>
-			</li>
-		</ul> <!-- .cd-3d-nav -->
-
-		<!--<span class="cd-marker color-1"></span>	
-	</nav> <!-- .cd-3d-nav-container -->
-	<div class="clearfix"></div>
-</div>
+</md-sidenav-layout>
 

@@ -112,7 +112,7 @@ input {
 
 /* Color picker */
 .color-primary {
-  color: #485274;
+  color: #485274 !important;
 }
 .color-red {
   color: red;
@@ -178,4 +178,8 @@ input {
   padding-left: 0px;
   padding-right: 0px;
 }
+}
+.main-content {
+  position: relative;
+  top: 62px;
 }

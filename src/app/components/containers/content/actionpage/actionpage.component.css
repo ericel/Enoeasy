@@ -1,0 +1,27 @@
+h1 {
+    font-size: 2em;
+}
+ol li {
+    padding: 10px 0;
+}
+@media screen and (min-width: 768px){
+    .start-01 {
+        width: 700px;
+        margin: 20px auto;
+    }
+}
+
+.count-down {
+    text-align: center;
+    color: #666;
+    font-size: 2em;
+}
+.count-down span {
+    font-style: italic;
+
+}
+.close-01 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

@@ -14,14 +14,21 @@
   right:5px;
   width:24.2%;
 }
+.s-menu {display: none}
 @media screen and (min-width: 1200px){
  .section-1 {
   padding: 0 17%;
 }
 .section-02{
 
-  right:17%;
-  width:16.2%;
+  right:13%;
+  width:20.2%;
+}
+.s-menu {
+  display: block;
+  position: fixed;
+  top:65px;
+  left:5px;
 }
 }
 @media screen and (max-width: 768px){

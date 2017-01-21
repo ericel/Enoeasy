@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+ 
 	constructor(
 	private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -29,4 +30,6 @@ export class AppComponent implements OnInit {
       .mergeMap(route => route.data)
       .subscribe((event) => this.titleService.setTitle(event['title']));
   }
+
+   
 }

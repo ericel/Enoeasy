@@ -30,7 +30,8 @@ import {
   PromoCard,
   HomeCard,
   StatusCard,
-  ColorCard
+  ColorCard,
+  AsideCard
 } from './components/shared';
 import { 
   HomeComponent,
@@ -80,7 +81,8 @@ export const firebaseConfig = {
     ActionpageComponent,
     HomeCard,
     StatusCard,
-    ColorCard
+    ColorCard,
+    AsideCard
   ],
   imports: [
     BrowserModule,

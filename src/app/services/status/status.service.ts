@@ -67,38 +67,19 @@ statusList: FirebaseListObservable<any[]>;
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
          tags: status.tags
       }).then((sid) => {
-        //console.log(sid);
       }); 
   }
   
   getStatus() {
-     /*return this.statusList.map(statuses => {
-         return statuses.reverse();
-     });
-     */
-    
-   // Compose an observable based on the projectList:
  return  this.statusList
-
-  // Each time the projectList emits, switch to unsubscribe/ignore
-  // any pending user queries:
-
   .switchMap(statuses => {
-
-    // Map the projects to the array of observables that are to be
-    // combined.
-
     let userObservables = statuses.map(status => this.af.database.object(`eusers/${status.uid}`)
     );
-
-    // Combine the latest user objects, match them up with the
-    // projects, etc.
-
     return Observable.combineLatest(...userObservables)
       .map((...eusers) => {
         statuses.forEach((status, index) => {
           console.log(eusers);
-          status.username = eusers[0][index].username;
+          status.username = eusers[0][index].name;
           status.avatar = eusers[0][index].avatar;
         });
         return statuses.reverse();          

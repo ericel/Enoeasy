@@ -10,7 +10,7 @@ import { AuthService } from '../../../services/auth/auth.service';
      <md-card class="status">
       <md-card-header>
           <img md-card-avatar src="{{status.avatar}}">
-          <md-card-title>{{status.username}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
+          <md-card-title>{{status.username | shorten: 8: '...'}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
           <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
          
@@ -35,8 +35,14 @@ import { AuthService } from '../../../services/auth/auth.service';
    </div>
   `,
   styles: [`
+  md-card-actions {
+    padding: 0 10px !important;
+  }
+  md-card {
+    overflow: hidden !important;
+  }
   md-card.status {
-    padding:10px 0 !important;
+    padding:20px 0 !important;
   }
   .status-img {
     width:100% !important;
@@ -111,12 +117,15 @@ import { AuthService } from '../../../services/auth/auth.service';
 @media screen and (max-width: 600px){
 md-card-header {
     margin: -8px 0 0;
-    padding: 0 5px !important;
+    padding: 0 10px !important;
 }
 
 .row.gutter-10{
     margin-top: 0px;
 }
+.row {
+    margin: 5px 0;
+  }
 }
   `]
 })

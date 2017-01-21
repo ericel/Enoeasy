@@ -49,9 +49,14 @@ import { GeolocationService } from '../../../services/geolocation/geolocation';
   }
   @media screen and (max-width: 768px){
      md-card {
-      margin: 0px 0 10px 0;
+      margin: 0px 0 5px 0;
       }
 
+  }
+  .not-auth {
+    padding: 10px 0;
+    margin-bottom:10px;
+    cursor: pointer;
   }
   `],
   template: `
@@ -68,7 +73,7 @@ import { GeolocationService } from '../../../services/geolocation/geolocation';
      <div class="clearfix"></div>
    </md-card>
    <md-card *ngIf="statusShow" class="update-status" [ngStyle]="{'background-color': newStatus.color}">
-   <form  (ngSubmit)="onCreateStatus(tags.value)">
+   <form *ngIf="isAuthorized" (ngSubmit)="onCreateStatus(tags.value)">
     <div class="form-group">
       <textarea class="form-control shadow-2" aria-label="Update Status"
       [(ngModel)]="newStatus.status"
@@ -84,7 +89,9 @@ import { GeolocationService } from '../../../services/geolocation/geolocation';
       <button md-button type="submit" class="pull-right color-primary">post status</button>
      </div>
   </form>
+    <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/signup">Click Here Log In to Post! It's easy and fast.</div>
    </md-card>
+
   `
  
 })

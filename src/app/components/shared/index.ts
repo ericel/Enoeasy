@@ -10,3 +10,4 @@ export { PromoCard } from './adslist/promocard';
 export { HomeCard } from './card/homecard';
 export { StatusCard }  from './creators/statuscard';
 export { ColorCard } from './creators/colorcard';
+export { AsideCard } from './adslist/asidecard';
