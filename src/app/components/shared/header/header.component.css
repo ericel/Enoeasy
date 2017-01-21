@@ -52,14 +52,28 @@ Primary style
   text-align: left;
   text-decoration: none;
 }
+
+.app-toolbar-filler {
+  flex: 1 1 auto;
+}
+
+.link_1-a a{
+  color: white;
+}
+@media screen and (min-width: 1024px){
+  .link_1-a a{
+  margin-right:10px;
+}
+}
+
 @media screen and  (max-width: 430px){
   .app-icon-button {
     left: -5px;
     position: absolute;
 }
+.link_1 {
+  margin-top: 12px;
 }
-.app-toolbar-filler {
-  flex: 1 1 auto;
 }
 
 .flexsearch--wrapper {
@@ -71,7 +85,11 @@ Primary style
 	margin: -5px 0 0 0;
 	position: static;
 }
-	
+@media screen and (min-width: 1024px){
+ .flexsearch--wrapper {
+	min-width: 600px;
+ }
+}	
 .flexsearch--form {
 	overflow: hidden;
 	position: relative;

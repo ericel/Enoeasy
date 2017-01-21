@@ -1,8 +1,5 @@
 <md-toolbar  color="primary" class="fixed" >
-    <button class="app-icon-button" (click)="sidenav.toggle()">
-      <i class="material-icons app-toolbar-menu">menu</i>
-    </button>
-   <button md-button (click)="isDarkTheme = !isDarkTheme">Enoeasy</button>
+   <a routerLink="/">Enoeasy</a>
    <span class="app-toolbar-filler"></span>
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">
@@ -17,7 +14,7 @@
     </div>
     <span class="app-toolbar-filler"></span>
       <span class="link_1">
-	   <span class="just-l"> <a   routerLink="/list"  [class.position-fix]="isAuthorized"> List</a></span>
+	   <span class="just-l link_1-a " > <a   routerLink="/list"  [class.position-fix]="isAuthorized"> List</a></span>
 	   <span *ngIf="!isAuthorized">
 	   <a  routerLink="/signup"> login</a>
 	   </span>
@@ -43,12 +40,13 @@
 	   </span>
   </span>
    <span class="app-toolbar-filler"></span>
+   <button class="app-icon-button" [md-menu-trigger-for]="menu">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+	<md-menu #menu="mdMenu">
+          <button md-menu-item>Hide</button>
+          <button md-menu-item>Save Post</button>
+          <button md-menu-item>Delete</button>
+        </md-menu>
 </md-toolbar>
-
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
-	<app-promocard></app-promocard>
-  </md-sidenav>
-
-</md-sidenav-layout>
 
