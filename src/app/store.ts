@@ -10,7 +10,9 @@ export interface Status {
   updatedAt?: string,
   uid?: string,
   tags?: any
+  rating?: any;
 }
+
 
 export interface Action {
   color: string,

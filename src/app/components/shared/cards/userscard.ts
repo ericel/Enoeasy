@@ -1,4 +1,30 @@
-*:after, *:before {
+import { 
+  Component,
+   OnInit,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { AuthService } from '../../../services/auth/auth.service';
+
+@Component({
+  selector: 'app-userscard',
+  template: `
+ <div class="users-box mar-10">
+<figure class="snip1336 shadow-1">
+  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
+  <figcaption>
+    <img src="{{user.avatar}}" alt="profile-sample4" class="profile" />
+    <h2>{{user.name}}<span>{{user.job}}</span></h2>
+    <p>{{user.bio}}</p>
+    <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="follow">Follow</a>
+    <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="info">More Info</a>
+  </figcaption>
+</figure>
+</div>
+  `,
+  styles: [`
+  *:after, *:before {
     content: "";
 }
 
@@ -112,4 +138,20 @@
   font-size: 0.8em;
   letter-spacing: 1px;
   opacity: 0.8;
+}
+  `]
+})
+export class UsersCard implements OnInit {
+ @Input() user = {};
+ @Output() checked = new EventEmitter();
+ isAuthorized;
+  constructor(private _authService: AuthService) { }
+
+  ngOnInit() {
+     this._authService.userAuth
+    .subscribe(value => { 
+    if(value){this.isAuthorized = true; this.user = value} 
+     else {this.isAuthorized = false} });
+  }
+
 }

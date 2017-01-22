@@ -16,8 +16,11 @@
          [infiniteScrollDistance]="scrollDistance"
          [infiniteScrollThrottle]="throttle"
          (scrolled)="onScrollDown()"
-          *ngFor="let status of statuses"
-           [status]="status">
+        *ngFor="let status of statuses"
+        [status]="status"
+        (checked)="onStatusChecked($event)"
+           >
+        
        </app-homecard>
     </div>   
  </div>

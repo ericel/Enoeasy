@@ -52,6 +52,9 @@ body, html, main, .main, .app, app {
 body {
   font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
+a {
+  color: #1A237E;
+}
 input {
   border: none;
  
@@ -112,7 +115,7 @@ input {
 
 /* Color picker */
 .color-primary {
-  color: #485274 !important;
+  color: rgb(19, 25, 90) !important;
 }
 .color-red {
   color: red;
@@ -183,3 +186,7 @@ input {
   position: relative;
   top: 62px;
 }
+ .md-dialog-container {
+    padding: 0px !important;
+    background: rgb(19, 25, 90) !important;
+  }

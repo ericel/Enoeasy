@@ -41,7 +41,7 @@ import { Component, OnInit } from '@angular/core';
    }
   `]
 })
-export class AdslistComponent implements OnInit {
+export class AdslistCard implements OnInit {
 
   constructor() { }
 

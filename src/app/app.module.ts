@@ -24,14 +24,16 @@ import {
   UploaderComponent,
   ColorpickerComponent,
   ListcreatorComponent,
-  AdslistComponent,
-  EusersComponent,
+  AdslistCard,
   AuthCard,
   PromoCard,
   HomeCard,
   StatusCard,
   ColorCard,
-  AsideCard
+  AsideCard,
+  UsersCard,
+  QuestionCard,
+  DialogAsk
 } from './components/shared';
 import { 
   HomeComponent,
@@ -42,7 +44,7 @@ import {
   NotfoundComponent,
   ProfileComponent,
   EdituserComponent,
-  ActionpageComponent
+  AddComponent
 } from './components/containers';
 
 
@@ -73,16 +75,18 @@ export const firebaseConfig = {
     ListcreatorComponent,
     ListComponent,
     ProfileComponent,
-    AdslistComponent,
+    AdslistCard,
     EdituserComponent,
-    EusersComponent,
     AuthCard,
     PromoCard,
-    ActionpageComponent,
     HomeCard,
     StatusCard,
     ColorCard,
-    AsideCard
+    AsideCard,
+    AddComponent,
+    UsersCard,
+    QuestionCard,
+    DialogAsk
   ],
   imports: [
     BrowserModule,
@@ -112,6 +116,7 @@ export const firebaseConfig = {
   Store,
   AnimationService
   ],
+  entryComponents: [DialogAsk],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

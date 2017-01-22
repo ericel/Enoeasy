@@ -25,7 +25,6 @@ path:any;
 urlService: 'eStatus';
 _uid;
 _username;
-isLoggedIn: any;
 user: {};
 _tags;
 projectWithUserList;
@@ -54,7 +53,7 @@ statusList: FirebaseListObservable<any[]>;
    
 
 
-  createStatus(status: Status) {
+  createStatus(status: Status, type) {
      let sid = Md5.hashStr(new Date() + status.status + status.color + this._uid);
      this.path = this.af.database.object(`eStatus/${sid}`);
     return this.path.set({
@@ -62,23 +61,38 @@ statusList: FirebaseListObservable<any[]>;
          status: status.status,
          color: status.color,
          uid: this._uid,
-         type: 'Status update',
+         type: type,
+         rating: 0,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
          tags: status.tags
       }).then((sid) => {
       }); 
   }
-  
-  getStatus() {
- return  this.statusList
+createQuestion( question, tags, color, type ) {
+     let sid = Md5.hashStr(new Date() + this._uid);
+     this.path = this.af.database.object(`eStatus/${sid}`);
+    return this.path.set({
+         sid: sid,
+         status: question,
+         color: color,
+         uid: this._uid,
+         type: type,
+         rating: 0,
+         createdAt: firebase.database.ServerValue.TIMESTAMP,
+         updatedAt: firebase.database.ServerValue.TIMESTAMP,
+         tags: tags
+      }).then((sid) => {
+      }); 
+}
+getStatus() {
+  return  this.statusList
   .switchMap(statuses => {
     let userObservables = statuses.map(status => this.af.database.object(`eusers/${status.uid}`)
     );
     return Observable.combineLatest(...userObservables)
       .map((...eusers) => {
         statuses.forEach((status, index) => {
-          console.log(eusers);
           status.username = eusers[0][index].name;
           status.avatar = eusers[0][index].avatar;
         });
@@ -86,6 +100,24 @@ statusList: FirebaseListObservable<any[]>;
       });
   });
 
+  }
+
+  rateStatus(status: Status) {
+    this.path = this.af.database.object(`eStatus/${status.sid}`);
+    let rStatusUser = this.af.database.object(`eRatingUsers/${status.sid}`);
+    rStatusUser.subscribe(value => {
+      if(value.uid == this._uid){
+        console.log("already voted");
+      } else {
+         return rStatusUser.set({
+          uid: this._uid
+        }) 
+        .then(_ =>  this.path.update({ rating: status.rating + 1 }))
+        .catch(err => console.log(err, 'You dont have access!')); 
+      }
+     
+    });
+     
   }
 
 

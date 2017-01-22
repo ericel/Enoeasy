@@ -1,6 +1,7 @@
-import { Component, OnInit,  ElementRef } from '@angular/core';
+import { Component, OnInit,  ElementRef, Optional } from '@angular/core';
 import { StatusService } from '../../../services/status/status.service';
 import { Store } from './../../../store';
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import 'rxjs/add/operator/first';
 @Component({
   selector: 'app-home',
@@ -14,10 +15,11 @@ export class HomeComponent implements OnInit {
   sum = 1;
   throttle = 500;
   scrollDistance = 10;
-   
+  lastDialogResult: string; 
   constructor(
     private store: Store,
-    private statusService: StatusService
+    private statusService: StatusService,
+    private _dialog: MdDialog
     ) { }
   
   ngOnInit() {
@@ -43,30 +45,41 @@ export class HomeComponent implements OnInit {
     this.showMore = !this.showMore;
   }
   onCreateStatus(status) {
-    this.statusService.createStatus(status)
+    let type = "Status Update";
+    this.statusService.createStatus(status, type)
     //.subscribe();
   }
 
-  /* addItems(startIndex, endIndex) {
-    for (let i = 0; i < this.sum; ++i) {
-      this.statuses.push([i, ' ', this.statusArray()].join(''));
-    }
+  onAskQuestion(status) {
+    let type = "Question";
+    //this.statusService.createStatus(status, type)
+    //.subscribe();
+    console.log('okay');
   }
-  onScrollDown () {
-    console.log('scrolled!!');
+  
+  onStatusChecked(status) {
+    this.statusService.rateStatus(status);
+  }
 
-    // add another 20 items
-    const start = this.sum;
-    this.sum += 20;
-    this.addItems(start, this.sum) ;
+  openDialog() {
+    let dialogRef = this._dialog.open(DialogAsk);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.lastDialogResult = result;
+    })
   }
+
+}
+
+
+@Component({
+  template: `
+    <app-questioncard></app-questioncard>
+  `,
+})
+export class DialogAsk {
+  constructor(@Optional() public dialogRef: MdDialogRef<DialogAsk>) { }
+
  
-
-  statusArray() {
-    return this.statusService.getStatus()
-    .subscribe(statuses => { this.statuses = statuses; console.log(statuses)});
-    
-  }
-  */
-
+ 
 }

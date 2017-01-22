@@ -9,7 +9,7 @@ import {
   ListComponent,
   ProfileComponent,
   EdituserComponent,
-  ActionpageComponent
+  AddComponent
 } from './components/containers';
 import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
@@ -67,11 +67,11 @@ export const routes: Routes = [
     }
   },
    {
-   path: 'action/start',
-   component: ActionpageComponent,
+   path: 'add',
+   component: AddComponent,
    canActivate: [AuthService],
     data: {
-      title: 'Start An Action Page'
+      title: 'Add content'
     }
   },
   {path: 'NotFound404', 

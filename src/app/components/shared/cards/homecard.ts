@@ -10,7 +10,7 @@ import { AuthService } from '../../../services/auth/auth.service';
      <md-card class="status">
       <md-card-header>
           <img md-card-avatar src="{{status.avatar}}">
-          <md-card-title>{{status.username | shorten: 8: '...'}} Posted  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
+          <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8: '.'}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
           <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
          
@@ -27,8 +27,14 @@ import { AuthService } from '../../../services/auth/auth.service';
           <p>{{status.status}}</p>
       </md-card-content>
        <md-card-actions>
-        <button md-button>LIKE</button>
-        <button md-button>SHARE</button>
+       <div class="pull-left">
+        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{status.rating}} showed love!
+        <button md-button><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
+        </div>
+        <div  class="pull-right">
+        <button md-button *ngIf="status.type == 'Question'">Help Answer</button>
+        <button md-button >50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        </div>
       </md-card-actions>
     </md-card>
    </div>
@@ -108,7 +114,7 @@ import { AuthService } from '../../../services/auth/auth.service';
   right: 10px;
   cursor:pointer;
 }
-.pull-right-set [md-button] {
+.pull-right-set [md-button], .pull-right [md-button], .pull-left [md-button]{
       min-width: 40px !important;
       border-radius: 100% !important;
       cursor:pointer;
@@ -142,5 +148,7 @@ export class HomeCard implements OnInit {
     if(value){this.isAuthorized = true; this.user = value} 
      else {this.isAuthorized = false} });
   }
-
+showLove(){
+  this.checked.next(this.status);
+}
 }

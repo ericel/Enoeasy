@@ -15,11 +15,11 @@ import { AuthService } from '../../../services/auth/auth.service';
          </md-card-header>
          <md-card-content class="card-links">
                 <div class="list-group">
-                  <a routerLink="/action/start" class="list-group-item list-group-item-action "><i class="fa fa-free-code-camp fa-2x color-red" aria-hidden="true"></i> Start an Action page</a>
-                  <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-share-alt-square fa-2x color-primary" aria-hidden="true"></i> Share a File</a>
-                  <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i> Write a Blog</a>
-                  <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-list fa-2x color-skyblue" aria-hidden="true"></i> List Things</a>
-                  <a routerLink="/" class="list-group-item list-group-item-action"><i class="fa fa-briefcase fa-2x color-green" aria-hidden="true"></i> Post a Job</a>
+                  <a routerLink="/add" class="list-group-item list-group-item-action "><i class="fa fa-free-code-camp fa-2x color-red" aria-hidden="true"></i> Start an Action page</a>
+                  <a routerLink="/add" class="list-group-item list-group-item-action"><i class="fa fa-share-alt-square fa-2x color-primary" aria-hidden="true"></i> Share a File</a>
+                  <a routerLink="/add" class="list-group-item list-group-item-action"><i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i> Write a Blog</a>
+                  <a routerLink="/add" class="list-group-item list-group-item-action"><i class="fa fa-list fa-2x color-skyblue" aria-hidden="true"></i> List Things</a>
+                  <a routerLink="/add" class="list-group-item list-group-item-action"><i class="fa fa-briefcase fa-2x color-green" aria-hidden="true"></i> Post a Job</a>
                 </div>
             </md-card-content>
    </md-card>

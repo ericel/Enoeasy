@@ -10,7 +10,14 @@ ol li {
         margin: 20px auto;
     }
 }
-
+.start-1 {
+    height: 768px;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20%;
+    text-align: center;
+}
 .count-down {
     text-align: center;
     color: #666;

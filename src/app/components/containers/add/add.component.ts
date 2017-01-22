@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-actionpage',
-  templateUrl: './actionpage.component.html',
-  styleUrls: ['./actionpage.component.css']
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
 })
-export class ActionpageComponent implements OnInit {
- instruct: boolean = true;
- choose: boolean = false;
+export class AddComponent implements OnInit {
+instruct: boolean = true;
+choose: boolean = false;
   constructor() { }
 
   ngOnInit() {

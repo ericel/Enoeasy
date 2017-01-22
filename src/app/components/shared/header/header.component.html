@@ -1,5 +1,5 @@
 <md-toolbar  color="primary" class="fixed" >
-   <a routerLink="/">Enoeasy</a>
+	 <button md-button routerLink="/"><img src="assets/img/logo_h.png" alt="Logo"></button>
    <span class="app-toolbar-filler"></span>
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">
@@ -14,7 +14,7 @@
     </div>
     <span class="app-toolbar-filler"></span>
       <span class="link_1">
-	   <span class="just-l link_1-a " > <a   routerLink="/list"  [class.position-fix]="isAuthorized"> List</a></span>
+	   <span class="just-l link_1-a " > <a   routerLink="/add"  [class.position-fix]="isAuthorized"> List</a></span>
 	   <span *ngIf="!isAuthorized">
 	   <a  routerLink="/signup"> login</a>
 	   </span>
@@ -49,4 +49,3 @@
           <button md-menu-item>Delete</button>
         </md-menu>
 </md-toolbar>
-
