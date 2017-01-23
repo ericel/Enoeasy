@@ -36,6 +36,7 @@
     "imagesloaded": "^4.1.1",
     "ng2-adsense": "^1.0.1",
     "ng2-material-dropdown": "^0.6.2",
+    "ng2-meta": "^2.0.3",
     "ng2-tag-input": "^0.7.0",
     "ngx-pipes": "^1.2.2",
     "ngx-uploader": "^2.0.5",

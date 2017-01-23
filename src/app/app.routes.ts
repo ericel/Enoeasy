@@ -17,8 +17,12 @@ export const routes: Routes = [
    {
     path: 'home',
     component: HomeComponent,
-    data: {
-      title: 'Afro Web Quota'
+     data: {
+      meta: {
+        title: 'Dashboard',
+        description: 'Description of the dashboard page',
+        'og:image': 'http://example.com/dashboard-image.png'
+      }
     }
   },
   {
@@ -30,7 +34,11 @@ export const routes: Routes = [
    path: 'about',
    component: AboutComponent,
     data: {
-      title: 'About AfQuota'
+      meta: {
+        title: 'Dashboard',
+        description: 'Description of the dashboard page',
+        'og:image': 'http://example.com/dashboard-image.png'
+      }
     }
   },
   {

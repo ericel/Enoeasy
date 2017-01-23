@@ -12,6 +12,7 @@ import { AdsenseModule } from 'ng2-adsense';
 import { MaterialModule } from '@angular/material';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routes, routing, appRoutingProviders }  from './app.routes';
+import { MetaModule } from 'ng2-meta';
 import { NgUploaderModule } from 'ngx-uploader';
 import {NgPipesModule} from 'ngx-pipes';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
@@ -109,6 +110,7 @@ export const firebaseConfig = {
     MasonryModule,
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
+    MetaModule.forRoot(),
     NgUploaderModule,
     NgPipesModule,
     InfiniteScrollModule,
