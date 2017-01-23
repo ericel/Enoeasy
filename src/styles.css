@@ -193,3 +193,7 @@ input {
 .comments md-card-header .md-card-header-text {
     height: auto !important;
   }
+  .main {
+    position: relative;
+    top: 60px;
+  }

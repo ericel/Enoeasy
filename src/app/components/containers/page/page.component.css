@@ -1,0 +1,11 @@
+@media screen and (min-width: 1400px){
+    .main {
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .l-side {
+        margin-top: 10px;
+    }
+}
