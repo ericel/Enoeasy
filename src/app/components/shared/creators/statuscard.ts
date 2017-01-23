@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Optional } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Optional, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
 import { GeolocationService } from '../../../services/geolocation/geolocation';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
@@ -100,6 +100,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 })
 export class StatusCard implements OnInit {
  @Output() createStatus = new EventEmitter();
+ @Input() status: any;
  lastDialogResult: string; 
  isAuthorized: boolean = false;
  user;

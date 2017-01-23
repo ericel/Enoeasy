@@ -3,14 +3,13 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { StatusService } from '../../../services/status/status.service';
 import { GeolocationService } from '../../../services/geolocation/geolocation';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
-import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from '@angular/http';
 @Component({
   selector: 'app-sharecard',
   template: `
   <div  class="shareform">
    <md-card>
    <div class="close"> <button  md-button (click)="close()">X</button></div>
-     {{hello}}
+     {{status.status}}
   </md-card>
   </div>
   `,
@@ -38,34 +37,19 @@ import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from '@
     right: 2px;
     top: 2px;
   }
-  `],
-  inputs: ['header']
+  `]
  
 })
 export class ShareCard implements OnInit {
  @Output() createshare = new EventEmitter();
- isAuthorized: boolean = false;
- user;
-@Input() header :any;
-@Input() status = {};
- newshare = {
-    share: '',
-    tags: '',
-    color: '#fff'
-  };
+ @Input() status = {};
   constructor(
-    private _authService: AuthService,
-    private _GeolocationService: GeolocationService,
     private _dialog: MdDialog,
     private statusService: StatusService,
     ) { }
 
   ngOnInit() {
-     this._authService.userAuth
-    .subscribe(value => { 
-    if(value){this.isAuthorized = true; this.user = value} 
-     else {this.isAuthorized = false} });
-    console.log(this.header); 
+
   }
 
    close() {

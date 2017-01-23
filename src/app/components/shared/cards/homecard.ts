@@ -44,10 +44,10 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <div class="comments">
            <md-card-header>
               <img md-card-avatar src="{{status.avatar}}">
-              <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8: '.'}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
+              <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
               <md-card-subtitle class="type-0">{{status.status}}</md-card-subtitle>
           </md-card-header>
-          <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.uid }}/{{status.status | slugify | shorten: 50: ''}}"> Load more comments</a></div>  
+          <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.uid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>  
         </div>
       </div>
     </md-card>
@@ -181,15 +181,17 @@ showLove(){
 }
 
 openDialog() {
-    let dialogRef = this._dialog.open(DialogShare);
+     let dialogRef = this._dialog.open(DialogShare);
+     dialogRef.componentInstance.status = this.status;
   }
 }
 
 @Component({
   template: `
-    <app-sharecard></app-sharecard>
+    <app-sharecard [status]="status"></app-sharecard>
   `,
 })
 export class DialogShare {
+  status: any;
   constructor(@Optional() public dialogRef: MdDialogRef<DialogShare>) { }
 }
