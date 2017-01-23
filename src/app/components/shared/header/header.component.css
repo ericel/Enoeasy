@@ -251,3 +251,9 @@ input:-moz-placeholder {
   padding:0 17% !important;
 }*/
 }
+
+.pull-right-s {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}

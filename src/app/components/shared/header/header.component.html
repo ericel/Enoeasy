@@ -1,6 +1,10 @@
 <md-toolbar  color="primary" class="fixed" >
 	 <button md-button routerLink="/"><img src="assets/img/logo_h.png" alt="Logo"></button>
    <span class="app-toolbar-filler"></span>
+   <div class="no-big">
+     <button class="pull-right-s" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+   <div class="no-sm-no">
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">
 			<form class="flexsearch--form" action="#" method="post">
@@ -11,6 +15,7 @@
 				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
 			</form>
 		</div>
+    </div>
     </div>
     <span class="app-toolbar-filler"></span>
       <span class="link_1">

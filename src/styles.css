@@ -167,10 +167,9 @@ input {
 
 @media screen and (max-width: 768px){
  .no-sm-no {
-  display: none;
+  display: none !important;
  }
-}
-@media screen and (max-width: 768px){
+
   .no-sm em{
     display: none !important;
   }
@@ -181,6 +180,11 @@ input {
   padding-left: 0px;
   padding-right: 0px;
 }
+}
+@media screen and (min-width: 769px){
+  .no-big {
+    display: none !important;
+  }
 }
 .main-content {
   position: relative;
