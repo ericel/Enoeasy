@@ -9,7 +9,8 @@ import {
   ListComponent,
   ProfileComponent,
   EdituserComponent,
-  AddComponent
+  AddComponent,
+  PageComponent
 } from './components/containers';
 import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
@@ -57,6 +58,10 @@ export const routes: Routes = [
    data: {
       title: 'Edit Profile'
     }
+  },
+  {
+   path: ':string/:id/:string',
+   component: PageComponent
   },
   {
    path: 'list',

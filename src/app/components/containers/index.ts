@@ -6,5 +6,5 @@ export { NotfoundComponent } from './notfound/notfound.component';
 export { ListComponent } from './list/list.component';
 export { ProfileComponent } from './profile/profile.component';
 export { EdituserComponent } from './profile/edituser/edituser.component';
-export { ActionpageComponent } from './content/actionpage/actionpage.component';
 export { AddComponent } from './add/add.component';
+export { PageComponent } from './page/page.component';

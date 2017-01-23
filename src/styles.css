@@ -190,3 +190,6 @@ input {
     padding: 0px !important;
     background: rgb(19, 25, 90) !important;
   }
+.comments md-card-header .md-card-header-text {
+    height: auto !important;
+  }

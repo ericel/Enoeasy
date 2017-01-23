@@ -33,7 +33,9 @@ import {
   AsideCard,
   UsersCard,
   QuestionCard,
-  DialogAsk
+  ShareCard,
+  DialogAsk,
+  DialogShare
 } from './components/shared';
 import { 
   HomeComponent,
@@ -44,8 +46,10 @@ import {
   NotfoundComponent,
   ProfileComponent,
   EdituserComponent,
-  AddComponent
+  AddComponent,
+  PageComponent
 } from './components/containers';
+
 
 
 
@@ -86,7 +90,10 @@ export const firebaseConfig = {
     AddComponent,
     UsersCard,
     QuestionCard,
-    DialogAsk
+    ShareCard,
+    DialogAsk,
+    DialogShare,
+    PageComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +123,10 @@ export const firebaseConfig = {
   Store,
   AnimationService
   ],
-  entryComponents: [DialogAsk],
+  entryComponents: [
+    DialogAsk,
+    DialogShare
+  ],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Optional } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
-
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 @Component({
   selector: 'app-homecard',
   template: `
@@ -26,21 +26,46 @@ import { AuthService } from '../../../services/auth/auth.service';
       <md-card-content >
           <p>{{status.status}}</p>
       </md-card-content>
-       <md-card-actions>
+       <md-card-actions class="container-fluid">
        <div class="pull-left">
         <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{status.rating}} showed love!
-        <button md-button><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
+        <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
         <button md-button *ngIf="status.type == 'Question'">Help Answer</button>
-        <button md-button >50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample">50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
         </div>
+        <div class="clearfix"></div>
       </md-card-actions>
+      <div class="collapse container-fluid" [attr.id]="status.sid">
+         <div class="form-group">
+          <textarea class="form-control" rows="1">Leave a comment</textarea>
+        </div>
+        <div class="comments">
+           <md-card-header>
+              <img md-card-avatar src="{{status.avatar}}">
+              <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8: '.'}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
+              <md-card-subtitle class="type-0">{{status.status}}</md-card-subtitle>
+          </md-card-header>
+          <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.uid }}/{{status.status | slugify | shorten: 50: ''}}"> Load more comments</a></div>  
+        </div>
+      </div>
     </md-card>
    </div>
    </div>
   `,
   styles: [`
+  .comments md-card-header, .comments md-card-header .md-card-header-text {
+    height: auto !important;
+  }
+  .more-c {
+      text-align: center;
+      margin: 0 0 10px 0;
+  }
+  .collapse {
+    padding-top: 5px;
+  }
+  
   md-card-actions {
     padding: 0 10px !important;
   }
@@ -48,7 +73,7 @@ import { AuthService } from '../../../services/auth/auth.service';
     overflow: hidden !important;
   }
   md-card.status {
-    padding:20px 0 !important;
+    padding: 20px 0 0px 0!important;
   }
   .status-img {
     width:100% !important;
@@ -140,7 +165,10 @@ export class HomeCard implements OnInit {
 @Output() checked = new EventEmitter();
  isAuthorized: boolean = false;
  user;
-  constructor(private _authService: AuthService) { }
+  constructor(
+    private _authService: AuthService,
+    private _dialog: MdDialog
+    ) { }
 
   ngOnInit() {
      this._authService.userAuth
@@ -151,4 +179,17 @@ export class HomeCard implements OnInit {
 showLove(){
   this.checked.next(this.status);
 }
+
+openDialog() {
+    let dialogRef = this._dialog.open(DialogShare);
+  }
+}
+
+@Component({
+  template: `
+    <app-sharecard></app-sharecard>
+  `,
+})
+export class DialogShare {
+  constructor(@Optional() public dialogRef: MdDialogRef<DialogShare>) { }
 }
