@@ -53,7 +53,7 @@ statusList: FirebaseListObservable<any[]>;
    
 
 
-  createStatus(status: Status, type) {
+createStatus(status: Status, type) {
      let sid = Md5.hashStr(new Date() + status.status + status.color + this._uid);
      this.path = this.af.database.object(`eStatus/${sid}`);
     return this.path.set({
@@ -85,6 +85,20 @@ createQuestion( question, tags, color, type ) {
       }).then((sid) => {
       }); 
 }
+
+createComment( comment, sid) {
+     let cid = Md5.hashStr(new Date() + this._uid + sid);
+     this.path = this.af.database.object(`eComments/${cid}`);
+      return this.path.set({
+          sid: sid,
+          comment: comment,
+          uid: this._uid,
+          rating: 0,
+          createdAt: firebase.database.ServerValue.TIMESTAMP,
+          updatedAt: firebase.database.ServerValue.TIMESTAMP,
+        }).then((sid) => {
+        }); 
+}
 getStatus() {
   return  this.statusList
   .switchMap(statuses => {
@@ -99,6 +113,20 @@ getStatus() {
         return statuses.reverse();          
       });
   });
+
+  }
+
+  getComments(sid) {
+   return this.af.database.list('/eComments', {
+      query: {
+        orderByChild: 'sid',
+        equalTo: sid
+      }
+    })
+  .map(snapshot => {
+      return snapshot;
+
+  })
 
   }
 

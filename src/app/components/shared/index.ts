@@ -13,3 +13,5 @@ export { ColorCard } from './creators/colorcard';
 export { QuestionCard } from './creators/questioncard';
 export { ShareCard } from './creators/sharecard';
 export { AsideCard } from './cards/asidecard';
+export { CommentCard } from './creators/commentcard';
+export { CommentsCard } from './cards/commentscard';

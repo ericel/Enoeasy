@@ -12,9 +12,6 @@ export class HomeComponent implements OnInit {
   items;
   showMore: boolean = false;
   statuses = [];
-  sum = 1;
-  throttle = 500;
-  scrollDistance = 10;
   lastDialogResult: string; 
   constructor(
     private store: Store,
@@ -23,13 +20,7 @@ export class HomeComponent implements OnInit {
     ) { }
   
   ngOnInit() {
-  	this.items = [
-     {
-     title: 'Angular2 Pipes Cheat Sheet by Nathane2005 www.cheatography', 
-     desc: 'Angular2 Pipes Cheat Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005 Angular2 Pipes Cheat Sheet by Nathane2005 Sheet by Nathane2005',
-     color: 'skyblue'
-    }
-    ]
+ 
    this.statusService.getStatus()
     .subscribe(statuses => { this.statuses = statuses;});
 
@@ -50,13 +41,6 @@ export class HomeComponent implements OnInit {
     //.subscribe();
   }
 
-  onAskQuestion(status) {
-    let type = "Question";
-    //this.statusService.createStatus(status, type)
-    //.subscribe();
-    console.log('okay');
-  }
-  
   onStatusChecked(status) {
     this.statusService.rateStatus(status);
   }

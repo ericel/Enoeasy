@@ -49,7 +49,7 @@ export class ShareCard implements OnInit {
     ) { }
 
   ngOnInit() {
-
+ 
   }
 
    close() {

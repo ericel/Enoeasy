@@ -34,7 +34,9 @@ import {
   QuestionCard,
   ShareCard,
   DialogAsk,
-  DialogShare
+  DialogShare,
+  CommentCard,
+  CommentsCard
 } from './components/shared';
 import { 
   HomeComponent,
@@ -98,7 +100,9 @@ export const firebaseConfig = {
     ShareCard,
     DialogAsk,
     DialogShare,
-    PageComponent
+    PageComponent,
+    CommentCard,
+    CommentsCard
   ],
   imports: [
     BrowserModule,

@@ -38,10 +38,12 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <div class="clearfix"></div>
       </md-card-actions>
       <div class="collapse container-fluid" [attr.id]="status.sid">
-         <div class="form-group">
-          <textarea class="form-control" rows="1">Leave a comment</textarea>
-        </div>
+        <app-commentcard [status]="status">
+        </app-commentcard>
+        
         <div class="comments">
+        <app-commentscard [status]="status">
+        </app-commentscard>
            <md-card-header>
               <img md-card-avatar src="{{status.avatar}}">
               <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
@@ -163,6 +165,7 @@ md-card-header {
 export class HomeCard implements OnInit {
 @Input() status = {};
 @Output() checked = new EventEmitter();
+comment;
  isAuthorized: boolean = false;
  user;
   constructor(
@@ -176,9 +179,9 @@ export class HomeCard implements OnInit {
     if(value){this.isAuthorized = true; this.user = value} 
      else {this.isAuthorized = false} });
   }
-showLove(){
-  this.checked.next(this.status);
-}
+  showLove(){
+    this.checked.next(this.status);
+  }
 
 openDialog() {
      let dialogRef = this._dialog.open(DialogShare);
