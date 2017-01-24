@@ -42,14 +42,14 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 })
 export class ShareCard implements OnInit {
  @Output() createshare = new EventEmitter();
- @Input() status = {};
+ @Input() status: any;
   constructor(
     private _dialog: MdDialog,
     private statusService: StatusService,
     ) { }
 
   ngOnInit() {
- 
+     
   }
 
    close() {

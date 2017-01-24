@@ -44,11 +44,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <div class="comments">
         <app-commentscard [status]="status">
         </app-commentscard>
-           <md-card-header>
-              <img md-card-avatar src="{{status.avatar}}">
-              <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
-              <md-card-subtitle class="type-0">{{status.status}}</md-card-subtitle>
-          </md-card-header>
           <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.uid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>  
         </div>
       </div>

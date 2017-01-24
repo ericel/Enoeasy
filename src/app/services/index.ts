@@ -5,6 +5,7 @@ import { AuthService } from './auth/auth.service';
 import { StatusService } from './status/status.service';
 import { StoreHelper } from './store-helper';
 import { GeolocationService } from './geolocation/geolocation';
+import { PageService } from './page/page.service';
 export const SERVICE_PROVIDER = [
   ApiService,
   EasyapiService,
@@ -12,5 +13,6 @@ export const SERVICE_PROVIDER = [
   AuthService,
   ListingService,
   StatusService,
-  GeolocationService
+  GeolocationService,
+  PageService
 ];

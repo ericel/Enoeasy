@@ -117,16 +117,26 @@ getStatus() {
   }
 
   getComments(sid) {
-   return this.af.database.list('/eComments', {
+  const commentList = this.af.database.list('/eComments', {
       query: {
         orderByChild: 'sid',
         equalTo: sid
       }
-    })
-  .map(snapshot => {
-      return snapshot;
-
-  })
+    });
+    
+   return  commentList
+  .switchMap(comments => {
+    let userObservables = comments.map(status => this.af.database.object(`eusers/${status.uid}`)
+    );
+    return Observable.combineLatest(...userObservables)
+      .map((...eusers) => {
+        comments.forEach((comment, index) => {
+          comment.username = eusers[0][index].name;
+          comment.avatar = eusers[0][index].avatar;
+        });
+        return comments;          
+      });
+  });
 
   }
 

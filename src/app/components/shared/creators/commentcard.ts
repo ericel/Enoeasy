@@ -16,7 +16,7 @@ import { StatusService } from '../../../services/status/status.service';
   `,
    styles: [`
      textarea {
-         height: 30px;
+         height: 40px;
          overflow: hidden;
      }
   `]

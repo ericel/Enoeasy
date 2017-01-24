@@ -9,11 +9,12 @@ jQuery(document).ready(function($){
       $( '.search-sm' ).toggleClass( "search-sm-y" );
        
 	 });
+	 /* .replace(/[^a-z0-9 -]/g, ' ')
 	 $('.getbtn').on('click', function(){
           $("html, body").animate({ scrollTop: 0 }, "slow");
           return false;
 	 });
-	/* $(window).scroll(function(){
+	$(window).scroll(function(){
 	  var y = $(window).scrollTop();
 	  if( y > 0 ){
 	      $("#top-shadow").css({'display':'block', 'opacity':y/20});
