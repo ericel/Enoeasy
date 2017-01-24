@@ -5,7 +5,7 @@ import {
   OnInit, 
   NgZone
 } from '@angular/core';
-import { NgUploaderOptions } from 'ngx-uploader';
+
 
 @Component({
   selector: 'app-uploader',

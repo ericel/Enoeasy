@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import { MetaService } from 'ng2-meta';
+//import { MetaService } from 'ng2-meta';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +11,8 @@ import { MetaService } from 'ng2-meta';
 export class AppComponent implements OnInit {
  
 	constructor(
-    private metaService: MetaService
+    //private metaService: MetaService,
+    
 	){}
   title = 'app works!';
 

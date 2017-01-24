@@ -1,8 +1,12 @@
 <md-toolbar  color="primary" class="fixed" >
+	<div class="logo">
 	 <button md-button routerLink="/"><img src="assets/img/logo_h.png" alt="Logo"></button>
+	</div>
    <span class="app-toolbar-filler"></span>
    <div class="no-big">
-     <button class="pull-right-s" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+     <button class="pull-right-s cd-3d-nav-trigger" id="sm-search" md-button>
+			 <i class="fa fa-search" aria-hidden="true"></i>
+			</button>
     </div>
    <div class="no-sm-no">
     <div class="flexsearch">
@@ -17,11 +21,11 @@
 		</div>
     </div>
     </div>
-    <span class="app-toolbar-filler"></span>
+    <span class="app-toolbar-filler-2"></span>
       <span class="link_1">
 	   <span class="just-l link_1-a " > <a   routerLink="/add"  [class.position-fix]="isAuthorized"> List</a></span>
 	   <span *ngIf="!isAuthorized">
-	   <a  routerLink="/signup"> login</a>
+	   <a  routerLink="/signup"> log in</a>
 	   </span>
 	   <span *ngIf="isAuthorized" class="dropdown">
 	     <a  routerLink="/user/{{ user.uid }}/{{user.auth.displayName | slugify}}" class="user-1"> <img src="{{ user.auth.photoURL }}" alt="{{ user.auth.displayName }}"></a>
@@ -44,7 +48,9 @@
 			</div>
 	   </span>
   </span>
-   <span class="app-toolbar-filler"></span>
+
+   <span class="app-toolbar-filler-2"></span>
+
    <button class="app-icon-button" [md-menu-trigger-for]="menu">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
@@ -54,3 +60,16 @@
           <button md-menu-item>Delete</button>
         </md-menu>
 </md-toolbar>
+<div class="animated fadeInDown search-sm search-sm-y">
+    <div class="flexsearch">
+		<div class="flexsearch--wrapper">
+			<form class="flexsearch--form" action="#" method="post">
+				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+				<div class="flexsearch--input-wrapper">
+					<input [(ngModel)]="searchThis" name="searchThis" (click)="showStyle = !showStyle" class="flexsearch--input" type="search" placeholder="search">
+				</div>
+				<span class="flexsearch--close" [style.color]="focusChange()" (click)="reset()"><i class="fa fa-times" aria-hidden="true"></i></span>
+			</form>
+		</div>
+    </div>
+</div>

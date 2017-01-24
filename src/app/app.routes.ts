@@ -18,11 +18,9 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
      data: {
-      meta: {
-        title: 'Dashboard',
+        title: ' - Africa one web join',
         description: 'Description of the dashboard page',
         'og:image': 'http://example.com/dashboard-image.png'
-      }
     }
   },
   {
@@ -34,12 +32,10 @@ export const routes: Routes = [
    path: 'about',
    component: AboutComponent,
     data: {
-      meta: {
         title: 'Dashboard',
-        description: 'Description of the dashboard page',
+        description: 'Description of the dashboard page g',
         'og:image': 'http://example.com/dashboard-image.png'
       }
-    }
   },
   {
    path: 'gettingstarted',
