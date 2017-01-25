@@ -12,6 +12,7 @@ import { MaterialModule } from '@angular/material';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
+import {ShareButtonsModule} from "ng2-sharebuttons";
 //import { MetaModule, MetaConfig } from 'ng2-meta';
 import {NgPipesModule} from 'ngx-pipes';
 import { AppComponent } from './app.component';
@@ -127,7 +128,8 @@ export const firebaseConfig = {
       apiKey: 'AIzaSyBqIrNb1DLsN6oP97ua3YLMJx5-gUueWJU',
       libraries: ['places']
     }),
-    Ng2DropdownModule
+    Ng2DropdownModule,
+    ShareButtonsModule
   ],
   providers: [
   ...SERVICE_PROVIDER,

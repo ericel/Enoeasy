@@ -10,6 +10,11 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
    <md-card>
    <div class="close"> <button  md-button (click)="close()">X</button></div>
      {{status.status}}
+        <share-buttons [shareTitle]="'Total Shares - '"
+      [url]="'https://enoeasy-94b34.firebaseapp.com/'"
+      [count]="true"
+      [totalCount]="true"
+      ></share-buttons>
   </md-card>
   </div>
   `,
