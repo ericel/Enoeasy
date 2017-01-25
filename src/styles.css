@@ -196,6 +196,7 @@ input {
   }
 .comments md-card-header .md-card-header-text {
     height: auto !important;
+    clear: both !important;
   }
   .main {
     position: relative;

@@ -9,3 +9,12 @@
         margin-top: 10px;
     }
 }
+
+ .comments md-card-header, .comments md-card-header .md-card-header-text {
+    height: auto !important;
+  }
+
+   textarea {
+         height: 100px !important;
+         overflow: hidden;
+  }

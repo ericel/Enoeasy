@@ -42,9 +42,9 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         </app-commentcard>
         
         <div class="comments">
-        <app-commentscard [status]="status">
+        <app-commentscard [status]="status" [limit]="1">
         </app-commentscard>
-          <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.uid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>  
+          <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>  
         </div>
       </div>
     </md-card>
@@ -160,6 +160,7 @@ md-card-header {
 export class HomeCard implements OnInit {
 @Input() status = {};
 @Output() checked = new EventEmitter();
+@Output() limit = 1;
 comment;
  isAuthorized: boolean = false;
  user;

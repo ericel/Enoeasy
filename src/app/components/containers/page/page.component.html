@@ -1,9 +1,34 @@
-<div class="main container-fluid">
+<div class="main container-fluid" *ngIf="pageOk && authOk">
   <div class="row gutter-10">
   <div class="col-md-8 l-side">
-     <md-card>
-       hhhh
-     </md-card>
+    <md-card>
+   <md-card-header>
+          <img md-card-avatar src="{{auth.avatar}}">
+          <md-card-title>{{page.status}}</md-card-title>
+          <md-card-subtitle>{{page.type}}</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image src="{{auth.avatar}}">
+      <md-card-content>
+          <p>{{page.status}}</p>
+      </md-card-content>
+      <md-card-actions class="container-fluid">
+       <div class="pull-left">
+        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{page.rating}} showed love!
+        <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
+        </div>
+        <div  class="pull-right">
+        <button md-button *ngIf="page.type == 'Question'">Help Answer</button>
+        <button md-button data-toggle="collapse" [attr.data-target]="'#' + page.sid" aria-expanded="false" aria-controls="collapseExample">50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        </div>
+        <div class="clearfix"></div>
+      </md-card-actions>
+      <app-commentcard [status]="page">
+      </app-commentcard>
+      <div class="comments">
+        <app-commentscard [status] = "page" [limit]="1000000">
+        </app-commentscard> 
+      </div>
+  </md-card>
   </div>
   <div class="col-md-4">
     <app-adslist></app-adslist>
