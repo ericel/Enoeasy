@@ -39,8 +39,6 @@ users: any;
         this._authService.checkThisLoginUserIs(this.id).subscribe(value => {if(value){ this.isAuth = true}});
     }});
     });
-
-    this._authService._isUsers().subscribe(users => {this.users = users});
   }
 
 }

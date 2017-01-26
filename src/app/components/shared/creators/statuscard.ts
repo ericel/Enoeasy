@@ -6,17 +6,21 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   selector: 'app-statuscard',
   template: `
    <md-card class="no-sm "  [ngStyle]="{'background-color': newStatus.color}">
-     <span (click)="toggleStatus()">
-         <i class="fa fa-commenting-o fa-1x" color="primary"  aria-hidden="true"></i> <em>Update Status</em>
+     <span mdTooltip="Update Status" (click)="toggleStatus()">
+         <i class="fa fa-commenting-o fa-2x" color="primary"  aria-hidden="true"></i>
      </span>
-     <span routerLink="/add">
-         <i class="fa fa-share-alt-square fa-1x color-primary" aria-hidden="true"></i> <em>Share a File</em>
+     <span routerLink="/add" mdTooltip="Share a File">
+         <i class="fa fa-share-alt-square fa-2x color-primary" aria-hidden="true"></i> 
      </span>
-     <span routerLink="/add">
-         <i class="fa fa-free-code-camp fa-1x color-red" aria-hidden="true"></i> <em>Start an Action</em>
+     <span routerLink="/add" mdTooltip="Start an Action">
+         <i class="fa fa-free-code-camp fa-2x color-red" aria-hidden="true"></i>
      </span>
-     <span (click)="openDialog()">
-         <i class="fa fa-question fa-1x" aria-hidden="true"></i> <em>Ask a Question</em>
+     <span (click)="openDialog()" mdTooltip="Ask a Question">
+         <i class="fa fa-question fa-2x" aria-hidden="true"></i>
+     </span>
+
+     <span class="no-sm-no" (click)="openDialog()" mdTooltip="List a Place">
+         <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
      </span>
      <div class="clearfix"></div>
    </md-card>

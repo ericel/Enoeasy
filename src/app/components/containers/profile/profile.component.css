@@ -1,10 +1,7 @@
 .user-02, .user-3 {
-    margin-top: 20px;
     background: #fff;
-    border-radius: 4px;
-    padding: 10px;
-    
 }
+
 .user-02 {
 background: #485274; /* fallback for old browsers */
 background: linear-gradient(270deg, #566ebf, #6472a0, #485274);
@@ -16,6 +13,7 @@ animation: AnimationName 30s ease infinite;
 
  position: relative;
  text-align: center;
+ padding: 10px;
 }
 
 @-webkit-keyframes AnimationName {
@@ -49,7 +47,7 @@ animation: AnimationName 30s ease infinite;
 }
 .user-3 ul.action-01 li {
     display: inline;
-    padding: 0 5px;
+   
 }
 .user-a0 {
     position: absolute;
@@ -60,4 +58,10 @@ animation: AnimationName 30s ease infinite;
 }
 .app-eusers {
     margin: 10px 0;
+}
+
+@media screen and (max-width: 768px){
+    .main {
+        margin-top: -10px;
+    }
 }

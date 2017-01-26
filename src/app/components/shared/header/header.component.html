@@ -12,7 +12,7 @@
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">
 			<form class="flexsearch--form" action="#" method="post">
-				<button class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button mdTooltip="search" class="flexsearch--submit-left" [style.color]="focusChange()" md-button><i class="fa fa-search" aria-hidden="true"></i></button>
 				<div class="flexsearch--input-wrapper">
 					<input [(ngModel)]="searchThis" name="searchThis" (click)="showStyle = !showStyle" class="flexsearch--input" type="search" placeholder="search">
 				</div>
@@ -60,6 +60,7 @@
           <button md-menu-item>Delete</button>
         </md-menu>
 </md-toolbar>
+
 <div class="animated fadeInDown search-sm search-sm-y">
     <div class="flexsearch">
 		<div class="flexsearch--wrapper">

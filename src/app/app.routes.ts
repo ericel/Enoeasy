@@ -10,7 +10,8 @@ import {
   ProfileComponent,
   EdituserComponent,
   AddComponent,
-  PageComponent
+  PageComponent,
+  BlogComponent
 } from './components/containers';
 import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
@@ -81,6 +82,14 @@ export const routes: Routes = [
    canActivate: [AuthService],
     data: {
       title: 'Add content'
+    }
+  },
+  {
+   path: 'add/blog',
+   component: BlogComponent,
+   canActivate: [AuthService],
+    data: {
+      title: 'Write a blog'
     }
   },
   {path: 'NotFound404', 

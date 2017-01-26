@@ -1,11 +1,16 @@
-<div class="main container-fluid" *ngIf="pageOk && authOk">
+<div class="main">
+ <div *ngIf="!pageOk && !authOk" class="wait">
+        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+  </div>
+<div *ngIf="pageOk && authOk" class="animated slideInUp">
+  <section class="container-fluid">
   <div class="row gutter-10">
-  <div class="col-md-8 l-side">
+  <div class="col-md-8 l-side page">
     <md-card>
    <md-card-header>
           <img md-card-avatar src="{{auth.avatar}}">
           <md-card-title>{{page.status}}</md-card-title>
-          <md-card-subtitle>{{page.type}}</md-card-subtitle>
+          <md-card-subtitle>{{page.type}} {{page.createdAt | amTimeAgo:true}} ago!</md-card-subtitle>
 
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
@@ -49,5 +54,7 @@
      <app-promocard></app-promocard>
       
   </div>
+</div>
+  </section>
 </div>
 </div>

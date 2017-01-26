@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import {Md5} from 'ts-md5/dist/md5';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Http} from '@angular/http';
+import { NotificationService } from '../notification/notification.service'
 //import { ApiService } from './api';
 
 @Injectable()
@@ -34,7 +35,7 @@ statusList: FirebaseListObservable<any[]>;
     private storeHelper: StoreHelper,
     private af: AngularFire,
     private _http: Http,
-    private mapsAPILoader: MapsAPILoader
+    private _notify: NotificationService
   ) {
 
     this.af.auth.subscribe(user => {
@@ -145,7 +146,7 @@ getStatus() {
     let rStatusUser = this.af.database.object(`eRatingUsers/${status.sid}`);
     rStatusUser.subscribe(value => {
       if(value.uid == this._uid){
-        console.log("already voted");
+        this._notify.failedAttempt("You already voted this thread!");
       } else {
          return rStatusUser.set({
           uid: this._uid

@@ -1,5 +1,5 @@
-<div class="main-content container-fluid">
-    <div *ngIf="instruct" class="start-1 ">
+<div class="main main-content container-fluid">
+    <div *ngIf="instruct" class="wait">
         <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
     </div>
     <div *ngIf="choose" class="start-01 choose">
@@ -20,13 +20,14 @@
                      <p>It's all free to post a job opening with us!</p>
                  </div>
                   <div class="col-md-4">
-                      <i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i>
+                     <a routerLink="/add/blog"> <i class="fa fa-pencil-square-o fa-2x color-pink" aria-hidden="true"></i>
                       <h1>
                      Write a Blog
                       </h1>
                       <p>
                           We are ready to host your blog! Start Now.
                     </p>
+                     </a>
                   </div>
              </div>
               <div class="row">

@@ -1,7 +1,12 @@
-<main class="container-fluid">
-<div class="user-01 row" *ngIf="USER">
-  <div class="col-md-9">
-      <div class="user-02 shadow-1">
+<div class="main">
+ <div *ngIf="!USER" class="wait">
+        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+  </div>
+<div *ngIf="USER" class="animated slideInUp">
+  <section class="container-fluid">
+  <div class="row gutter-10">
+  <div class="col-md-8 l-side">
+   <div class="user-02 shadow-1">
             <img src="{{USER.avatar}}" alt="{{USER.name}}">
             <h1> {{USER.name}}</h1>
             <h2><i class="fa fa-map-marker" aria-hidden="true"></i> {{USER.city}}, {{USER.country}}</h2>
@@ -11,45 +16,55 @@
                 <button md-raised-button color="warn"><i class="fa fa-commenting-o" aria-hidden="true"></i> Chat</button>
             </div>
       </div>
-      <div class="user-3 shadow-1">
+
+   <div class="user-3 shadow-1">
           <md-tab-group>
             <md-tab>
                 <template md-tab-label>
                   <i class="fa fa-lemon-o" aria-hidden="true"></i> Goods listed (0)
                 </template>
-                <h1>Best pasta restaurants</h1>
-                <p>...</p>
+                <div class="innertube">
+                     <h1>Terrible sushi restaurants</h1>
+                    <p>...</p>
+                </div>
             </md-tab>
             <md-tab>
                 <template md-tab-label>
                 <i class="fa fa-music" aria-hidden="true"></i> Music  (0)
                 </template>
-                <h1>Terrible sushi restaurants</h1>
-                <p>...</p>
+               <div class="innertube">
+                     <h1>Terrible sushi restaurants</h1>
+                    <p>...</p>
+                </div>
             </md-tab>
              <md-tab>
                 <template md-tab-label>
                 <i class="fa fa-podcast" aria-hidden="true"></i> Actions Created  (0)
                 </template>
-                <h1>Terrible sushi restaurants</h1>
-                <p>...</p>
+                <div class="innertube">
+                     <h1>Terrible sushi restaurants</h1>
+                    <p>...</p>
+                </div>
             </md-tab>
              <md-tab>
                 <template md-tab-label>
                 <i class="fa fa-eye" aria-hidden="true"></i> Popularity  (0%)
                 </template>
-                <h1>Terrible sushi restaurants</h1>
-                <p>...</p>
+               <div class="innertube">
+                     <h1>Terrible sushi restaurants</h1>
+                    <p>...</p>
+                </div>
             </md-tab>
         </md-tab-group>
       </div>
-    <app-userscard
-      *ngFor="let user of users"
-      [user]="user"></app-userscard>
+    <app-userscard ></app-userscard>
   </div>
-  <div class="col-md-3">
-      <app-authcard></app-authcard>
+  <div class="col-md-4">
+    <app-authcard></app-authcard>
     <app-adslist></app-adslist>
+      
   </div>
 </div>
-</main>
+  </section>
+</div>
+</div>

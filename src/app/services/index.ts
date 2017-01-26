@@ -6,6 +6,7 @@ import { StatusService } from './status/status.service';
 import { StoreHelper } from './store-helper';
 import { GeolocationService } from './geolocation/geolocation';
 import { PageService } from './page/page.service';
+import { NotificationService } from './notification/notification.service';
 export const SERVICE_PROVIDER = [
   ApiService,
   EasyapiService,
@@ -14,5 +15,6 @@ export const SERVICE_PROVIDER = [
   ListingService,
   StatusService,
   GeolocationService,
-  PageService
+  PageService,
+  NotificationService
 ];

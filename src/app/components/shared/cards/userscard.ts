@@ -10,17 +10,21 @@ import { AuthService } from '../../../services/auth/auth.service';
 @Component({
   selector: 'app-userscard',
   template: `
- <div class="users-box mar-10">
-<figure class="snip1336 shadow-1">
-  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
-  <figcaption>
-    <img src="{{user.avatar}}" alt="profile-sample4" class="profile" />
-    <h2>{{user.name}}<span>{{user.job}}</span></h2>
-    <p>{{user.bio}}</p>
-    <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="follow">Follow</a>
-    <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="info">More Info</a>
-  </figcaption>
-</figure>
+ <div class="container-fluid users-box">
+  <div class="row gutter-10"> 
+    <figure 
+          *ngFor="let user of users"
+      class="snip1336 shadow-1 col-md-4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample87.jpg" alt="sample87" />
+      <figcaption>
+        <img src="{{ user.avatar }}" alt="{{user.name}}" class="profile" />
+        <h2>{{user.name}}<span>{{user.job}}</span></h2>
+        <p>{{user.bio}}</p>
+        <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="follow">Follow</a>
+        <a routerLink="/user/{{ user.uid }}/{{user.name | slugify}}" class="info">More Info</a>
+      </figcaption>
+    </figure>
+</div>
 </div>
   `,
   styles: [`
@@ -36,14 +40,12 @@ import { AuthService } from '../../../services/auth/auth.service';
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+    overflow:hidden;
 }
 .snip1336 {
   font-family: 'Roboto', Arial, sans-serif;
   position: relative;
-  float: left;
   overflow: hidden;
-  margin: 10px 1%;
-  width: 32%;
   color: #ffffff;
   text-align: left;
   line-height: 1.4em;
@@ -139,19 +141,25 @@ import { AuthService } from '../../../services/auth/auth.service';
   letter-spacing: 1px;
   opacity: 0.8;
 }
+img.profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
   `]
 })
 export class UsersCard implements OnInit {
- @Input() user = {};
+users: any;
  @Output() checked = new EventEmitter();
- isAuthorized;
+
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
-     this._authService.userAuth
+     this._authService._isUsers()
     .subscribe(value => { 
-    if(value){this.isAuthorized = true; this.user = value} 
-     else {this.isAuthorized = false} });
+     this.users = value;
+     console.log(this.users);
+    });
   }
 
 }

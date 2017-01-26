@@ -11,12 +11,14 @@
    </div>
      <div class="col-md-8">
       <app-statuscard (createStatus)="onCreateStatus($event)"></app-statuscard>
+      <div *ngIf="!statusesOk" class="wait">
+        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+     </div>
        <app-homecard
         *ngFor="let status of statuses"
         [status]="status"
         (checked)="onStatusChecked($event)"
-           >
-        
+        >
        </app-homecard>
     </div>   
  </div>

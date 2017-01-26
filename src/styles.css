@@ -194,11 +194,41 @@ input {
     padding: 0px !important;
     background: rgb(19, 25, 90) !important;
   }
-.comments md-card-header .md-card-header-text {
+.comments md-card-header .md-card-header-text, .page md-card-header .md-card-header-text, .page md-card-header {
     height: auto !important;
     clear: both !important;
   }
   .main {
     position: relative;
     top: 60px;
+    overflow: hidden;
+    min-height: 769px;
   }
+  @media screen and (max-width: 769px){ 
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl {
+    padding-right: 0px !important; 
+    padding-left: 0px !important; 
+}
+}
+.wait md-progress-spinner {
+ margin-right: auto;
+ margin-left: auto;
+}
+@media screen and (min-width: 1400px){
+.main {
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+.l-side {
+  margin-top: 10px;
+}
+}
+
+.container-fluid{
+    padding-right:  0px !important;
+    padding-left: 0px !important;
+}
+.innertube {
+  padding: 10px;
+}

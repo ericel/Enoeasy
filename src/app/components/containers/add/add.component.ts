@@ -29,3 +29,25 @@ countDown() {
     }, 1000);
  }
 }
+
+@Component({
+  template: `
+  <div class="main">
+   <md-card>
+    <form>
+       <md-input-container style="width: 100%">
+        <input mdInput placeholder="Company (disabled)" disabled value="Google">
+      </md-input-container>
+    </form>
+  </md-card>
+  </div>
+  `,
+})
+export class BlogComponent implements OnInit {
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+}
+

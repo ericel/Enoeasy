@@ -263,8 +263,8 @@ input:-moz-placeholder {
       cursor:pointer;
 }
 .search-sm {
-  position: absolute;
-  top: 56px;
+  position: fixed;
+  top: 52px;
   width: 100%;
   left: 0;
   right: 0;
@@ -302,6 +302,9 @@ input:-moz-placeholder {
 }
 .no-sm-no {
  display: none !important;
+}
+.flexsearch--input {
+  border-radius: 0px !important;
 }
 }
 @media screen and (min-width: 769px){

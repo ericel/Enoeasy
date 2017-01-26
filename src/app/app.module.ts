@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AnimationService, AnimatesDirective } from 'css-animator';
 import { AdsenseModule } from 'ng2-adsense';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdSnackBarConfig } from '@angular/material';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
@@ -49,7 +49,8 @@ import {
   ProfileComponent,
   EdituserComponent,
   AddComponent,
-  PageComponent
+  PageComponent,
+  BlogComponent
 } from './components/containers';
 
 
@@ -103,7 +104,8 @@ export const firebaseConfig = {
     DialogShare,
     PageComponent,
     CommentCard,
-    CommentsCard
+    CommentsCard,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +136,8 @@ export const firebaseConfig = {
   providers: [
   ...SERVICE_PROVIDER,
   Store,
-  AnimationService
+  AnimationService,
+  MdSnackBarConfig
   ],
   entryComponents: [
     DialogAsk,

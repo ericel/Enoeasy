@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   showMore: boolean = false;
   statuses = [];
   lastDialogResult: string; 
+  statusesOk: boolean = false;
   constructor(
     private store: Store,
     private statusService: StatusService,
@@ -22,7 +23,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
  
    this.statusService.getStatus()
-    .subscribe(statuses => { this.statuses = statuses;});
+    .subscribe(statuses => { this.statuses = statuses; 
+      if(this.statuses){
+        this.statusesOk = true;
+      }
+      
+    });
 
    //this.addItems(0, this.sum);
    /*this.statusService.getStatus()
