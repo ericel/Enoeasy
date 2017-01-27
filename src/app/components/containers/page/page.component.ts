@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterStateSnapshot } f
 import { AuthService } from '../../../services/auth/auth.service';
 import { PageService } from '../../../services/page/page.service';
 import { StatusService } from '../../../services/status/status.service';
+import { MetaService } from 'ng2-meta';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
@@ -23,17 +24,21 @@ comments: any;
     private route: ActivatedRoute,
     private _authService: AuthService,
     private _pageService: PageService,
-    private _statusService: StatusService
+    private _statusService: StatusService,
+    private metaService: MetaService
   ) { }
 
   ngOnInit() {
      this.route.params.subscribe(params => {
         this.id = params['id'];
         let str = params['string'];
-      
+        
+
         this._pageService.getPage(this.id).subscribe(page =>  {this.page = page; 
           if(this.page){
             this.pageOk = true;
+            this.metaService.setTitle(this.page.status);
+            //this.metaService.setTag('og:image',this.product.imageURL);
           } else {
 
           }

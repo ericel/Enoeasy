@@ -1,16 +1,24 @@
 import { Injectable} from '@angular/core';
-import {MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig} from '@angular/material';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 @Injectable()
 export class NotificationService {
 time = 300 ;
   constructor(
-    private _mdsnackbar:  MdSnackBar,
-    private _MdSnackBarConfig: MdSnackBarConfig
-  ) { }
+    
+    private toastr: ToastsManager
+  ) {
+
+   }
 
  failedAttempt(text: string) {
-    let config = new MdSnackBarConfig();
-    config.duration = 3000;
-    this._mdsnackbar.open(text, "X", config);
- }
+  this.toastr.warning(text, 'Alert!');
+  }
+
+  successAttempt(text: string) {
+    this.toastr.success(text, 'Alert!');
+  }
+
+  errorAttempt(text: string) {
+    this.toastr.error(text, 'Alert!');
+  }
 }

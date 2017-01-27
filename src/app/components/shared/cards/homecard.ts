@@ -32,7 +32,8 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.type == 'Question'">Help Answer</button>
+        <button md-button *ngIf="status.type == 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Help Answer</button>
+        <button md-button *ngIf="status.type != 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Read More</button>
         <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample">50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>

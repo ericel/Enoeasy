@@ -67,8 +67,13 @@ createStatus(status: Status, type) {
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
          tags: status.tags
-      }).then((sid) => {
-      }); 
+       }).then(resolve => {
+      }, reject => {
+        this._notify.errorAttempt("Ouch! status couldn't be added!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! status couldn't be added!")
+      });
   }
 createQuestion( question, tags, color, type ) {
      let sid = Md5.hashStr(new Date() + this._uid);
@@ -83,8 +88,13 @@ createQuestion( question, tags, color, type ) {
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
          tags: tags
-      }).then((sid) => {
-      }); 
+      }).then(resolve => {
+      }, reject => {
+        this._notify.errorAttempt("Ouch! question couldn't be added!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! question couldn't be added!")
+      });
 }
 
 createComment( comment, sid) {
@@ -97,8 +107,14 @@ createComment( comment, sid) {
           rating: 0,
           createdAt: firebase.database.ServerValue.TIMESTAMP,
           updatedAt: firebase.database.ServerValue.TIMESTAMP,
-        }).then((sid) => {
-        }); 
+        })
+      .then(resolve => {
+      }, reject => {
+        this._notify.errorAttempt("Ouch! comment couldn't be added!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! comment couldn't be added!")
+      }); 
 }
 getStatus() {
   return  this.statusList
@@ -145,14 +161,14 @@ getStatus() {
     this.path = this.af.database.object(`eStatus/${status.sid}`);
     let rStatusUser = this.af.database.object(`eRatingUsers/${status.sid}`);
     rStatusUser.subscribe(value => {
-      if(value.uid == this._uid){
+      if(value.uid === this._uid){
         this._notify.failedAttempt("You already voted this thread!");
       } else {
          return rStatusUser.set({
           uid: this._uid
         }) 
         .then(_ =>  this.path.update({ rating: status.rating + 1 }))
-        .catch(err => console.log(err, 'You dont have access!')); 
+        .catch(err => this._notify.failedAttempt("Ouch! Something bad has happened!")); 
       }
      
     });

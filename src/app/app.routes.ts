@@ -19,9 +19,11 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
      data: {
-        title: ' - Africa one web join',
-        description: 'Description of the dashboard page',
-        'og:image': 'http://example.com/dashboard-image.png'
+       meta: {
+        title: 'Africa #1 Website',
+        description: 'One place web from mama Africa. Afro music, videos, blogs, news. All in one place.',
+        'og:image': 'https://enoeasy-94b34.firebaseapp.com/assets/img/logo_big.png'
+       }
     }
   },
   {
@@ -33,16 +35,20 @@ export const routes: Routes = [
    path: 'about',
    component: AboutComponent,
     data: {
-        title: 'Dashboard',
-        description: 'Description of the dashboard page g',
-        'og:image': 'http://example.com/dashboard-image.png'
+      meta: {
+        title: 'About Us',
+        description: 'Enoeasy derived from the common African slang E No Easy!'
       }
+    }
   },
   {
    path: 'gettingstarted',
    component: GetingstartedComponent,
     data: {
-      title: 'Start from here'
+      meta: {
+        title: 'Home page',
+        description: 'Description of the home page'
+      }
     }
   },
   {
@@ -80,8 +86,11 @@ export const routes: Routes = [
    path: 'add',
    component: AddComponent,
    canActivate: [AuthService],
-    data: {
-      title: 'Add content'
+     data: {
+      meta: {
+        title: 'Write a blog',
+        description: 'Publish a blog with us for free'
+      }
     }
   },
   {
@@ -89,7 +98,10 @@ export const routes: Routes = [
    component: BlogComponent,
    canActivate: [AuthService],
     data: {
-      title: 'Write a blog'
+      meta: {
+        title: 'Write a blog',
+        description: 'Publish a blog with us for free'
+      }
     }
   },
   {path: 'NotFound404', 

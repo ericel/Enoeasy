@@ -1,4 +1,4 @@
-import { Component, OnInit,  ElementRef, Optional } from '@angular/core';
+import { Component, OnInit,  ElementRef, Optional, ViewContainerRef } from '@angular/core';
 import { StatusService } from '../../../services/status/status.service';
 import { Store } from './../../../store';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';

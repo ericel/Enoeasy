@@ -13,8 +13,10 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routes, routing, appRoutingProviders }  from './app.routes';
 import { Ng2DropdownModule } from 'ng2-material-dropdown';
 import {ShareButtonsModule} from "ng2-sharebuttons";
-//import { MetaModule, MetaConfig } from 'ng2-meta';
+import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
+import { MetaModule, MetaConfig } from 'ng2-meta';
 import {NgPipesModule} from 'ngx-pipes';
+import { NgUploaderModule } from 'ngx-uploader';
 import { AppComponent } from './app.component';
 import { Store } from './store';
 import { SERVICE_PROVIDER } from './services'
@@ -55,14 +57,17 @@ import {
 
 
 
-/*const metaConfig: MetaConfig = {
+const metaConfig: MetaConfig = {
   //Append a title suffix such as a site name to all titles
   //Defaults to false
   useTitleSuffix: true,
   defaults: {
-    title: 'Enoeasy'
+    title: 'Default title for pages without meta in their route',
+    titleSuffix: ' | Enoeasy',
+    'og:image': 'https://enoeasy-94b34.firebaseapp.com/assets/img/logo_big.png',
+    'any other': 'arbitrary tag can be used'
   }
-};*/
+};
 
 // Must export the config
 export const firebaseConfig = {
@@ -71,6 +76,11 @@ export const firebaseConfig = {
     databaseURL: "https://enoeasy-94b34.firebaseio.com",
     storageBucket: "enoeasy-94b34.appspot.com",
     messagingSenderId: "586504231618"
+};
+
+let options: any = {
+    animate: 'flyRight',
+    positionClass: 'toast-bottom-right',
 };
 
 @NgModule({
@@ -123,21 +133,23 @@ export const firebaseConfig = {
     MaterialModule.forRoot(),
     TagInputModule,
     RouterModule.forRoot(routes, {  }),
-    //MetaModule.forRoot(metaConfig),
+    MetaModule.forRoot(metaConfig),
     NgPipesModule,
     MomentModule,
+    ToastModule.forRoot(options),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBqIrNb1DLsN6oP97ua3YLMJx5-gUueWJU',
       libraries: ['places']
     }),
     Ng2DropdownModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    NgUploaderModule
+    
   ],
   providers: [
   ...SERVICE_PROVIDER,
   Store,
-  AnimationService,
-  MdSnackBarConfig
+  AnimationService
   ],
   entryComponents: [
     DialogAsk,

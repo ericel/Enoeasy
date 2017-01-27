@@ -7,8 +7,9 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   selector: 'app-questioncard',
   template: `
   <div  class="questionform">
+   <div class="close"> <button  md-button color="primary" (click)="close()">X</button></div>
    <md-card>
-   <div class="close"> <button  md-button (click)="close()">X</button></div>
+  
      <form *ngIf="isAuthorized" (ngSubmit)="onAskQuestion()">
      <div *ngIf="errorQuestion" class="alert alert-danger" role="alert">
        <strong>Error: </strong>Question Should be between 20 - 100 Characters!
@@ -40,7 +41,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       min-width: 40px !important;
       border-radius: 100% !important;
       cursor:pointer;
-      color: rgba(0, 0, 0, 0.54) !important;
+      color: #fff !important;
    }
   .questionform {
     min-width: 200px !important;
@@ -55,9 +56,10 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
     }
   }
   .questionform .close {
-    position: absolute;
-    right: 2px;
-    top: 2px;
+    position: relative;
+    right: 5px;
+    top: -43px;
+    color: #fff;
   }
   `]
  
