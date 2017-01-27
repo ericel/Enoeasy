@@ -12,14 +12,25 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {Md5} from 'ts-md5/dist/md5';
+import { NotificationService } from '../notification/notification.service'
 @Injectable()
 export class PageService {
 page: FirebaseObjectObservable<any>;
+_uid;_username;pid;
+CREATE_KEY: string = 'blog_create_token';
   constructor(
-    private af: AngularFire
+    private af: AngularFire,
+    private _notify: NotificationService
   ) {  
      this.page = this.af.database.object(`/eStatus`, { preserveSnapshot: true });
      //this.page = this.af.database.list(`/eStatus`);
+     this.af.auth.subscribe(user => {
+       if(user) {
+           this._uid = user.uid;
+           this._username = user.auth.displayName;
+       }});
+    
   }
 
 
@@ -29,6 +40,90 @@ page: FirebaseObjectObservable<any>;
       });
      
   }
+
+  createBlog(blogcat, blogtitle){
+    this.pid = Md5.hashStr(new Date() + this._uid);
+    let path = this.af.database.object(`eblogs/${this.pid}`);
+    const token = window.localStorage.getItem(this.CREATE_KEY);
+    if(token) {
+      return;
+    } else {
+    return path.set({
+         pid: this.pid,
+         blogCat: blogcat,
+         uid: this._uid,
+         status: 'draft',
+         createdAt: firebase.database.ServerValue.TIMESTAMP,
+         updatedAt: firebase.database.ServerValue.TIMESTAMP,
+         blogTitle: blogtitle
+       }).then(resolve => {
+        window.localStorage.setItem(this.CREATE_KEY, this.pid);
+        this._notify.successAttempt("Way to go! You're on your way to creating an awesome blog!")
+      }, reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+      });
+    }
+  }
+ 
+
+ updateBlogDesc(blogDesc){
+   const token = window.localStorage.getItem(this.CREATE_KEY);
+   let path = this.af.database.object(`eblogs/${token}`);
+   if(token){
+   path.update({
+         blogDesc: blogDesc
+       }).then(resolve => {
+        this._notify.successAttempt("Draft Saved!")
+      }, reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+    });
+   }  
+ }
+
+ updateBlogFull(blogFull) {
+    const token = window.localStorage.getItem(this.CREATE_KEY);
+   let path = this.af.database.object(`eblogs/${token}`);
+   if(token){
+   path.update({
+         blog: blogFull
+       }).then(resolve => {
+        this._notify.successAttempt("Draft Saved!")
+      }, reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+    });
+   }  
+ }
+
+publishBlog(blog) {
+  const token = window.localStorage.getItem(this.CREATE_KEY);
+   let path = this.af.database.object(`eblogs/${token}`);
+   if(token){
+  return path.update({
+         blogCat: blog.blogCat,
+         blogDesc: blog.blogDesc,
+         status: 'Published',
+         blogTitle: blog.blogTitle,
+         blog: blog.blogFull
+       }).then(resolve => {
+        this._notify.successAttempt("Nicely Done! Blog was successfully phublished!")
+      }, reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+      })
+      .catch(reject => {
+        this._notify.errorAttempt("Ouch! something is wrong!")
+    });
+   }  
+
+ }
 
 
 

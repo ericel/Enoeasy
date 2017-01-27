@@ -10,9 +10,9 @@ import {SlugifyPipe} from 'ngx-pipes/src/app/pipes/string/slugify';
   <div  class="shareform">
   <div class="close"> <button  md-button (click)="close()">X</button></div>
    <md-card>
-   
+   {{statusUrl}}
         <share-buttons [shareTitle]="'Total Shares - '"
-      [url]= "'{statusUrl}'"
+      [url]= 'statusUrl'
       [count]="true"
       [totalCount]="true"
       ></share-buttons>

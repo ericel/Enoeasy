@@ -57,6 +57,7 @@ import {
 
 
 
+
 const metaConfig: MetaConfig = {
   //Append a title suffix such as a site name to all titles
   //Defaults to false
@@ -115,6 +116,7 @@ let options: any = {
     PageComponent,
     CommentCard,
     CommentsCard,
+    BlogComponent,
     BlogComponent
   ],
   imports: [
