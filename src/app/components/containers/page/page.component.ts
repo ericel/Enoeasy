@@ -18,7 +18,8 @@ auth: any;
 pageOk: boolean = false;
 authOk: boolean = false;
 comments: any;
-
+pageBlg: any;
+isBlog: boolean = false;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -39,6 +40,10 @@ comments: any;
             this.pageOk = true;
             this.metaService.setTitle(this.page.status);
             //this.metaService.setTag('og:image',this.product.imageURL);
+            if(this.page.type !== "Status Update" && this.page.type !== "Question"){
+              this._pageService.getPageBlg(this.id).subscribe(pageBlg =>  {this.pageBlg = pageBlg}); 
+              this.isBlog = true;
+            }
           } else {
 
           }
@@ -49,7 +54,7 @@ comments: any;
         });
 
       });
-       this._statusService.getComments(this.id).subscribe(comments => this.comments = comments);  
+       this._statusService.getComments(this.id).subscribe(comments => this.comments = comments); 
     });
 
     

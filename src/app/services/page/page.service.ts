@@ -19,12 +19,13 @@ export class PageService {
 page: FirebaseObjectObservable<any>;
 _uid;_username;pid;
 CREATE_KEY: string = 'blog_create_token';
-token;blogPath;
+token;blogPath;pageBlg;
   constructor(
     private af: AngularFire,
     private _notify: NotificationService
   ) {  
      this.page = this.af.database.object(`/eStatus`, { preserveSnapshot: true });
+     this.pageBlg = this.af.database.object(`/eblogs`, { preserveSnapshot: true });
      //this.page = this.af.database.list(`/eStatus`);
      this.af.auth.subscribe(user => {
        if(user) {
@@ -47,6 +48,11 @@ token;blogPath;
      
   }
 
+getPageBlg(id: string){
+   return this.pageBlg.map(snapshot => {
+        return snapshot.val()[id];   
+    });
+}
   createBlog(blogcat, blogtitle){
     const token = window.localStorage.getItem(this.CREATE_KEY);
       if(token) {

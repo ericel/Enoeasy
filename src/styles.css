@@ -242,3 +242,6 @@ input {
 }
 
 .file-over { border: dotted 3px red; }
+.comm textarea {
+    height: 100px !important;
+}

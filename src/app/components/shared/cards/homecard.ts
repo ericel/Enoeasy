@@ -22,7 +22,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         </md-menu>
           <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
       </md-card-header>
-      <!--<img  md-card-image class="status-img" src="./assets/img/card.jpg">-->
+        <img *ngIf="status.photoUrl"  md-card-image class="status-img" src="{{status.photoUrl}}">
       <md-card-content >
           <p>{{status.status}}</p>
       </md-card-content>
@@ -34,7 +34,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <div  class="pull-right">
         <button md-button *ngIf="status.type == 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Help Answer</button>
         <button md-button *ngIf="status.type != 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Read More</button>
-        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample">50 <i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
+        <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>
       </md-card-actions>
@@ -53,6 +53,9 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
    </div>
   `,
   styles: [`
+  md-card-header {
+    margin-bottom: 10px !important;
+  }
   .comments md-card-header, .comments md-card-header .md-card-header-text {
     height: auto !important;
   }

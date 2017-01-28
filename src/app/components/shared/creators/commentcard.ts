@@ -3,7 +3,7 @@ import { StatusService } from '../../../services/status/status.service';
 @Component({
   selector: 'app-commentcard',
   template: `
-     <div class="form-group">
+     <div class="form-group comm">
          <form (keydown)="onCreateComment($event, status.sid)">
            <textarea class="form-control"
             [(ngModel)]="comment"
@@ -15,8 +15,11 @@ import { StatusService } from '../../../services/status/status.service';
     </div>
   `,
    styles: [`
+   .comm {
+     padding: 0 10px;
+   }
      textarea {
-         height: 40px;
+         height: 40px !important;
          overflow: hidden;
      }
   `]

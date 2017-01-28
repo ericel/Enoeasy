@@ -4,6 +4,12 @@
 Primary style
 
 -------------------------------- */
+md-toolbar {
+  -webkit-box-shadow:0 0 2px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);
+ -moz-box-shadow:    0 0 2px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);    
+ box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);
+ 
+}
 .app-toolbar-menu {
   padding: 0 14px 0 14px;
   color: white;
@@ -287,10 +293,14 @@ input:-moz-placeholder {
 .search-sm .form-wrapper   #submit, .search-sm .form-wrapper  #search {
   border-radius: 0;
 }
+.logo {
+  cursor: pointer;
+}
 @media screen and (max-width: 769px){
 .logo img {
   height: 20px;
   width: 100px;
+  margin-left: 10px;
 }
 .logo {
   margin-left: 10px;

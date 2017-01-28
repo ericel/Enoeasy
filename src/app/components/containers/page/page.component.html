@@ -8,10 +8,11 @@
   <div class="col-md-8 l-side page">
     <md-card>
    <md-card-header>
-          <img md-card-avatar src="{{auth.avatar}}">
+          <img  md-card-avatar src="{{auth.avatar}}">
           <md-card-title>{{page.status}}</md-card-title>
-          <md-card-subtitle>{{page.type}} {{page.createdAt | amTimeAgo:true}} ago!</md-card-subtitle>
-
+          <md-card-subtitle>{{page.type}} {{page.createdAt | amTimeAgo:true}} ago! 
+            <h1 *ngIf="isBlog">{{pageBlg.blogTitle}}</h1>
+          </md-card-subtitle>
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
          </button></span>
@@ -20,10 +21,12 @@
           <button md-menu-item>Save Post</button>
           <button md-menu-item>Delete</button>
         </md-menu>
+        
       </md-card-header>
-      <img md-card-image src="{{auth.avatar}}">
+      <img *ngIf="page.photoUrl" md-card-image src="{{page.photoUrl}}">
       <md-card-content>
-          <p>{{page.status}}</p>
+          <p *ngIf="!isBlog">{{page.status}}</p>
+          <p *ngIf="isBlog">{{pageBlg.blog}}</p>
       </md-card-content>
       <md-card-actions class="container-fluid">
        <div class="pull-left">

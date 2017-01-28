@@ -5,7 +5,7 @@ import 'rxjs/add/operator/first';
 @Component({
   selector: 'app-commentscard',
   template: `
-   <div *ngFor="let comment of comments;  let i=index">
+   <div *ngFor="let comment of comments;  let i=index" class="comments">
    <div *ngIf="i<limit">
     <md-card-header>
            <img md-card-avatar src="{{comment.avatar}}">
@@ -21,6 +21,9 @@ import 'rxjs/add/operator/first';
     md-card-header {
       height: auto !important;
       clear: both !important;
+    }
+    .comments {
+      padding: 0 10px;
     }
   `]
  
