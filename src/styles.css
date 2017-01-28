@@ -215,6 +215,13 @@ input {
  margin-right: auto;
  margin-left: auto;
 }
+@media screen and (min-width: 1200px){
+.main {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
 @media screen and (min-width: 1400px){
 .main {
         width: 60%;

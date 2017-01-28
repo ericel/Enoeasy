@@ -6,7 +6,6 @@ import {
   GetingstartedComponent,
   HomeComponent,
   NotfoundComponent,
-  ListComponent,
   ProfileComponent,
   EdituserComponent,
   AddComponent,
@@ -73,14 +72,6 @@ export const routes: Routes = [
   {
    path: ':string/:id/:string',
    component: PageComponent
-  },
-  {
-   path: 'list',
-   component: ListComponent,
-   canActivate: [AuthService],
-    data: {
-      title: 'List a a business'
-    }
   },
    {
    path: 'add',

@@ -1,8 +1,10 @@
 import { Component, OnInit,  NgZone, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgModel } from '@angular/forms';
-import { NgUploaderOptions } from 'ngx-uploader';
 import { PageService } from '../../../../services/page/page.service';
+import { NotificationService } from '../../../../services/notification/notification.service';
+import * as firebase from 'firebase';
 import 'rxjs/add/operator/first';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -14,21 +16,18 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
   title_1: boolean = false;
   pad_top: boolean = true;
   blogForm : FormGroup;
-  options: NgUploaderOptions;
-  response: any;
   submitted = false;
-  hasBaseDropZoneOver: boolean;
+  token;
+  token_url;
+  image = './assets/img/_blog.jpg'; CREATE_KEY: string = 'blog_create_token';
+  storageRef;
   constructor(
     private fb: FormBuilder,
     private _pageService: PageService,
-    @Inject(NgZone) private zone: NgZone,
-    
+    private _notify: NotificationService
   ) {
-    this.options = new NgUploaderOptions({
-      url: 'http://api.ngx-uploader.com/upload',
-      autoUpload: true,
-      calculateSpeed: true
-    });
+    this.token = window.localStorage.getItem(this.CREATE_KEY);
+    this.storageRef = firebase.storage().ref().child(`eblogs/${this.token}`);
    }
 
   ngOnInit() {
@@ -47,7 +46,7 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
         }
           this.blogForm.controls["blogTitle"].valueChanges
           .debounceTime(1000) // wait a litle after the user input (ms)
-          .subscribe(title => {
+           .subscribe(title => {
               if(title !== '' && title.length > 29){
                this._pageService.createBlog(blogcat, title); 
                this.title_0 = true;
@@ -66,35 +65,36 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
 
 
       this.blogForm.controls["blogFull"].valueChanges
-          .debounceTime(1000) // wait a litle after the user input (ms)
+          .debounceTime(3000) // wait a litle after the user input (ms)
           .subscribe(blogFull => {
-              if(blogFull !== '' && blogFull.length > 500){
+              if(blogFull !== '' && blogFull.length > 150){
                this._pageService.updateBlogFull(blogFull); 
            }
      });
 
   }
   
-  handleUpload(data: any) {
-    setTimeout(() => {
-      this.zone.run(() => {
-        this.response = data;
-        if (data && data.response) {
-          this.response = JSON.parse(data.response);
-        }
-      });
-    });
-  }
+    upload() {
+        let selectedFile = (<HTMLInputElement>document.getElementById('file-b')).files[0];
+        this.storageRef.put(selectedFile).then(snapshot => {
+          this.storageRef.getDownloadURL().then(url => {
+            this.image = url;
+            this._pageService.updateBlogPhoto(url);
+          });
+        });
+        
+    }
 
-  fileOverBase(e: boolean) {
-    this.hasBaseDropZoneOver = e;
-  }
 
 
   submitForm(blog: any){
-    this._pageService.publishBlog(blog)
+    this._pageService.publishBlog(blog, this.image)
     .then((success) => {
       this.submitted = true;
+      this._notify.countDown(blog.blogCat, window.localStorage.getItem(this.CREATE_KEY), blog.blogTitle);
+      window.localStorage.removeItem(this.CREATE_KEY);
     })
   }
+
+
 }
