@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
 
 @Component({
   template: `
-    <app-questioncard></app-questioncard>
+    <app-questioncard color="primary"></app-questioncard>
   `,
 })
 export class DialogAsk {

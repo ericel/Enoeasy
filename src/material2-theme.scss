@@ -4,7 +4,7 @@
 
 @include md-core();
 
-$primary: md-palette($md-cyan, 900);
+$primary: md-palette($md-cyan, 700, 500, 900);
 $accent:  md-palette($md-pink, A200, A100, A400);
 
 $theme: md-light-theme($primary, $accent);
@@ -19,4 +19,14 @@ $theme: md-light-theme($primary, $accent);
   $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
   @include angular-material-theme($dark-theme);
+}
+
+.m2app-purple {
+  $purple-primary: md-palette($md-purple, 700, 500, 900);
+  $purple-accent:  md-palette($md-pink, A200, A100, A400);
+  $purple-warn:    md-palette($md-deep-orange);
+
+  $purple-theme: md-light-theme($purple-primary, $purple-accent, $purple-warn);
+
+  @include angular-material-theme($purple-theme);
 }

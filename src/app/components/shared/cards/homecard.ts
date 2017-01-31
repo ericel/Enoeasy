@@ -144,7 +144,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       min-width: 40px !important;
       border-radius: 100% !important;
       cursor:pointer;
-      color: rgba(0, 0, 0, 0.54) !important;
 }
 @media screen and (max-width: 600px){
 md-card-header {

@@ -135,7 +135,7 @@ md-toolbar {
 	font-size: 18px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-   background: #00838F transparent;
+   background:   #ECEFF1;
    font-family: Monospace, Helvetica, sans-serif !important;
 }
 	
@@ -176,11 +176,11 @@ md-toolbar {
 }
 .flexsearch--input:focus {
   outline: none;
-    background:   #00838F;
-    color: #fff;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
+    background:   #fff;
+    color: #666;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0097a7 inset;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -194,11 +194,11 @@ md-toolbar {
 }
 
 ::-webkit-input-placeholder {
-	color: #fff;  
+	color: #666;  
 }
 
 input:-moz-placeholder {
-  color: #fff
+  color: #666;
 }
 .user-1 {
   padding: 2px;

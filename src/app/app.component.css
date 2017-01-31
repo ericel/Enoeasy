@@ -29,3 +29,9 @@ main.nav-is-visible {
   -o-transform: translateY(80px);
   transform: translateY(80px);
 }
+
+/* Dark team */
+.m2app-dark {
+  background: black;
+}
+/* End Dark team */

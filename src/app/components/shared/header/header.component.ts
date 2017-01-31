@@ -15,7 +15,7 @@ isAuthorized: boolean = false;
   searchThis;
   route: string;
   cat: string;
-user; bg: string;
+user; 
   constructor(
     private _elementRef: ElementRef,
     private _authService: AuthService,
@@ -27,15 +27,12 @@ user; bg: string;
          if(location.path() != ''){
             this.route = location.path();
             if(this.route === '/add'){
-              this.bg = "#D32F2F";
               this.cat = "ADD"
             } else {
-              this.bg = "#006064";
               this.cat = "HOME"
             }
           } else {
             this.route = 'Home'
-            this.bg = "#006064";
             this.cat = "HOME"
           }
        });

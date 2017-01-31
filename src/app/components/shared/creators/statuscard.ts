@@ -30,7 +30,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       <textarea class="form-control shadow-2" aria-label="Update Status"
       [(ngModel)]="newStatus.status"
       name="status"
-      placeholder="E no easy ooh!"
+      placeholder="What's new with you?"
       ></textarea>
      </div>
        <app-colorcard class="pull-left"
@@ -51,7 +51,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   md-card {
       margin: 10px 0;
       clear:both;
-      background: #efefef ;
       border-radius: 0 !important;
       box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
 
@@ -80,7 +79,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   }
   textarea {
     border: none;
-    background-color: #fff !important;
     outline: none;
     color: rgba(0,0,0,0.6);
     font-family: 'Helvetica', sans-serif;
@@ -105,7 +103,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   }
   @media screen and (min-width: 1300px){
   textarea, tag-input {
-
     min-width: 100% !important;
   }
   }
@@ -129,7 +126,7 @@ export class StatusCard implements OnInit {
  colors: Array<string> = ['#737EA8','#B19CD9', '#FF6961', '#77DD77', '#AEC6CF', '#F49AC2', 'white'];
  newStatus = {
     status: '',
-    color: 'white',
+    color: '#',
     tags: this.tags
   };
   constructor(
@@ -148,7 +145,7 @@ export class StatusCard implements OnInit {
          this.tags = [value.city, value.country, 'status updates'];
           this.newStatus = {
             status: '',
-            color: 'white',
+            color: '#',
             tags: this.tags
           };
        });
@@ -175,7 +172,7 @@ export class StatusCard implements OnInit {
   reset() {
     this.newStatus = {
       status: '',
-      color: 'white',
+      color: '#',
       tags: ''
     };
   }

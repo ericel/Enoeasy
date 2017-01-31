@@ -52,9 +52,7 @@ body, html, main, .main, .app, app {
 body {
   font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
-a {
-  color: #006064;
-}
+
 input {
   border: none;
  
@@ -192,7 +190,7 @@ input {
 }
  .md-dialog-container {
     padding: 0px !important;
-    background: #006064 !important;
+    background: #0097a7 !important;
     padding-top: 50px !important;
   }
 .comments md-card-header .md-card-header-text, .page md-card-header .md-card-header-text, .page md-card-header {
@@ -245,3 +243,33 @@ input {
 .comm textarea {
     height: 100px !important;
 }
+
+/* DARK TEAM */
+.m2app-dark a{
+  color: #D81B60;
+}
+.m2app-dark .list-group-item, .m2app-dark .form-control, .m2app-dark .md-dialog-container  {
+  background: #424242 !important;
+  color: #fff;
+}
+
+.m2app-dark .footer-distributed{
+	background-color: #485274;
+	background: linear-gradient(90deg,#263238 70%,#D81B60 30%) !important;
+}
+/*END DARK TEAM */
+
+/* Purple TEAM */
+.m2app-purple a{
+  color: #7B1FA2;
+}
+.m2app-purple .list-group-item, .m2app-dark .form-control, .m2app-dark .md-dialog-container  {
+  background: #eee !important;
+}
+
+.m2app-purple .footer-distributed{
+	background-color: #485274;
+	background: linear-gradient(90deg,#263238 70%,#7B1FA2 30%) !important;
+}
+/*END Purple TEAM */
+
