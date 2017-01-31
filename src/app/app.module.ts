@@ -37,7 +37,8 @@ import {
   DialogAsk,
   DialogShare,
   CommentCard,
-  CommentsCard
+  CommentsCard,
+  SimpleTinyCard
 } from './components/shared';
 import { 
   HomeComponent,
@@ -111,7 +112,8 @@ let options: any = {
     CommentCard,
     CommentsCard,
     BlogComponent,
-    BlogComponent
+    BlogComponent,
+    SimpleTinyCard
   ],
   imports: [
     BrowserModule,

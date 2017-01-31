@@ -32,16 +32,17 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       name="status"
       placeholder="E no easy ooh!"
       ></textarea>
-      <tag-input [(ngModel)]='newStatus.tags' name="tags" id="tags"></tag-input>
+     </div>
        <app-colorcard class="pull-left"
               (selected)="onColorSelect($event)"
               [colors]="colors"
             >
      </app-colorcard>
       <button md-raised-button color="primary" type="submit" class="pull-right">post status</button>
-     </div>
+     
   </form>
     <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/signup">Click Here Log In to Post! It's easy and fast.</div>
+    <div class="clearfix"></div>
    </md-card>
 
   `,
@@ -85,7 +86,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
     font-family: 'Helvetica', sans-serif;
     font-size: 20px;
     margin-bottom: 5px;
-    min-width: 380px !important;
   }
  
   @media screen and (max-width: 768px){
@@ -99,8 +99,24 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
     margin-bottom:10px;
     cursor: pointer;
   }
+  tag-input {
+
+    width: 100% !important;
+  }
+  @media screen and (min-width: 1300px){
+  textarea, tag-input {
+
+    min-width: 100% !important;
+  }
+  }
   `]
- 
+  /*<div class="form-group">
+      <tag-input [(ngModel)]='newStatus.tags' name="tags"
+      type="hidden" 
+      id="tags"
+      [maxItems]="4"
+      separatorKeys="[32]"
+      ></tag-input>*/
 })
 export class StatusCard implements OnInit {
  @Output() createStatus = new EventEmitter();

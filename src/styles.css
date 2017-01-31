@@ -53,7 +53,7 @@ body {
   font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
 a {
-  color: #1A237E;
+  color: #006064;
 }
 input {
   border: none;
@@ -115,7 +115,7 @@ input {
 
 /* Color picker */
 .color-primary {
-  color: rgb(19, 25, 90) !important;
+  color: #006064 !important;
 }
 .color-red {
   color: red;
@@ -192,7 +192,7 @@ input {
 }
  .md-dialog-container {
     padding: 0px !important;
-    background: rgb(19, 25, 90) !important;
+    background: #006064 !important;
     padding-top: 50px !important;
   }
 .comments md-card-header .md-card-header-text, .page md-card-header .md-card-header-text, .page md-card-header {

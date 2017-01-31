@@ -1,8 +1,14 @@
-<md-toolbar  color="primary" class="fixed" >
+<md-toolbar  color="primary" [ngStyle]="{'background-color': bg}" class="fixed">
+
 	<div class="logo">
-	 <img routerLink="/" src="assets/img/logo_cut.png" alt="Logo">
+	 <img routerLink="/" src="assets/img/ids-logo-don.png" alt="I Don Suffer">
 	</div>
-   <span class="app-toolbar-filler"></span>
+	
+   <span class="no-sm-no app-toolbar-filler"></span>
+	 <i class="no-sm-no  fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
+	 <button class="no-sm-no" md-button style="font-style: 20px;"> {{cat}}</button>
+	
+	  <span class="app-toolbar-filler"></span>
    <div class="no-big">
      <button class="pull-right-s cd-3d-nav-trigger" id="sm-search" md-button>
 			 <i class="fa fa-search" aria-hidden="true"></i>

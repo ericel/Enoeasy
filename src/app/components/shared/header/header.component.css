@@ -135,7 +135,7 @@ md-toolbar {
 	font-size: 18px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-   background: #3F51B5;
+   background: #00838F transparent;
    font-family: Monospace, Helvetica, sans-serif !important;
 }
 	
@@ -176,11 +176,11 @@ md-toolbar {
 }
 .flexsearch--input:focus {
   outline: none;
-    background: url(search-dark.png) no-repeat 10px 6px #fcfcfc;
-    color: #000000;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
-    box-shadow: 0 1px 0 rgba(228, 231, 241, 0.87), 0 1px 0 rgba(228, 231, 241, 0.87) inset;
+    background:   #00838F;
+    color: #fff;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #00838F inset;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -298,9 +298,8 @@ input:-moz-placeholder {
 }
 @media screen and (max-width: 769px){
 .logo img {
-  height: 20px;
-  width: 100px;
-  margin-left: 10px;
+ 
+  margin-left: 20px;
 }
 .logo {
   margin-left: 10px;
@@ -323,5 +322,7 @@ input:-moz-placeholder {
     display: none;
   }
 
-  
+  .logo {
+  margin-left: 10px;
+}
 }

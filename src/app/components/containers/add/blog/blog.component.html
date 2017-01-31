@@ -1,5 +1,6 @@
 <div class="main container-fluid">
   <div class="container-fluid">
+    
    <div *ngIf="pad_top" class="padding-50"></div>
     <form *ngIf="!submitted" class="bloform" [formGroup]="blogForm" (ngSubmit)="submitForm(blogForm.value)">
     
@@ -68,13 +69,22 @@
 
          <div *ngIf="title_1" class="form-group" [ngClass]="{'has-error':!blogForm.controls['blogFull'].valid && blogForm.controls['blogFull'].touched}">
               <h1 class="mar-10"> Write your blog!</h1>
-              <md-input-container>
-              <textarea md-input 
+           <!--(onEditorKeyup)="keyupHandlerFunction($event)"-->
+                <simple-tiny
+                  [elementId]="'my-editor-id'"
+                  
+                  [formControl]="blogForm.controls['blogFull']"
+                  ngDefaultControl
+                  >
+                </simple-tiny>
+             <!--    <md-input-container>
+               <textarea md-input 
                     class="desc-0"
                     md-input placeholder="Write your blog"
                     #characterCountHintTextBlog [formControl]="blogForm.controls['blogFull']"></textarea>
               <md-hint align="end">{{characterCountHintTextBlog.value.length}} / continue!</md-hint>
-              </md-input-container>
+              </md-input-container>-->
+              
               <div *ngIf="blogForm.controls['blogFull'].hasError('required') && blogForm.controls['blogFull'].touched" class="alert alert-danger">You must Write a blog.</div>
               <div *ngIf="blogForm.controls['blogFull'].hasError('minlength') && blogForm.controls['blogFull'].touched" class="alert alert-danger">Your blog must be at least 150 characters long.</div>
               <div *ngIf="blogForm.controls['blogFull'].hasError('maxlength') && blogForm.controls['blogFull'].touched" class="alert alert-danger">Your blog cannot exceed 1000000 characters.</div>
