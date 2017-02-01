@@ -10,7 +10,9 @@
    <md-card-header>
           <img  md-card-avatar src="{{auth.avatar}}">
           <md-card-title>{{auth.name}}</md-card-title>
+          <md-card-title>{{page.status}}</md-card-title>
           <md-card-subtitle>{{page.type}} {{page.createdAt | amTimeAgo:true}} ago! 
+            <h1 *ngIf="isBlog">{{pageBlg.blogTitle}}</h1>
           </md-card-subtitle>
          <span class="pull-right-set"><button md-button [md-menu-trigger-for]="menu">
         <i class="fa fa fa-ellipsis-v fa-1x" aria-hidden="true"></i>
@@ -24,8 +26,7 @@
       </md-card-header>
       <img *ngIf="page.photoUrl" md-card-image src="{{page.photoUrl}}">
       <md-card-content>
-          <p>{{page.status}}</p>
-
+          <p>[innerHTML]="pageBlg.blog"</p>
       </md-card-content>
       <md-card-actions class="container-fluid">
        <div class="pull-left">

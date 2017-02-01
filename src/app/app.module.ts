@@ -50,7 +50,8 @@ import {
   EdituserComponent,
   AddComponent,
   PageComponent,
-  BlogComponent
+  BlogComponent,
+  BlogPageComponent
 } from './components/containers';
 
 
@@ -113,7 +114,8 @@ let options: any = {
     CommentsCard,
     BlogComponent,
     BlogComponent,
-    SimpleTinyCard
+    SimpleTinyCard,
+    BlogPageComponent
   ],
   imports: [
     BrowserModule,

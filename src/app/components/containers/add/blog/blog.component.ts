@@ -35,7 +35,7 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
       'blogCat': [null,  Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
       'blogTitle': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(150)])],
       'blogDesc': [null, Validators.compose([Validators.required, Validators.minLength(150), Validators.maxLength(500)])],
-      'blogFull': [null, Validators.compose([Validators.required, Validators.minLength(150), Validators.maxLength(100000)])]
+      //'blogFull': [null, Validators.compose([Validators.required, Validators.minLength(150), Validators.maxLength(100000)])]
     });
     
     this.blogForm.controls["blogCat"].valueChanges
@@ -55,7 +55,8 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
      });
 
     this.blogForm.controls["blogDesc"].valueChanges
-          .debounceTime(1000) // wait a litle after the user input (ms)
+        
+         .debounceTime(1000) // wait a litle after the user input (ms)*/
           .subscribe(blogDesc => {
               if(blogDesc !== '' && blogDesc.length > 150){
                this._pageService.updateBlogDesc(blogDesc); 
@@ -64,13 +65,15 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
      });
 
 
-      this.blogForm.controls["blogFull"].valueChanges
+     /* this.blogForm.controls["blogFull"].valueChanges
           .debounceTime(3000) // wait a litle after the user input (ms)
           .subscribe(blogFull => {
+            console.log('changes');
               if(blogFull !== '' && blogFull.length > 150){
                this._pageService.updateBlogFull(blogFull); 
+                
            }
-     });
+     });*/
 
   }
   
@@ -85,7 +88,13 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
         
     }
 
-
+    keyupHandlerFunction(e){
+      if(e !== '' && e.length > 150){
+           this._pageService.updateBlogFull(e);
+           return e;
+      }
+     
+    }
 
   submitForm(blog: any){
     this._pageService.publishBlog(blog, this.image)

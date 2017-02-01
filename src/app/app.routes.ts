@@ -10,7 +10,8 @@ import {
   EdituserComponent,
   AddComponent,
   PageComponent,
-  BlogComponent
+  BlogComponent,
+  BlogPageComponent
 } from './components/containers';
 import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
@@ -72,6 +73,10 @@ export const routes: Routes = [
   {
    path: ':string/:id/:string',
    component: PageComponent
+  },
+  {
+   path: 'blog/:string/:id/:string',
+   component: BlogPageComponent
   },
    {
    path: 'add',

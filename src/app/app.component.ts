@@ -29,7 +29,7 @@ route: string;
           console.log(location.path());
         if(location.path() != ''){
             this.route = location.path();
-            if(this.route === '/add'){
+            if(this.route === '/add' || this.route === '/add/blog'){
               this.isDarkTheme = false;
               this.isPurpleTheme = true;
             } else {

@@ -66,14 +66,14 @@
             </div>
           </div>
         </div>
-
-         <div *ngIf="title_1" class="form-group" [ngClass]="{'has-error':!blogForm.controls['blogFull'].valid && blogForm.controls['blogFull'].touched}">
+                  <!--*ngIf="title_1"  [ngClass]="{'has-error':!blogForm.controls['blogFull'].valid && blogForm.controls['blogFull'].touched}"-->
+         <div  *ngIf="title_1" class="form-group" >
               <h1 class="mar-10"> Write your blog!</h1>
-           <!--(onEditorKeyup)="keyupHandlerFunction($event)"-->
+           <!--[formControl]="blogForm.controls['blogFull']" -->
                 <simple-tiny
                   [elementId]="'my-editor-id'"
+                  (onEditorKeyup)="keyupHandlerFunction($event)"
                   
-                  [formControl]="blogForm.controls['blogFull']"
                   ngDefaultControl
                   >
                 </simple-tiny>
@@ -83,11 +83,13 @@
                     md-input placeholder="Write your blog"
                     #characterCountHintTextBlog [formControl]="blogForm.controls['blogFull']"></textarea>
               <md-hint align="end">{{characterCountHintTextBlog.value.length}} / continue!</md-hint>
-              </md-input-container>-->
+              </md-input-container>
               
               <div *ngIf="blogForm.controls['blogFull'].hasError('required') && blogForm.controls['blogFull'].touched" class="alert alert-danger">You must Write a blog.</div>
               <div *ngIf="blogForm.controls['blogFull'].hasError('minlength') && blogForm.controls['blogFull'].touched" class="alert alert-danger">Your blog must be at least 150 characters long.</div>
+
               <div *ngIf="blogForm.controls['blogFull'].hasError('maxlength') && blogForm.controls['blogFull'].touched" class="alert alert-danger">Your blog cannot exceed 1000000 characters.</div>
+              -->
             </div>
 
          <button class="pull-right" md-button md-raised-button color="primary" type="submit" [disabled]="!blogForm.valid" >Publish Your Blog</button>

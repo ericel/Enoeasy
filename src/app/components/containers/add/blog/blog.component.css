@@ -63,3 +63,7 @@
      padding-top: 50px !important;
    }
    .file-over { border: dotted 3px red; } 
+   textarea {
+     background: #fff !important;
+     padding: 10px;
+   }

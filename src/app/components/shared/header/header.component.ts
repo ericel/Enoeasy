@@ -26,7 +26,7 @@ user;
        console.log(location.path());
          if(location.path() != ''){
             this.route = location.path();
-            if(this.route === '/add'){
+            if(this.route === '/add' || this.route === '/add/blog'){
               this.cat = "ADD"
             } else {
               this.cat = "HOME"

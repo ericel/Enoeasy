@@ -7,4 +7,4 @@ export { ProfileComponent } from './profile/profile.component';
 export { EdituserComponent } from './profile/edituser/edituser.component';
 export { AddComponent } from './add/add.component';
 export { BlogComponent } from './add/blog/blog.component'
-export { PageComponent } from './page/page.component';
+export { PageComponent, BlogPageComponent } from './page/page.component';

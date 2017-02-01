@@ -24,7 +24,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       </md-card-header>
         <img *ngIf="status.photoUrl"  md-card-image class="status-img" src="{{status.photoUrl}}">
       <md-card-content >
-          <p>{{status.status}}</p>
+          <p>[innerHtml]="status.status"</p>
       </md-card-content>
        <md-card-actions class="container-fluid">
        <div class="pull-left">
@@ -32,8 +32,9 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.type == 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Help Answer</button>
-        <button md-button *ngIf="status.type != 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Read More</button>
+        <button md-button *ngIf="status.type === 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Help Answer</button>
+        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">More of this</button>
+        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Read More</button>
         <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>

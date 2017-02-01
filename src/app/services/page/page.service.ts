@@ -124,7 +124,6 @@ publishBlog(blog, photoUrl) {
          blogDesc: blog.blogDesc,
          status: 'Published',
          blogTitle: blog.blogTitle,
-         blog: blog.blogFull,
          photoUrl: photoUrl
        }).then(resolve => {
         this.updateStatus(blog.blogCat, blog.blogDesc, photoUrl);
