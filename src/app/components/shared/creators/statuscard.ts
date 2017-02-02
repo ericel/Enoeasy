@@ -31,7 +31,7 @@ import { StatusService } from '../../../services/status/status.service';
    styles: [`
 
   md-card {
-      margin: 10px 0;
+      margin: 0px 0 10px 0;
       clear:both;
       border-radius: 0 !important;
       box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
@@ -69,16 +69,7 @@ export class UpdateCard implements OnInit {
  @Output() createStatus = new EventEmitter();
  @Input() status: any;
  lastDialogResult: string; 
- isAuthorized: boolean = false;
- user;
- tags;
- statusShow: boolean = false;
- colors: Array<string> = ['#737EA8','#B19CD9', '#FF6961', '#77DD77', '#AEC6CF', '#F49AC2', 'white'];
- newStatus = {
-    status: '',
-    color: '#',
-    tags: this.tags
-  };
+
   constructor(
     private _authService: AuthService,
     private _GeolocationService: GeolocationService,

@@ -41,22 +41,20 @@ export class HomeComponent implements OnInit {
  toggleShow() {
     this.showMore = !this.showMore;
   }
-  onCreateStatus(status) {
-    let type = "Status Update";
-    this.statusService.createStatus(status, type)
-    //.subscribe();
-  }
+
 
   onStatusChecked(status) {
     this.statusService.rateStatus(status);
   }
 
-  openDialog() {
-    let dialogRef = this._dialog.open(DialogAsk);
+  
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.lastDialogResult = result;
-    })
+  createRange(len=20) {
+    let arr = [];
+    for(let i = 0; i < len ; i++) {
+      arr.push(i);
+    }
+    return arr;
   }
 
 }

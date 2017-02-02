@@ -1,4 +1,24 @@
-<section class="section-1">
+<div *ngIf="!statusesOk" class="wait loader">
+        <!--<md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>-->
+         <div class="brick" *ngFor="let item of createRange(15)">
+          <div class="timeline-wrapper">
+            <div class="timeline-item">
+              <div class="animated-background">
+                  <div class="background-masker image"></div>
+                  <div class="background-masker header-bottom"></div>
+                  <div class="background-masker paragraph1-bottom"></div>
+                  <div class="background-masker paragraph2-bottom"></div>
+                  <div class="background-masker paragraph3-bottom"></div>
+                  <div class="background-masker paragraph4-bottom"></div>
+                  <div class="background-masker paragraph5-bottom"></div>
+                  <div class="background-masker paragraph6-bottom"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+ </div>
+<section *ngIf="statusesOk" class="section-1">
+
 
   <aside class="s-menu">
     <app-asidecard></app-asidecard>
@@ -12,9 +32,7 @@
      <div class="col-md-8">
        <!--(createStatus)="onCreateStatus($event)"-->
       <app-updatecard></app-updatecard>
-      <div *ngIf="!statusesOk" class="wait">
-        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
-     </div>
+      
        <app-homecard
         *ngFor="let status of statuses"
         [status]="status"
