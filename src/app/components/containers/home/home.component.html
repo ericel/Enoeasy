@@ -10,7 +10,8 @@
           <app-adslist></app-adslist>
    </div>
      <div class="col-md-8">
-      <app-statuscard (createStatus)="onCreateStatus($event)"></app-statuscard>
+       <!--(createStatus)="onCreateStatus($event)"-->
+      <app-updatecard></app-updatecard>
       <div *ngIf="!statusesOk" class="wait">
         <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
      </div>

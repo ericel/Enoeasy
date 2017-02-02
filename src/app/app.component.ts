@@ -12,8 +12,9 @@ import { MetaService } from 'ng2-meta';
 export class AppComponent implements OnInit {
 isDarkTheme: boolean = false;
 isPurpleTheme: boolean = false;
-
+isGrayTheme: boolean = false;
 route: string;
+ testhtml = "<p>Hello world</p>";
 	constructor(
     private metaService: MetaService,
     vRef: ViewContainerRef,
@@ -25,15 +26,15 @@ route: string;
     this.router.events.subscribe(event => {
          const token_create_blog = window.localStorage.getItem("blog_create_token");
          if(token_create_blog) {window.localStorage.removeItem("blog_create_token")};
-
-          console.log(location.path());
         if(location.path() != ''){
             this.route = location.path();
             if(this.route === '/add' || this.route === '/add/blog'){
               this.isDarkTheme = false;
-              this.isPurpleTheme = true;
-            } else {
               this.isPurpleTheme = false;
+              this.isGrayTheme = true;
+            } else {
+              this.isGrayTheme = false;
+              this.isDarkTheme = false;
               this.isPurpleTheme = false;
             }
           } else {

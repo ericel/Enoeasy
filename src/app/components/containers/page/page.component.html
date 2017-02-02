@@ -24,7 +24,7 @@
       </md-card-header>
       <img *ngIf="page.photoUrl" md-card-image src="{{page.photoUrl}}">
       <md-card-content>
-          <p>{{page.status}}</p>
+           <div [innerHtml]="page.status"></div>
 
       </md-card-content>
       <md-card-actions class="container-fluid">

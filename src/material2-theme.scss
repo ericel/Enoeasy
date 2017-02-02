@@ -30,3 +30,13 @@ $theme: md-light-theme($primary, $accent);
 
   @include angular-material-theme($purple-theme);
 }
+
+.m2app-gray {
+  $gray-primary: md-palette($md-grey, 700, 500, 900);
+  $gray-accent:  md-palette($md-pink, A200, A100, A400);
+  $gray-warn:    md-palette($md-deep-orange);
+
+  $gray-theme: md-light-theme($gray-primary, $gray-accent, $gray-warn);
+
+  @include angular-material-theme($gray-theme);
+}

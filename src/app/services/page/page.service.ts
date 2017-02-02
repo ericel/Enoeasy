@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { AngularFire, AuthProviders, 
   AuthMethods,  FirebaseListObservable,
    FirebaseObjectObservable } from 'angularfire2';
+   import { Router } from '@angular/router';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/observable/forkJoin';
@@ -22,7 +23,8 @@ CREATE_KEY: string = 'blog_create_token';
 token;blogPath;pageBlg;
   constructor(
     private af: AngularFire,
-    private _notify: NotificationService
+    private _notify: NotificationService,
+    private router: Router,
   ) {  
      this.page = this.af.database.object(`/eStatus`, { preserveSnapshot: true });
      this.pageBlg = this.af.database.object(`/eblogs`, { preserveSnapshot: true });
@@ -43,9 +45,11 @@ token;blogPath;pageBlg;
 
   getPage(id: string) {
       return this.page.map(snapshot => {
+        if(!snapshot.val()){
+           this.router.navigate(['/NotFound404']);
+        }
         return snapshot.val()[id];   
-      });
-     
+      }) 
   }
 
 getPageBlg(id: string){

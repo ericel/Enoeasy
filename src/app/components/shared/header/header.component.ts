@@ -23,7 +23,7 @@ user;
     private location: Location
   ) {
      this.router.events.subscribe(event => {
-       console.log(location.path());
+       //console.log(location.path());
          if(location.path() != ''){
             this.route = location.path();
             if(this.route === '/add' || this.route === '/add/blog'){

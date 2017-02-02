@@ -263,8 +263,11 @@ input {
 .m2app-purple a{
   color: #7B1FA2;
 }
-.m2app-purple .list-group-item, .m2app-dark .form-control, .m2app-dark .md-dialog-container  {
+.m2app-purple .list-group-item, .m2app-purple .form-control {
   background: #eee !important;
+}
+.m2app-purple .md-dialog-container  {
+  background: #7B1FA2 !important;
 }
 
 .m2app-purple .footer-distributed{
@@ -272,4 +275,31 @@ input {
 	background: linear-gradient(90deg,#263238 70%,#7B1FA2 30%) !important;
 }
 /*END Purple TEAM */
+/* Purple TEAM */
+.m2app-gray a{
+  color: #424242;
+}
+.m2app-gray .list-group-item, .m2app-gray .form-control {
+  background: #eee !important;
+}
+
+.m2app-gray .md-dialog-container  {
+  background: #424242 !important;
+}
+.m2app-gray .footer-distributed{
+	background-color: #485274;
+	background: linear-gradient(90deg,#263238 70%,#424242 30%) !important;
+}
+/*END Purple TEAM */
+
+/* POST CSS */
+.blog-post h1 {
+    font-size: 1.2em !important;
+}
+.blog-post p {
+   margin: 10px 0 !important;
+   text-indent: 2px !important;
+}
+/* End POST CSS */
+
 

@@ -28,6 +28,7 @@ import {
   AuthCard,
   PromoCard,
   HomeCard,
+  UpdateCard,
   StatusCard,
   ColorCard,
   AsideCard,
@@ -35,6 +36,7 @@ import {
   QuestionCard,
   ShareCard,
   DialogAsk,
+  DialogStatus,
   DialogShare,
   CommentCard,
   CommentsCard,
@@ -100,6 +102,7 @@ let options: any = {
     AuthCard,
     PromoCard,
     HomeCard,
+    UpdateCard,
     StatusCard,
     ColorCard,
     AsideCard,
@@ -108,6 +111,7 @@ let options: any = {
     QuestionCard,
     ShareCard,
     DialogAsk,
+    DialogStatus,
     DialogShare,
     PageComponent,
     CommentCard,
@@ -153,7 +157,8 @@ let options: any = {
   ],
   entryComponents: [
     DialogAsk,
-    DialogShare
+    DialogShare,
+    DialogStatus
   ],
    bootstrap: [AppComponent]
 })

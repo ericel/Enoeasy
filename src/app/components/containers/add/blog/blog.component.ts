@@ -21,6 +21,7 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
   token_url;
   image = './assets/img/_blog.jpg'; CREATE_KEY: string = 'blog_create_token';
   storageRef;
+ 
   constructor(
     private fb: FormBuilder,
     private _pageService: PageService,
@@ -90,8 +91,7 @@ types = ['Politics', 'Education', 'Health', 'Opinion', 'Gossip', 'Secrets', 'Cor
 
     keyupHandlerFunction(e){
       if(e !== '' && e.length > 150){
-           this._pageService.updateBlogFull(e);
-           return e;
+           this._pageService.updateBlogFull(e), {enableHTML: true};
       }
      
     }

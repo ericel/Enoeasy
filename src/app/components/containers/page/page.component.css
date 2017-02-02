@@ -39,3 +39,13 @@ md-card-header {
 .display-none {
   display: none !important;
 }
+
+/* POST CSS */
+.blog-post h1 {
+    font-size: 1.6em !important;
+}
+.blog-post p {
+   margin: 10px 0 !important;
+   text-indent: 10px !important;
+}
+/* End POST CSS */

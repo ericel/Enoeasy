@@ -25,8 +25,8 @@
         
       </md-card-header>
       <img *ngIf="page.photoUrl" md-card-image src="{{page.photoUrl}}">
-      <md-card-content>
-          <p>[innerHTML]="pageBlg.blog"</p>
+      <md-card-content class="blog-post">
+          <div [outerHTML]="pageBlg.blog"></div>
       </md-card-content>
       <md-card-actions class="container-fluid">
        <div class="pull-left">

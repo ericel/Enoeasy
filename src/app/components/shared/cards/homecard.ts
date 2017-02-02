@@ -24,7 +24,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
       </md-card-header>
         <img *ngIf="status.photoUrl"  md-card-image class="status-img" src="{{status.photoUrl}}">
       <md-card-content >
-          <p>[innerHtml]="status.status"</p>
+          <div [outerHTML]="status.status"></div>
       </md-card-content>
        <md-card-actions class="container-fluid">
        <div class="pull-left">
