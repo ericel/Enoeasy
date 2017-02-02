@@ -7,7 +7,7 @@ import { StatusService } from '../../../services/status/status.service';
   //(click)="toggleStatus()"
   selector: 'app-updatecard',
   template: `
-   <md-card class="no-sm "  [ngStyle]="{'background-color': newStatus.color}">
+   <md-card class="no-sm ">
      <span mdTooltip="Update Status" (click)="openDialogStatus()">
          <i class="fa fa-commenting-o fa-2x" color="primary"  aria-hidden="true"></i>
      </span>
