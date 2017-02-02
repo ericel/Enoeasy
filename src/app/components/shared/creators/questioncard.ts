@@ -6,34 +6,43 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 @Component({
   selector: 'app-questioncard',
   template: `
-  <div  class="questionform">
+  <div  class="updatestatus">
+  <div class="auth-010">
+    <span><img md-card-avatar src="{{user.auth.photoURL}}"></span>
+    <span class="span">{{ user.auth.displayName | shorten: 8: ' ' }} <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+    <span class="span"><strong>Public</strong></span>
+   </div>
    <div class="close"> <button  md-button color="primary" (click)="close()">X</button></div>
    <md-card>
-  
-     <form *ngIf="isAuthorized" (ngSubmit)="onAskQuestion()">
+    <div *ngIf="addedSuccess" class="wait">
+        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+     <div class="alert alert-success" role="alert">
+      <strong>Well done!</strong> You successfully asked a question.
+    </div>
+    </div>
+     <form [class.blur]="addedSuccess" *ngIf="isAuthorized" (ngSubmit)="onAskQuestion()">
      <div *ngIf="errorQuestion" class="alert alert-danger" role="alert">
        <strong>Error: </strong>Question Should be between 20 - 100 Characters!
      </div>
      <div *ngIf="errorTags" class="alert alert-danger" role="alert">
        <strong>Error: </strong>At least 1 tags is needed!
      </div>
-     <div *ngIf="addedSuccess" class="alert alert-success" role="alert">
-      <strong>Well done!</strong> You successfully asked a question.
-    </div>
+      
     <div class="form-group">
-      <textarea autofocus class="form-control 
-      shadow-2" 
+      <textarea autofocus class="form-control" 
       aria-label="Ask a Question"
       [(ngModel)]="newQuestion.question"
       name="question"
-      placeholder="What's up? Ask your Question"
+      placeholder="Ask your Question"
       ></textarea>
+      
       <tag-input [(ngModel)]='newQuestion.tags'
        name="tags" 
       id="tags"
       [maxItems]="4"
       separatorKeys="[32]"
       ></tag-input>
+      <small class="tags-01 pull-left">type a tag and hit shift or enter key</small>
       <button md-raised-button color="primary" type="submit" class="pull-right">post question</button>
      </div>
   </form>
@@ -41,32 +50,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   </md-card>
   </div>
   `,
-  styles: [`
-  .questionform .close [md-button]{
-      min-width: 40px !important;
-      border-radius: 100% !important;
-      cursor:pointer;
-      color: #fff !important;
-   }
-  .questionform {
-    min-width: 200px !important;
-  }
-  .questionform textarea {
-    min-height: 150px !important;
-    margin: 10px 0 !important;
-  }
-  @media screen and (min-width: 688px){
-    .questionform md-card {
-      width: 500px !important;
-    }
-  }
-  .questionform .close {
-    position: relative;
-    right: 5px;
-    top: -43px;
-    color: #fff;
-  }
-  `]
+  styleUrls: ['./creators.css']
  
 })
 export class QuestionCard implements OnInit {
@@ -121,9 +105,19 @@ export class QuestionCard implements OnInit {
     if (question && tags) {
       let type = "Question";
      this.statusService.createQuestion( question, tags, color, type );
-      this.addedSuccess = true;
       
-      this.reset(); 
+       var i = 5;
+       var myinterval = setInterval(() => {
+       this.addedSuccess = true;
+        if (i === 0) {
+            clearInterval(myinterval );
+            this.reset();
+            this.close(); 
+        }
+        else {
+            i--;
+        }
+     }, 1000);
     }
   }
 

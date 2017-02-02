@@ -54,19 +54,19 @@ statusList: FirebaseListObservable<any[]>;
    
 
 
-createStatus(status: Status, type) {
-     let sid = Md5.hashStr(new Date() + status.status + status.color + this._uid);
+createStatus(status, color, tags, type) {
+     let sid = Md5.hashStr(new Date() + status + color + this._uid);
      this.path = this.af.database.object(`eStatus/${sid}`);
     return this.path.set({
          sid: sid,
-         status: status.status,
-         color: status.color,
+         status: status,
+         color: color,
          uid: this._uid,
          type: type,
          rating: 0,
          createdAt: firebase.database.ServerValue.TIMESTAMP,
          updatedAt: firebase.database.ServerValue.TIMESTAMP,
-         tags: status.tags
+         tags: tags
        }).then(resolve => {
       }, reject => {
         this._notify.errorAttempt("Ouch! status couldn't be added!")

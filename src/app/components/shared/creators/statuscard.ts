@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Optional, Input } from '@angul
 import { AuthService } from '../../../services/auth/auth.service';
 import { GeolocationService } from '../../../services/geolocation/geolocation';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
+import { StatusService } from '../../../services/status/status.service';
 @Component({
   //(click)="toggleStatus()"
   selector: 'app-updatecard',
@@ -54,38 +55,6 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   }
   md-card span:last-child {
       float: right;
-  }
-  md-card.update-status {
-      margin-top: -10px;
-  }
-  textarea {
-    border: none;
-    outline: none;
-    color: rgba(0,0,0,0.6);
-    font-family: 'Helvetica', sans-serif;
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
- 
-  @media screen and (max-width: 768px){
-     md-card {
-      margin: 0px 0 5px 0;
-      }
-
-  }
-  .not-auth {
-    padding: 10px 0;
-    margin-bottom:10px;
-    cursor: pointer;
-  }
-  tag-input {
-
-    width: 100% !important;
-  }
-  @media screen and (min-width: 1300px){
-  textarea, tag-input {
-    min-width: 100% !important;
-  }
   }
   `]
   /*<div class="form-group">
@@ -147,89 +116,44 @@ export class UpdateCard implements OnInit {
   //(click)="toggleStatus()" *ngIf="statusShow"
   selector: 'app-statuscard',
   template: `
-   <md-card  class="update-status" [ngStyle]="{'background-color': newStatus.color}">
-   <form *ngIf="isAuthorized" (ngSubmit)="onCreateStatus(tags.value)">
+  <div  class="updatestatus">
+   <div class="auth-010">
+    <span><img md-card-avatar src="{{user.auth.photoURL}}"></span>
+    <span class="span">{{ user.auth.displayName | shorten: 8: ' ' }} <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+    <span class="span"><strong>Public</strong></span>
+   </div>
+   <div class="close"> <button  md-button color="primary" (click)="close()">X</button></div>
+   <md-card  [ngStyle]="{'background-color': newStatus.color}">
+    <div *ngIf="progressCircular" class="wait">
+        <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
+        <div class="alert alert-success"> Update successfully Posted </div>
+    </div>
+   <form [class.blur]="progressCircular" *ngIf="isAuthorized" (ngSubmit)="onCreateStatus()">
+    <div *ngIf="errorStatus" class="alert alert-danger" role="alert">
+       <strong>Error: </strong>Status Should be between 5 - 100 Characters!
+     </div>
     <div class="form-group">
-      <textarea class="form-control shadow-2" aria-label="Update Status"
+      <textarea class="form-control" aria-label="Update Status"
       [(ngModel)]="newStatus.status"
       name="status"
       placeholder="What's new with you?"
       ></textarea>
-     </div>
+     
        <app-colorcard class="pull-left"
               (selected)="onColorSelect($event)"
               [colors]="colors"
             >
      </app-colorcard>
-      <button md-raised-button color="primary" type="submit" class="pull-right">post status</button>
-     
+      <button md-raised-button color="primary" type="submit"  class="pull-right">post status</button>
+    </div>
+     <div class="clearfix"></div>
   </form>
-    <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/signup">Click Here Log In to Post! It's easy and fast.</div>
-    <div class="clearfix"></div>
-   </md-card>
+  <div *ngIf="!isAuthorized" class="not-auth color-primary" routerLink="/signup">Click Here Log In to Post! It's easy and fast.</div>
+  </md-card>
+  </div>
 
   `,
-   styles: [`
-
-  md-card {
-      margin: 10px 0;
-      clear:both;
-      border-radius: 0 !important;
-      box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
-
-  }
-  @media screen and (min-width: 1200px){
-   md-card {
-      border-radius: 4px !important;
-      display: flex;
-  }
-  }
-  md-card span {
-    width: 25%;
-    float: left;
-    text-align: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    cursor: pointer;
-    color: #333;
-  }
-  md-card span:last-child {
-      float: right;
-  }
-  md-card.update-status {
-      margin-top: -10px;
-  }
-  textarea {
-    border: none;
-    outline: none;
-    color: rgba(0,0,0,0.6);
-    font-family: 'Helvetica', sans-serif;
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
- 
-  @media screen and (max-width: 768px){
-     md-card {
-      margin: 0px 0 5px 0;
-      }
-
-  }
-  .not-auth {
-    padding: 10px 0;
-    margin-bottom:10px;
-    cursor: pointer;
-  }
-  tag-input {
-
-    width: 100% !important;
-  }
-  @media screen and (min-width: 1300px){
-  textarea, tag-input {
-    min-width: 100% !important;
-  }
-  }
-  `]
+   styleUrls: ['./creators.css']
   /*<div class="form-group">
       <tag-input [(ngModel)]='newStatus.tags' name="tags"
       type="hidden" 
@@ -243,6 +167,9 @@ export class StatusCard implements OnInit {
  @Input() status: any;
  lastDialogResult: string; 
  isAuthorized: boolean = false;
+ addedSuccess:boolean = false;
+ errorStatus: boolean = false;
+ progressCircular: boolean = false;
  user;
  tags;
  statusShow: boolean = false;
@@ -255,13 +182,15 @@ export class StatusCard implements OnInit {
   constructor(
     private _authService: AuthService,
     private _GeolocationService: GeolocationService,
-    private _dialog: MdDialog
+    private _dialog: MdDialog,
+    private statusService: StatusService,
     ) { }
 
   ngOnInit() {
      this._authService.userAuth
-    .subscribe(value => { 
-    if(value){this.isAuthorized = true; this.user = value} 
+    .subscribe(value => {
+      this.user = value; 
+    if(value){this.isAuthorized = true;} 
      else {this.isAuthorized = false} });
 
        this._GeolocationService.getCurrentIpLocation().subscribe( value => {
@@ -282,14 +211,30 @@ export class StatusCard implements OnInit {
   }
 
   onCreateStatus() {
+    let type = "Status Update";
     const { status, color, tags} = this.newStatus;
-
+    if(!status){
+      this.errorStatus = true;
+    }
     if (status) {
-      this.createStatus.next({ status, color, tags  });
+      this.errorStatus = false;
+      this.statusService.createStatus( status, color, tags, type);
+      this.addedSuccess = true;
+       var i = 5;
+       var myinterval = setInterval(() => {
+       this.progressCircular = true;
+        if (i === 0) {
+            clearInterval(myinterval );
+            this.reset();
+            this.close(); 
+        }
+        else {
+            i--;
+        }
+     }, 1000);
     }
 
-    this.reset();
-    this.statusShow  = false;
+    
   }
 
   reset() {
@@ -299,6 +244,11 @@ export class StatusCard implements OnInit {
       tags: ''
     };
   }
+
+   close() {
+      this._dialog.closeAll();
+  }
+
 }
 
 @Component({
