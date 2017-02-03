@@ -224,6 +224,7 @@ input {
 }
 }
 .wait md-progress-spinner {
+ margin-top: 60px;
  margin-right: auto;
  margin-left: auto;
 }
@@ -314,6 +315,17 @@ input {
    margin: 10px 0 !important;
    text-indent: 2px !important;
 }
+img.blg-image {
+    max-height: 350px !important;
+}
+@media screen and (max-width: 700px){
+img.blg-image {
+    max-height: 250px !important;
+}
+}
+.hideStatus {
+     display: none;
+  }
 /* End POST CSS */
 
 

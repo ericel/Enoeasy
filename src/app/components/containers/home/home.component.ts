@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   onStatusChecked(status) {
     this.statusService.rateStatus(status);
   }
+ 
 
   
 

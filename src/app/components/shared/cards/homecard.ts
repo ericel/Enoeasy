@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter, Optional } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
+import { StatusService } from '../../../services/status/status.service';
 @Component({
   selector: 'app-homecard',
   template: `
    <div class="row gutter-10">
 
     <div class="col-md-12">
-     <md-card class="status">
+     <md-card *ngIf=(isHide) class="status" [hidden]="hideStatus">
       <md-card-header>
           <img md-card-avatar src="{{status.avatar}}">
           <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8: '.'}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
@@ -16,13 +17,13 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
          
          </button></span>
          <md-menu #menu="mdMenu">
-          <button md-menu-item>Hide</button>
-          <button md-menu-item>Save Post</button>
-          <button md-menu-item>Delete</button>
+          <button md-menu-item (click)="hide(false)">Hide</button>
+          <button md-menu-item (click)="save()">Save Post</button>
+          <button *ngIf="user.uid === status.uid" md-menu-item (click)="delete(status.sid)">Delete</button>
         </md-menu>
           <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
       </md-card-header>
-        <img *ngIf="status.photoUrl"  md-card-image class="status-img" src="{{status.photoUrl}}">
+        <img *ngIf="status.photoUrl"  md-card-image class="status-img blg-image" src="{{status.photoUrl}}">
       <md-card-content >
           <div [outerHTML]="status.status"></div>
       </md-card-content>
@@ -54,6 +55,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
    </div>
   `,
   styles: [`
+  
   md-card-header {
     margin-bottom: 10px !important;
   }
@@ -165,12 +167,15 @@ export class HomeCard implements OnInit {
 @Input() status = {};
 @Output() checked = new EventEmitter();
 @Output() limit = 1;
+isHide: boolean = true;
+hideStatus: boolean = false;
 comment;
  isAuthorized: boolean = false;
  user;
   constructor(
     private _authService: AuthService,
-    private _dialog: MdDialog
+    private _dialog: MdDialog,
+    private _statusService: StatusService
     ) { }
 
   ngOnInit() {
@@ -181,6 +186,15 @@ comment;
   }
   showLove(){
     this.checked.next(this.status);
+  }
+  
+  hide(value: boolean){
+    this.isHide = value;
+    this.hideStatus = true;
+  }
+
+  delete(sid){
+    this._statusService.sDelete(sid);
   }
 
 openDialog() {
@@ -229,8 +243,9 @@ export class AsideCard implements OnInit {
 
   ngOnInit() {
      this._authService.userAuth
-    .subscribe(value => { 
-    if(value){this.isAuthorized = true; this.user = value} 
+    .subscribe(value => {
+       this.user = value; 
+    if(value){this.isAuthorized = true;} 
      else {this.isAuthorized = false} });
   }
 

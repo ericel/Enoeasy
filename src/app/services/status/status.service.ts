@@ -51,7 +51,8 @@ statusList: FirebaseListObservable<any[]>;
     });
 
   }
-   
+
+
 
 
 createStatus(status, color, tags, type) {
@@ -175,5 +176,19 @@ getStatus() {
      
   }
 
+  sDelete(sid){
+    const path = this.af.database.object(`eStatus/${sid}`);
+    path.remove();
 
+    const commentList = this.af.database.list('/eComments', {
+      query: {
+        orderByChild: 'sid',
+        equalTo: sid
+      }
+    });
+
+    commentList.remove();
+  }
+
+  
 }

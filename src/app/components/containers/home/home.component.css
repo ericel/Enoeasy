@@ -78,12 +78,7 @@
 		text-align: center;
 	}
 }
-.brick {
-  height: auto;
-  width: 18vw;
-  display: inline-block;
-  margin-top: 10px;
-}
+
 
 @media screen and (max-width: 1328px) {
     .brick {
@@ -100,11 +95,16 @@
       display: inline-block;
     }
 }
-
+.brick {
+  height: auto;
+  width: 18vw;
+  display: inline-block;
+  margin-top: 10px;
+}
 @media screen and (max-width: 480px) {
     .brick {
       height: auto;
-      width: 93vw;
+      width:300px;
       display: inline-block;
 
     }

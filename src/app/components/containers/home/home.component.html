@@ -1,6 +1,6 @@
 <div *ngIf="!statusesOk" class="wait loader">
         <!--*ngIf="!statusesOk"<md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>-->
-         <div class="brick-1"  *ngFor="let item of createRange(15)">
+         <div class="brick"  *ngFor="let item of createRange(15)">
           <div class="timeline-wrapper">
             <div class="timeline-item">
               <div class="animated-background">
@@ -34,7 +34,7 @@
       <app-updatecard></app-updatecard>
       
        <app-homecard
-        *ngFor="let status of statuses"
+        *ngFor="let status of statuses; let i = index"
         [status]="status"
         (checked)="onStatusChecked($event)"
         >
