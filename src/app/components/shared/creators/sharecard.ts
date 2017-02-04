@@ -7,51 +7,24 @@ import {SlugifyPipe} from 'ngx-pipes/src/app/pipes/string/slugify';
 @Component({
   selector: 'app-sharecard',
   template: `
-  <div  class="shareform">
+  <div  class="updatestatus">
+  <div class="auth-010">
+    <span class="span"><strong><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i> Share On Social</strong></span>
+   </div>
   <div class="close"> <button  md-button (click)="close()">X</button></div>
    <md-card>
-   {{statusUrl}}
-        <share-buttons [shareTitle]="'Total Shares - '"
-      [url]= 'statusUrl'
-      [count]="true"
-      [totalCount]="true"
-      ></share-buttons>
+  <app-socialshare [status]="status"></app-socialshare>
   </md-card>
   </div>
   `,
-  styles: [`
-  .shareform .close [md-button]{
-      min-width: 40px !important;
-      border-radius: 100% !important;
-      cursor:pointer;
-      color: #fff !important;
-   }
-  .shareform {
-    min-width: 200px !important;
-  }
-  .shareform textarea {
-    min-height: 150px !important;
-    margin: 10px 0 !important;
-  }
-  @media screen and (min-width: 688px){
-    .shareform md-card {
-      width: 500px !important;
-    }
-  }
-  .shareform .close {
-    position: relative;
-    right: 5px;
-    top: -43px;
-    color:#fff;
-  }
-  `],
+  styleUrls: ['./creators.css'],
   providers: [SlugifyPipe]
  
 })
 export class ShareCard implements OnInit {
  @Output() createshare = new EventEmitter();
  @Input() status: any;
- statusUrl;
+ statusUrl;statusDesc;statusPhotoUrl;
   constructor(
     private _dialog: MdDialog,
     private statusService: StatusService,
@@ -59,12 +32,82 @@ export class ShareCard implements OnInit {
     ) { }
 
   ngOnInit() {
-     this.statusUrl =  this.slugifyPipe.transform(`https://enoeasy-94b34.firebaseapp.com/${this.status.type}/${this.status.sid}/${this.status.status}/`);
-     
+     this.statusUrl =  `${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}/`;
+     if(this.status.type == "Status Update")
+     {
+       this.statusPhotoUrl = "https://www.idonsuffer.com/assets/img/_status.png";
+     } else if (this.status.type == "Question"){
+        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/_status_q.png";
+     } else {
+       this.statusPhotoUrl =  this.status.photoUrl;
+     }
+     this.statusDesc = encodeURIComponent(this.status.status.trim())
   }
 
    close() {
       this._dialog.closeAll();
   }
 }
+
+@Component({
+  selector: 'app-socialshare',
+  template: `
+  <div class="row" style="text-align:center; margin:15px 0;">
+   <div class="col-md-4" style="text-align:center;">
+     <a class="btn btn-social btn-facebook" href="https://www.facebook.com/dialog/feed?app_id=1732300390419025
+                &redirect_uri=https://www.idonsuffer.com/{{statusUrl}}
+                &link=https://www.idonsuffer.com/{{statusUrl}}
+                &picture={{statusPhotoUrl}}
+                &caption=www.idonsuffer.com
+                &description={{statusDesc}}.
+                &properties={text:’value1′,key2:’value2′}
+                &actions={name:’I LOVE Africa’,link:’https://www.idonsuffer.com’}">
+                 <span class="fa fa-facebook-square">
+       </span> Share On Facebook</a>
+    </div>
+    <div class="col-md-4" style="text-align:center;">
+        <a class="btn btn-social btn-twitter"
+        href="http://twitter.com/share?text={{status.status | shorten: 78: '..'}}&url=https://www.idonsuffer.com/{{statusUrl}}&hashtags=afroweb,idonsuffer,africanoneweb">
+        <span class="fa fa-twitter-square">
+       </span> Share On Twitter
+        </a>
+    </div>
+    <div class="col-md-4" style="text-align:center;">
+        <a class="btn btn-social btn-google"
+        href="https://plus.google.com/share?url=https://www.idonsuffer.com/{{statusUrl}}">
+        <span class="fa fa-google-plus-square">
+       </span> Share On Google
+        </a>
+    </div>
+ </div>
+  `,
+  styleUrls: ['./creators.css'],
+  providers: [SlugifyPipe]
+ 
+})
+export class SocialCard implements OnInit {
+ @Output() createshare = new EventEmitter();
+ @Input() status: any;
+ statusUrl;statusDesc;statusPhotoUrl;
+  constructor(
+    private _dialog: MdDialog,
+    private statusService: StatusService,
+    private slugifyPipe: SlugifyPipe
+    ) { }
+
+  ngOnInit() {
+     this.statusUrl =  `${this.slugifyPipe.transform(this.status.type)}/${this.slugifyPipe.transform(this.status.sid)}/${this.slugifyPipe.transform(this.status.status)}/`;
+     if(this.status.type == "Status Update")
+     {
+       this.statusPhotoUrl = "https://www.idonsuffer.com/assets/img/_status.png";
+     } else if (this.status.type == "Question"){
+        this.statusPhotoUrl =  "https://www.idonsuffer.com/assets/img/_status_q.png";
+     } else {
+       this.statusPhotoUrl =  this.status.photoUrl;
+     }
+     this.statusDesc = encodeURIComponent(this.status.status.trim())
+     
+  }
+}
+
 

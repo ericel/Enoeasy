@@ -4,22 +4,37 @@ import { StatusService } from '../../../services/status/status.service';
   selector: 'app-commentcard',
   template: `
      <div class="form-group comm">
-         <form (keydown)="onCreateComment($event, status.sid)">
+         <form (ngSubmit)="onCreateComment(status.sid)">
+         <div class="row">
+
+         <div class="col-10">
            <textarea class="form-control"
             [(ngModel)]="comment"
             name="comment"
             placeholder="Write a comment!"
            >
            </textarea>
+           </div>
+           <div class="col-2">
+           <button md-raised-button type="submit" color="primary">Add</button>
+           </div>
+           </div>
          </form>
     </div>
   `,
    styles: [`
    .comm {
-     padding: 0 10px;
+     width: 92%;
+     margin-right: auto;
+     margin-left: auto;
+   }
+   button {
+     min-width: 0 !important;
+     width: 100% important;
+     height: 45px;
    }
      textarea {
-         height: 40px !important;
+         height: 45px !important;
          overflow: hidden;
      }
   `]
@@ -36,15 +51,12 @@ comment: any;
     
   }
 
-  onCreateComment(e, sid) {
-    if(e.keyCode == 13) {
-
-        if (this.comment) {
+  onCreateComment(sid) {
+       if (this.comment) {
           this.statusService.createComment( this.comment, sid);
+          this.reset();
         }
-   
-       this.reset();
-     }
+
   }
 
   reset() {

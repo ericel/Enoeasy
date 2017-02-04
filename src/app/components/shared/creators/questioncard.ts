@@ -7,7 +7,7 @@ import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
   selector: 'app-questioncard',
   template: `
   <div  class="updatestatus">
-  <div class="auth-010">
+  <div *ngIf="isAuthorized" class="auth-010">
     <span><img md-card-avatar src="{{user.auth.photoURL}}"></span>
     <span class="span">{{ user.auth.displayName | shorten: 8: ' ' }} <i class="fa fa-caret-right" aria-hidden="true"></i></span>
     <span class="span"><strong>Public</strong></span>

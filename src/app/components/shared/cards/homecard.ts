@@ -19,7 +19,7 @@ import { StatusService } from '../../../services/status/status.service';
          <md-menu #menu="mdMenu">
           <button md-menu-item (click)="hide(false)">Hide</button>
           <button md-menu-item (click)="save()">Save Post</button>
-          <button *ngIf="user.uid === status.uid" md-menu-item (click)="delete(status.sid)">Delete</button>
+          <button *ngIf="isAuthorized && user.uid === status.uid" md-menu-item (click)="delete(status.sid)">Delete</button>
         </md-menu>
           <md-card-subtitle class="type-0">{{status.type}}</md-card-subtitle>
       </md-card-header>
@@ -29,13 +29,13 @@ import { StatusService } from '../../../services/status/status.service';
       </md-card-content>
        <md-card-actions class="container-fluid">
        <div class="pull-left">
-        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{status.rating}} showed love!
+        <button md-button color="primary" (click)="showLove()"><i class="fa fa fa-heart fa-1x" aria-hidden="true"></i></button> {{status.rating}} 
         <button md-button (click)="openDialog()"><i class="fa fa-share-alt-square fa-1x" aria-hidden="true"></i></button>
         </div>
         <div  class="pull-right">
-        <button md-button *ngIf="status.type === 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Help Answer</button>
-        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">More of this</button>
-        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}">Read More</button>
+        <button md-button *ngIf="status.type === 'Question'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Help Answer</span></button>
+        <button md-button *ngIf="status.type === 'Status Update'" routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">More of this</span></button>
+        <button md-button *ngIf='status.type !== "Status Update" && status.type !== "Question"' routerLink="/blog/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"><span class="no-big"><i class="fa fa-eye" aria-hidden="true"></i></span><span class="no-sm-no">Read More</span></button>
         <button md-button data-toggle="collapse" [attr.data-target]="'#' + status.sid" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting fa-1x" aria-hidden="true"></i></button>
         </div>
         <div class="clearfix"></div>
@@ -45,7 +45,7 @@ import { StatusService } from '../../../services/status/status.service';
         </app-commentcard>
         
         <div class="comments">
-        <app-commentscard [status]="status" [limit]="1">
+        <app-commentscard [status]="status" [limit]="3">
         </app-commentscard>
           <div class="more-c"><a  routerLink="/{{status.type | slugify}}/{{ status.sid }}/{{status.status | slugify | shorten: 50}}"> Load more comments</a></div>  
         </div>
@@ -55,9 +55,9 @@ import { StatusService } from '../../../services/status/status.service';
    </div>
   `,
   styles: [`
-  
+
   md-card-header {
-    margin-bottom: 10px !important;
+    
   }
   .comments md-card-header, .comments md-card-header .md-card-header-text {
     height: auto !important;
@@ -89,7 +89,7 @@ import { StatusService } from '../../../services/status/status.service';
   }
   md-card.status md-card-content {
     min-height: 50px !important;
-    padding:10px;
+    padding: 0 10px 10px 10px;
     font-family: 'Helvetica', sans-serif;
     font-size: 14px;
      display: flex;

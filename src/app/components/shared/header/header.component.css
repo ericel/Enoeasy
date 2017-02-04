@@ -200,6 +200,20 @@ md-toolbar {
 input:-moz-placeholder {
   color: #666;
 }
+@media screen and (max-width: 1000px){
+  .flexsearch--input{
+    height: 40px !important;
+    padding: 0 8px 0 80px;
+
+}
+
+.flexsearch--submit-left, .flexsearch--close {
+    height: 40px !important;
+}
+.flexsearch--close {
+    top: 10px !important;
+}
+}
 .user-1 {
   padding: 2px;
 

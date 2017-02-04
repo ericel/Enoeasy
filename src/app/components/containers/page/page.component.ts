@@ -43,8 +43,8 @@ isBlog: boolean = false;
         this._pageService.getPage(this.id).subscribe(page =>  {this.page = page; 
           if(this.page){
             this.pageOk = true;
-            this.metaService.setTitle(this.page.status);
             //this.metaService.setTag('og:image',this.product.imageURL);
+            this.metaService.setTitle(this.page.status);
             if(this.page.type !== "Status Update" && this.page.type !== "Question"){
               this._pageService.getPageBlg(this.id).subscribe(pageBlg =>  {this.pageBlg = pageBlg}); 
               this.isBlog = true;
@@ -55,6 +55,13 @@ isBlog: boolean = false;
         this._authService.userById(this.page.uid).subscribe(auth => {this.auth = auth;
            if(this.auth){
             this.authOk = true;
+          }
+          this.metaService.setTag('author', this.auth.name);
+          if(this.page.type !== "Status Update"){
+             this.metaService.setTag('author', "Update");
+          }
+          if(this.page.type !== "Question"){
+             this.metaService.setTag('author', "Help Answer");
           }
         });
 
@@ -122,7 +129,7 @@ isBlog: boolean = false;
         this._pageService.getPage(this.id).subscribe(page =>  {this.page = page; 
           if(this.page){
             this.pageOk = true;
-            this.metaService.setTitle(this.page.status);
+            
             //this.metaService.setTag('og:image',this.product.imageURL);
             if(this.page.type !== "Status Update" && this.page.type !== "Question"){
               this._pageService.getPageBlg(this.id).subscribe(pageBlg =>  {this.pageBlg = pageBlg}); 
@@ -135,6 +142,9 @@ isBlog: boolean = false;
            if(this.auth){
             this.authOk = true;
           }
+
+          this.metaService.setTitle(this.pageBlg.blogTitle);
+          this.metaService.setTag('author', this.auth.name);
         });
 
       });

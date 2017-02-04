@@ -179,6 +179,11 @@ input {
   padding-right: 0px;
 }
 }
+@media screen and (min-width: 990px){
+  .no-sm-no-s{
+    display: none !important;
+  }
+}
 @media screen and (min-width: 769px){
   .no-big {
     display: none !important;

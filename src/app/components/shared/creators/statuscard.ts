@@ -37,10 +37,11 @@ import { StatusService } from '../../../services/status/status.service';
       box-shadow: 0 1px 1px -2px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px 0 rgba(0,0,0,.12) !important;
 
   }
-  @media screen and (min-width: 1200px){
+  @media screen and (min-width: 769px){
    md-card {
       border-radius: 4px !important;
       display: flex;
+      margin-top: 10px;
   }
   }
   md-card span {
@@ -108,7 +109,7 @@ export class UpdateCard implements OnInit {
   selector: 'app-statuscard',
   template: `
   <div  class="updatestatus">
-   <div class="auth-010">
+   <div *ngIf="isAuthorized" class="auth-010">
     <span><img md-card-avatar src="{{user.auth.photoURL}}"></span>
     <span class="span">{{ user.auth.displayName | shorten: 8: ' ' }} <i class="fa fa-caret-right" aria-hidden="true"></i></span>
     <span class="span"><strong>Public</strong></span>
