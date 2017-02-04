@@ -52,8 +52,8 @@ export class ShareCard implements OnInit {
 @Component({
   selector: 'app-socialshare',
   template: `
-  <div class="row" style="text-align:center; margin:15px 0;">
-   <div class="col-md-4" style="text-align:center;">
+  <div class="row sharecard" style="text-align:center; margin:15px 0;">
+   <div class="col-4" style="text-align:center;">
      <a class="btn btn-social btn-facebook" href="https://www.facebook.com/dialog/feed?app_id=1732300390419025
                 &redirect_uri=https://www.idonsuffer.com/{{statusUrl}}
                 &link=https://www.idonsuffer.com/{{statusUrl}}
@@ -63,20 +63,20 @@ export class ShareCard implements OnInit {
                 &properties={text:’value1′,key2:’value2′}
                 &actions={name:’I LOVE Africa’,link:’https://www.idonsuffer.com’}">
                  <span class="fa fa-facebook-square">
-       </span> Share On Facebook</a>
+       </span> <span class="no-big">FB</span> <span class="no-sm-no">Share On Facebook</span></a>
     </div>
-    <div class="col-md-4" style="text-align:center;">
+    <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-twitter"
         href="http://twitter.com/share?text={{status.status | shorten: 78: '..'}}&url=https://www.idonsuffer.com/{{statusUrl}}&hashtags=afroweb,idonsuffer,africanoneweb">
         <span class="fa fa-twitter-square">
-       </span> Share On Twitter
+       </span> <span class="no-big">TW</span> <span class="no-sm-no">Share On Twitter</span>
         </a>
     </div>
-    <div class="col-md-4" style="text-align:center;">
+    <div class="col-4" style="text-align:center;">
         <a class="btn btn-social btn-google"
         href="https://plus.google.com/share?url=https://www.idonsuffer.com/{{statusUrl}}">
         <span class="fa fa-google-plus-square">
-       </span> Share On Google
+       </span> <span class="no-big">G+</span> <span class="no-sm-no">Share On Google</span>
         </a>
     </div>
  </div>

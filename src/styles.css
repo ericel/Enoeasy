@@ -233,16 +233,17 @@ input {
  margin-right: auto;
  margin-left: auto;
 }
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1024px){
 .main {
-        width: 80%;
+        width: 95%;
         margin-right: auto;
         margin-left: auto;
+        margin-top:10px;
     }
 }
 @media screen and (min-width: 1400px){
 .main {
-        width: 60%;
+        width: 70%;
         margin-right: auto;
         margin-left: auto;
     }
@@ -331,6 +332,23 @@ img.blg-image {
 .hideStatus {
      display: none;
   }
+.s-menu {display: none}
+@media screen and (min-width: 1200px){
+ .section-1 {
+  padding: 0 17%;
+}
+.section-02{
+
+  right:13%;
+  width:20.2%;
+}
+.s-menu {
+  display: block;
+  position: fixed;
+  top:65px;
+  left:5px;
+}
+}
 /* End POST CSS */
 
 

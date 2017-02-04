@@ -7,8 +7,8 @@ import { StatusService } from '../../../services/status/status.service';
   template: `
    <div class="row gutter-10">
 
-    <div class="col-md-12">
-     <md-card *ngIf=(isHide) class="status" [hidden]="hideStatus">
+    <div class="col-md-12" >
+     <md-card  [class.animated]="isHide" [class.fadeOutUp]="isHide" class="status" *ngIf="!hideStatus">
       <md-card-header>
           <img md-card-avatar src="{{status.avatar}}">
           <md-card-title><a routerLink="/user/{{ status.uid }}/{{status.username | slugify}}">{{status.username | shorten: 8: '.'}}</a>  {{status.createdAt | amTimeAgo:true}} ago!</md-card-title>
@@ -167,7 +167,7 @@ export class HomeCard implements OnInit {
 @Input() status = {};
 @Output() checked = new EventEmitter();
 @Output() limit = 1;
-isHide: boolean = true;
+isHide: boolean = false;
 hideStatus: boolean = false;
 comment;
  isAuthorized: boolean = false;
@@ -189,8 +189,17 @@ comment;
   }
   
   hide(value: boolean){
-    this.isHide = value;
-    this.hideStatus = true;
+    this.isHide = true;
+    var i = 1;
+       var myinterval = setInterval(() => {
+        if (i === 0) {
+            clearInterval(myinterval );
+            this.hideStatus = true;
+        }
+        else {
+            i--;
+        }
+     }, 500);
   }
 
   delete(sid){

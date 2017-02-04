@@ -3,9 +3,15 @@
         <md-progress-spinner mode="indeterminate" color="primary"></md-progress-spinner>
   </div>
 <div *ngIf="pageOk && authOk">
-  <section class="container-fluid">
+   <aside class="s-menu">
+      <app-asidecard></app-asidecard>
+    </aside>
+  <section class="container-fluid animated fadeInRight">
   <div class="row gutter-10">
-  <div class="col-md-8 l-side page">
+  <div class="col-md-1">
+  
+  </div>
+  <div class="col-md-7 l-side page">
     <md-card>
    <md-card-header>
           <img  md-card-avatar src="{{auth.avatar}}">

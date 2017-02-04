@@ -46,6 +46,38 @@ export class AdslistCard implements OnInit {
   constructor() { }
 
   ngOnInit() {
+ 
+  }
+
+}
+
+@Component({
+  selector: 'app-adsone',
+  template:`
+  <div class="mar-10"></div>
+	<md-card class="google">
+  <ng2-adsense
+    [adClient]="'ca-pub-2243338195594977'"
+    [adSlot]="8059130774">
+  </ng2-adsense>
+ </md-card>
+ <div class="mar-10"></div>
+
+  `,
+  styles: [`
+   md-card {
+     
+   }
+    md-card.google {
+     padding:2px !important;
+   }
+  `]
+})
+export class AdsOneCard implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
   }
 
 }

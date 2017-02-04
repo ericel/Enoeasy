@@ -52,3 +52,7 @@
     font-size: 0.6em;
     font-style: italic;
   }
+
+.sharecard .btn {
+  width: 100% !important;
+}

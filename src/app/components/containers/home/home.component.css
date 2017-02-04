@@ -1,6 +1,6 @@
 .section-1 {
   position: relative;
-  top: 60px;
+  top: 65px;
   padding: 0 10px;
   height: auto;
 }
@@ -10,7 +10,7 @@
 }
 .section-02{
   position:fixed; 
-  top:60px;
+  top:65px;
   right:5px;
   width:24.2%;
 }

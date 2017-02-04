@@ -34,7 +34,9 @@
       <app-updatecard></app-updatecard>
       
        <app-homecard
-        *ngFor="let status of statuses; let i = index"
+        *ngFor="let status of staggeringStatuses; let i = index"
+        (@flyInOut.done)="doNext()"
+        [@flyInOut]="'in'" (click)="removeMe(i)"
         [status]="status"
         (checked)="onStatusChecked($event)"
         >
@@ -47,6 +49,7 @@
      <div class="row gutter-10">
         <div class="col-lg-12">
           <app-authcard></app-authcard>
+          <app-adsone></app-adsone>
         </div>
     </div>
   </div>
